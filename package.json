@@ -26,7 +26,6 @@
 		},
 		{
 			"id": "Cfscript",
-			//"extensions": [".cfm",".cfc"],
 			"configuration": "./cfscript.configuration.json"
 		},
 		{
