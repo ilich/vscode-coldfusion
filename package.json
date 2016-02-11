@@ -37,7 +37,8 @@
 		},
 		{
 			"id": "HTML+CFML",
-			//"extensions": [".cfm"],
+			"aliases": "CFML",
+			"extensions": [".cfm"],
 			"configuration": "./cfml.configuration.json"
 		}],
 		"grammars": [{
