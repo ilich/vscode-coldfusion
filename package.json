@@ -18,47 +18,17 @@
 		"Languages"
 	],
 	"contributes": {
-		"languages": [{
-			"id": "ColdFusion",
-			"aliases": ["CFML"],
-			"extensions": [".cfm",".cfml"],
-			"configuration": "./cfml.configuration.json"
-		},
-		{
-			"id": "Cfscript",
-			"configuration": "./cfscript.configuration.json"
-		},
-		{
-			"id": "ColdFusionCFC",
-			"aliases": ["CFC"],
-			"extensions": [".cfc"],
-			"configuration": "./cfscript.configuration.json"
-		},
-		{
-			"id": "HTML+CFML",
-			"aliases": ["CFML"],
-			"extensions": [".cfm"],
-			"configuration": "./cfml.configuration.json"
-		}],
-		"grammars": [{
-			"language": "ColdFusion",
-			"scopeName": "text.cfml.basic",
-			"path": "./syntaxes/Coldfusion.tmLanguage"
-		},
-		{
-			"language": "Cfscript",
-			"scopeName": "source.cfscript",
-			"path": "./syntaxes/Cfscript.tmLanguage"
-		},
-		{
-			"language": "ColdFusionCFC",
-			"scopeName": "source.cfscript.cfc",
-			"path": "./syntaxes/ColdFusionCFC.tmLanguage"
-		},		
-		{
-			"language": "HTML+CFML",
-			"scopeName": "text.html.cfm",
-			"path": "./syntaxes/HTML+CFML.tmLanguage"
-		}]
+		"languages": [
+			{ "id": "lang-cfml", "aliases": ["CFML"], "extensions": [".cfm",".cfml",".cfc"], "configuration": "./cfscript.configuration.json"}
+		],
+		"grammars": [
+			{"language": "lang-cfml", "scopeName": "embedding.cfml", "path": "./syntaxes/cfml.tmLanguage" }
+		],
+		"snippets": [
+			{
+				"language": "lang-cfml",
+				"path": "./snippets/snippets.json"
+			}
+		]
 	}
 }
