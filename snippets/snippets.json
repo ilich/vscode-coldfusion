@@ -1,0 +1,2504 @@
+{
+	"abs": {
+		"prefix": "abs",
+		"body": "Abs(${1:number})$0",
+		"description": "abs",
+		"scope": "embeddable.cfml"
+	},
+	"acos": {
+		"prefix": "acos",
+		"body": "ACos(${1:number})$0",
+		"description": "acos",
+		"scope": "embeddable.cfml"
+	},
+	"addsoaprequestheader": {
+		"prefix": "addsoaprequestheader",
+		"body": "AddSOAPRequestHeader(${1:webservice}, ${2:namespace}, ${3:name}, ${4:value} ${5:[, mustunderstand]})$0",
+		"description": "addsoaprequestheader",
+		"scope": "embeddable.cfml"
+	},
+	"addsoapresponseheader": {
+		"prefix": "addsoapresponseheader",
+		"body": "AddSOAPResponseHeader(${1:namespace}, ${2:name}, ${3:value} ${4:[, mustunderstand]})$0",
+		"description": "addsoapresponseheader",
+		"scope": "embeddable.cfml"
+	},
+	"arrayappend": {
+		"prefix": "arrayappend",
+		"body": "ArrayAppend(${1:array}, ${2:value})$0",
+		"description": "arrayappend",
+		"scope": "embeddable.cfml"
+	},
+	"arrayavg": {
+		"prefix": "arrayavg",
+		"body": "ArrayAvg(${1:array})$0",
+		"description": "arrayavg",
+		"scope": "embeddable.cfml"
+	},
+	"arrayclear": {
+		"prefix": "arrayclear",
+		"body": "ArrayClear(${1:array})$0",
+		"description": "arraycear",
+		"scope": "embeddable.cfml"
+	},
+	"arraydeleteat": {
+		"prefix": "arraydeleteat",
+		"body": "ArrayDeleteAt(${1:array}, ${2:position})$0",
+		"description": "arraydeleteat",
+		"scope": "embeddable.cfml"
+	},
+	"arrayinsertat": {
+		"prefix": "arrayinsertat",
+		"body": "ArrayInsertAt(${1:array}, ${2:position}, ${3:value})$0",
+		"description": "arrayinsertat",
+		"scope": "embeddable.cfml"
+	},
+	"arrayisempty": {
+		"prefix": "arrayisempty",
+		"body": "ArrayIsEmpty(${1:array})$0",
+		"description": "arrayisempty",
+		"scope": "embeddable.cfml"
+	},
+	"arraylen": {
+		"prefix": "arraylen",
+		"body": "ArrayLen(${1:array})$0",
+		"description": "arraylen",
+		"scope": "embeddable.cfml"
+	},
+	"arraymax": {
+		"prefix": "arraymax",
+		"body": "ArrayMax(${1:array})$0",
+		"description": "arraymax",
+		"scope": "embeddable.cfml"
+	},
+	"arraymin": {
+		"prefix": "arraymin",
+		"body": "ArrayMin(${1:array})$0",
+		"description": "arraymin",
+		"scope": "embeddable.cfml"
+	},
+	"arraynew": {
+		"prefix": "arraynew",
+		"body": "ArrayNew(${1:dimension})$0",
+		"description": "arraynew",
+		"scope": "embeddable.cfml"
+	},
+	"arrayprepend": {
+		"prefix": "arrayprepend",
+		"body": "ArrayPrepend(${1:array}, ${2:value})$0",
+		"description": "arrayprepend",
+		"scope": "embeddable.cfml"
+	},
+	"arrayresize": {
+		"prefix": "arrayresize",
+		"body": "ArrayResize(${1:array}, ${2:minimum_size})$0",
+		"description": "arrayresize",
+		"scope": "embeddable.cfml"
+	},
+	"arrayset": {
+		"prefix": "arrayset",
+		"body": "ArraySet(${1:array}, ${2:start_pos}, ${3:end_pos}, ${4:value})$0",
+		"description": "arrayset",
+		"scope": "embeddable.cfml"
+	},
+	"arraysort": {
+		"prefix": "arraysort",
+		"body": "ArraySort(${1:array}, ${2:sort_type} ${3:[, sort_order ]})$0",
+		"description": "arraysort",
+		"scope": "embeddable.cfml"
+	},
+	"arraysum": {
+		"prefix": "arraysum",
+		"body": "ArraySum(${1:array})$0",
+		"description": "arraysum",
+		"scope": "embeddable.cfml"
+	},
+	"arrayswap": {
+		"prefix": "arrayswap",
+		"body": "ArraySwap(${1:array}, ${2:position1}, ${3:position2})$0",
+		"description": "arrayswap",
+		"scope": "embeddable.cfml"
+	},
+	"arraytolist": {
+		"prefix": "arraytolist",
+		"body": "ArrayToList(${1:array} ${2:[, delimiter ]})$0",
+		"description": "arraytolist",
+		"scope": "embeddable.cfml"
+	},
+	"asc": {
+		"prefix": "asc",
+		"body": "Asc(${1:string})$0",
+		"description": "asc",
+		"scope": "embeddable.cfml"
+	},
+	"asin": {
+		"prefix": "asin",
+		"body": "ASin(${1:number})$0",
+		"description": "asin",
+		"scope": "embeddable.cfml"
+	},
+	"atn": {
+		"prefix": "atn",
+		"body": "Atn(${1:number})$0",
+		"description": "atn",
+		"scope": "embeddable.cfml"
+	},
+	"binarydecode": {
+		"prefix": "binarydecode",
+		"body": "BinaryDecode(${1:string}, ${2:binaryencoding})$0",
+		"description": "binarydecode",
+		"scope": "embeddable.cfml"
+	},
+	"binaryencode": {
+		"prefix": "binaryencode",
+		"body": "BinaryEncode(${1:binarydata}, ${2:encoding})$0",
+		"description": "binaryencode",
+		"scope": "embeddable.cfml"
+	},
+	"bitand": {
+		"prefix": "bitand",
+		"body": "BitAnd(${1:number1}, ${2:number2})$0",
+		"description": "bitand",
+		"scope": "embeddable.cfml"
+	},
+	"bitmaskclear": {
+		"prefix": "bitmaskclear",
+		"body": "BitMaskClear(${1:number}, ${2:start}, ${3:length})$0",
+		"description": "bitmaskclear",
+		"scope": "embeddable.cfml"
+	},
+	"bitmaskread": {
+		"prefix": "bitmaskread",
+		"body": "BitMaskRead(${1:number}, ${2:start}, ${3:length})$0",
+		"description": "bitmaskread",
+		"scope": "embeddable.cfml"
+	},
+	"bitmaskset": {
+		"prefix": "bitmaskset",
+		"body": "BitMaskSet(${1:number}, ${2:mask}, ${3:start}, ${4:length})$0",
+		"description": "bitmaskset",
+		"scope": "embeddable.cfml"
+	},
+	"bitnot": {
+		"prefix": "bitnot",
+		"body": "BitNot(${1:number})$0",
+		"description": "bitnot",
+		"scope": "embeddable.cfml"
+	},
+	"bitor": {
+		"prefix": "bitor",
+		"body": "BitOr(${1:number1}, ${2:number2})$0",
+		"description": "bitor",
+		"scope": "embeddable.cfml"
+	},
+	"bitshln": {
+		"prefix": "bitshln",
+		"body": "BitSHLN(${1:number}, ${2:count})$0",
+		"description": "bitshln",
+		"scope": "embeddable.cfml"
+	},
+	"bitshrn": {
+		"prefix": "bitshrn",
+		"body": "BitSHRN(${1:number}, ${2:count})$0",
+		"description": "bitshrn",
+		"scope": "embeddable.cfml"
+	},
+	"bitxor": {
+		"prefix": "bitxor",
+		"body": "BitXor(${1:number1}, ${2:number2})$0",
+		"description": "bitxor",
+		"scope": "embeddable.cfml"
+	},
+	"ceiling": {
+		"prefix": "ceiling",
+		"body": "BitXor(${1:number1}, ${2:number2})$0",
+		"description": "ceiling",
+		"scope": "embeddable.cfml"
+	},
+	"cfabort": {
+		"prefix": "cfabort",
+		"body": "<cfabort showerror=\"$1\">$0",
+		"description": "cfabort",
+		"scope": "embeddable.cfml"
+	},
+	"cfapplet": {
+		"prefix": "cfapplet",
+		"body": "<cfapplet appletSource = \"$1\" name = \"$2\"${3: height = \"${4:[ ]}\" width = \"${5:[ ]}\" vSpace = \"${6:[ ]}\" hSpace = \"${7:[ ]}\" align = \"${8:[ ]}\" notSupported = \"${9:[ ]}\" param_1 = \"${10:[ ]}\" param_2 = \"${11:[ ]}\" param_n = \"${12:[ ]}\"}>$0\t",
+		"description": "cfapplet",
+		"scope": "embeddable.cfml"
+	},
+	"cfapplication": {
+		"prefix": "cfapplication",
+		"body": "<cfapplication\r\n\tname = \"$1\"${2: \r\n\tloginStorage = \"$3\"\r\n\tclientManagement = \"$4\"\r\n\tclientStorage = \"$5\" \r\n\tsetClientCookies = \"$6\"\r\n\tsessionManagement = \"$7\"\r\n\tsessionTimeout = #CreateTimeSpan(${8:days}, ${9:hours}, ${10:minutes}, ${11:seconds})#\r\n\tapplicationTimeout =  #CreateTimeSpan(${12:days}, ${13:hours}, ${14:minutes}, ${15:seconds})#\r\n\tsetDomainCookies = \"$16\"}>$0",
+		"description": "cfapplication",
+		"scope": "embeddable.cfml"
+	},
+	"cfargument": {
+		"prefix": "cfargument",
+		"body": "<cfargument name=\"$1\"${2: type=\"${3:[ ]}\" required=\"${4:[ ]}\" default=\"${5:[ ]}\" displayname=\"${6:[ ]}\" hint=\"${7:[ ]}\"}>$0",
+		"description": "cfargument",
+		"scope": "embeddable.cfml"
+	},
+	"cfassociate": {
+		"prefix": "cfassociate",
+		"body": "<cfassociate${1: baseTag = \"${2:[ ]}\" dataCollection = \"${3:[ ]}\"}>$0",
+		"description": "cfassociate",
+		"scope": "embeddable.cfml"
+	},
+	"cfbreak": {
+		"prefix": "cfbreak",
+		"body": "<cfbreak>",
+		"description": "cfbreak",
+		"scope": "embeddable.cfml"
+	},
+	"cfcache": {
+		"prefix": "cfcache",
+		"body": "<cfcache action = \"${2:[ ]}\" directory = \"${2:[ ]}\" timespan = \"${2:[ ]}\" expireURL = \"${2:[ ]}\" username = \"${2:[ ]}\" password = \"${2:[ ]}\" port = \"\" protocol = \"${2:[ ]}\">",
+		"description": "cfcache",
+		"scope": "embeddable.cfml"
+	},
+	"cfcalendar": {
+		"prefix": "cfcalendar",
+		"body": "<cfcalendar name = \"$1\"${2: height = \"${3:[ ]}\" width = \"${4:[ ]}\" selectedDate = \"${5:[ ]}\" startRange = \"${6:[ ]}\" endRange = \"${7:[ ]}\" disabled = \"${8:[ ]}\" mask = \"${9:[ ]}\" dayNames = \"${10:[ ]}\" monthNames = \"${11:[ ]}\" style=\"${12:[ ]}\" enabled = \"${13:[ ]}\" visible = \"${14:[ ]}\" tooltip = \"${15:[ ]}\" onChange = \"${16:[ ]}\" onBlur = \"${17:[ ]}\" onFocus = \"${18:[ ]}\"}>$0",
+		"description": "cfcalendar",
+		"scope": "embeddable.cfml"
+	},
+	"cfcase": {
+		"prefix": "cfcase",
+		"body": "<cfcase value = \"$1\"${2: delimiters = \"${3:[ ]}\"}>$4</cfcase>$0",
+		"description": "cfcase",
+		"scope": "embeddable.cfml"
+	},
+	"cfcatch": {
+		"prefix": "cfcatch",
+		"body": "<cfcatch type = \"$1\">\r\n\t$2\r\n</cfcatch>$0",
+		"description": "cfcatch",
+		"scope": "embeddable.cfml"
+	},
+	"cfchart": {
+		"prefix": "cfchart",
+		"body": "<cfchart\r\n\tname = \"$1\"${2:\r\n\tbackgroundColor = \"${3:[ ]}\"\r\n\tchartHeight = \"${4:[ ]}\"\r\n\tchartWidth = \"${5:[ ]}\"\r\n\tdataBackgroundColor = \"${6:[ ]}\"\r\n\tfont = \"${7:[ ]}\"\r\n\tfontBold = \"${8:[ ]}\"\r\n\tfontItalic = \"${9:[ ]}\"\r\n\tfontSize = \"${10:[ ]}\"\r\n\tforegroundColor = \"${11:[ ]}\"\r\n\tformat = \"${12:[ ]}\"\r\n\tgridlines = \"${13:[ ]}\"\r\n\tlabelFormat = \"${14:[ ]}\"\r\n\tmarkerSize = \"${15:[ ]}\"\r\n\tpieSliceStyle = \"${16:[ ]}\"\r\n\tscaleFrom = \"${17:[ ]}\"\r\n\tscaleTo = \"${18:[ ]}\"\r\n\tseriesPlacement = \"${19:[ ]}\"\r\n\tshow3D = \"${20:[ ]}\"\r\n\tshowBorder = \"${21:[ ]}\"\r\n\tshowLegend = \"${22:[ ]}\"\r\n\tshowMarkers = \"${23:[ ]}\"\r\n\tshowXGridlines = \"${24:[ ]}\"\r\n\tshowYGridlines = \"${25:[ ]}\"\r\n\tsortXAxis = \"${26:[ ]}\"\r\n\ttipBGColor = \"${27:[ ]}\"\r\n\ttipStyle = \"${28:[ ]}\"\r\n\ttitle = \"${29:[ ]}\"\r\n\turl = \"${30:[ ]}\"\r\n\txAxisTitle = \"${31:[ ]}\"\r\n\txAxisType = \"${32:[ ]}\"\r\n\txOffset = \"${33:[ ]}\"\r\n\tyAxisTitle = \"${34:[ ]}\"\r\n\tyAxisType = \"${35:[ ]}\"\r\n\tyOffset = \"${36:[ ]}\"}>\r\n</cfchart>$0",
+		"description": "cfchart",
+		"scope": "embeddable.cfml"
+	},
+	"cfchartdata": {
+		"prefix": "cfchartdata",
+		"body": "<cfchartdata item = \"$1\" value = \"$2\">$0",
+		"description": "cfchartdata",
+		"scope": "embeddable.cfml"
+	},
+	"cfchartseries": {
+		"prefix": "cfchartseries",
+		"body": "<cfchartseries type=\"$1\"${2: colorlist = \"${3:[ ]}\" itemColumn=\"${4:[ ]}\" markerStyle=\"${5:[ ]}\" paintStyle=\"${6:[ ]}\" query=\"${7:[ ]}\" seriesColor=\"${8:[ ]}\" seriesLabel=\"${9:[ ]}\" valueColumn=\"${10:[ ]}\" dataLabelStyle=\"${11:[ ]}\"}>\r\n\t$12\r\n</cfchartseries>$0",
+		"description": "cfchartseries",
+		"scope": "embeddable.cfml"
+	},
+	"cfcol": {
+		"prefix": "cfcol",
+		"body": "<cfcol header = \"$1\" text = \"$2\"${3: width = \"${4:[ ]}\" align = \"${5:[ ]}\"}>$0\r\r",
+		"description": "cfcol",
+		"scope": "embeddable.cfml"
+	},
+	"cfcollection": {
+		"prefix": "cfcollection",
+		"body": "<cfcollection action = \"$1\"${2: collection = \"${3:[ ]}\" path = \"${4:[ ]}\" language = \"${5:[ ]}\" name = \"${6:[ ]}\" categories = \"${7:[ ]}\" or \"${8:[ ]}\"}>$0",
+		"description": "cfcollection",
+		"scope": "embeddable.cfml"
+	},
+	"cfcomponent": {
+		"prefix": "cfcomponent",
+		"body": "<cfcomponent${1: extends =\"${2:[ ]}\" output = \"${3:[ ]}\" style = \"${4:[ ]}\" namespace = \"${5:[ ]}\" serviceportname = \"${6:[ ]}\" porttypename = \"${7:[ ]}\" bindingname = \"${8:[ ]}\" wsdlfile = \"${9:[ ]}\" displayname = \"${10:[ ]}\" hint = \"${11:[ ]}\"}>\r\n\t$12\r\n</cfcomponent>$0",
+		"description": "cfcomponent",
+		"scope": "embeddable.cfml"
+	},
+	"cfcontent": {
+		"prefix": "cfcontent",
+		"body": "<cfcontent type = \"${1:[ ]}\" deleteFile = \"${2:[ ]}\" file = \"${3:[ ]}\" variable = \"${4:[ ]}\" reset = \"${5:[ ]}\">$0",
+		"description": "cfcontent",
+		"scope": "embeddable.cfml"
+	},
+	"cfcookie": {
+		"prefix": "cfcookie",
+		"body": "<cfcookie name = \"$1\"${2: value = \"${3:[ ]}\" expires = \"${4:[ ]}\" secure = \"${5:[ ]}\" path = \"${6:[ ]}\" domain = \"${7:[ ]}\"}>$0",
+		"description": "cfcookie",
+		"scope": "embeddable.cfml"
+	},
+	"cfdirectory": {
+		"prefix": "cfdirectory",
+		"body": "<cfdirectory directory = \"$1\" action = \"${2:[ ]}\" name = \"${3:[ ]}\" filter = \"${4:[ ]}\" mode = \"${5:[ ]}\" sort = \"${6:[ ]}\" newDirectory = \"${7:[ ]}\" recurse = \"${8:[ ]}\">$0",
+		"description": "cfdirectory",
+		"scope": "embeddable.cfml"
+	},
+	"cfdocument": {
+		"prefix": "cfdocument",
+		"body": "<cfdocument format = \"$1\"${2: backgroundvisible = \"${3:[ ]}\" encryption = \"${4:[ ]}\" filename = \"${5:[ ]}\" fontembed = \"${6:[ ]}\" marginbottom = \"${7:[ ]}\" marginleft = \"${8:[ ]}\" marginright = \"${9:[ ]}\" margintop = \"${10:[ ]}\" mimetype = \"${11:[ ]}\" name = \"${12:[ ]}\" orientation = \"${13:[ ]}\" overwrite = \"${14:[ ]}\" ownerpassword = \"${15:[ ]}\" pageheight = \"${16:[ ]}\" pagetype = \"${17:[ ]}\" pagewidth = \"${18:[ ]}\" permissions = \"${19:[ ]}\" scale = \"${20:[ ]}\" src = \"${21:[ ]}\" srcfile = \"${22:[ ]}\" unit = \"${23:[ ]}\" userpassword = \"${24:[ ]}\"}>\n\t$25\n</cfdocument>$0\r\r",
+		"description": "cfdocument",
+		"scope": "embeddable.cfml"
+	},
+	"cfdocumentitem": {
+		"prefix": "cfdocumentitem",
+		"body": "<cfdocumentitem type = \"$1\">\r\n\t$2\n</cfdocumentitem>$0",
+		"description": "cfdocumentitem",
+		"scope": "embeddable.cfml"
+	},
+	"cfdocumentsection": {
+		"prefix": "cfdocumentsection",
+		"body": "<cfdocumentsection${1: margintop = \"${2:[ ]}\" marginbottom = \"${3:[ ]}\" marginleft = \"${4:[ ]}\" marginright = \"${5:[ ]}\" mimetype = \"${6:[ ]}\" src = \"${7:[ ]}\" srcfile = \"${8:[ ]}\"}>\n\t$9\n</cfdocumentsection>$0\r\r",
+		"description": "cfdocumentsection",
+		"scope": "embeddable.cfml"
+	},
+	"cfdump": {
+		"prefix": "cfdump",
+		"body": "<cfdump${1: var = \"${2:#variable#}\" expand = \"${3:[ ]}\" label = \"${4:[ ]}\" top = \"${5:[ ]}\"}>$0",
+		"description": "cfdump",
+		"scope": "embeddable.cfml"
+	},
+	"cferror": {
+		"prefix": "cferror",
+		"body": "<cferror type = \"$1\" template = \"$2\"${3: mailTo = \"${4:[ ]}\" exception = \"${5:[ ]}\"}>$0",
+		"description": "cferror",
+		"scope": "embeddable.cfml"
+	},
+	"cfexecute": {
+		"prefix": "cfexecute",
+		"body": "<cfexecute name = \"$1\"${2: arguments = \"${3:[ ]}\" outputFile = \"${4:[ ]}\" variable = \"${5:[ ]}\" timeout = \"${6:[ ]}\"}>\r\n\t$7\n</cfexecute>$0",
+		"description": "cfexecute",
+		"scope": "embeddable.cfml"
+	},
+	"cfexit": {
+		"prefix": "cfexit",
+		"body": "<cfexit${1: method = \"${2:[ ]}\"}>$0",
+		"description": "cfexit",
+		"scope": "embeddable.cfml"
+	},
+	"cffile": {
+		"prefix": "cffile",
+		"body": "<cffile action = \"append\" file = \"$2\"${3: output = \"${4:[ ]}\" addNewLine = \"${5:[ ]}\" attributes = \"${6:[ ]}\" mode = \"${7:[ ]}\" charset = \"${8:[ ]}\" fixnewline = \"${9:[ ]}\"}>$0",
+		"description": "cffile append",
+		"scope": "embeddable.cfml"
+	},
+	"cffile1": {
+		"prefix": "cffile",
+		"body": "<cffile action = \"copy\" source = \"$1\" destination = \"$2\"${3:  mode = \"${4:[ ]}\" attributes = \"${5:[ ]}\"}>$0",
+		"description": "cffile copy",
+		"scope": "embeddable.cfml"
+	},
+	"cffile2": {
+		"prefix": "cffile",
+		"body": "<cffile action = \"delete\" file = \"$1\">$0",
+		"description": "cffile delete",
+		"scope": "embeddable.cfml"
+	},
+	"cffile3": {
+		"prefix": "cffile",
+		"body": "<cffile action = \"move\" source = \"$1\" destination = \"$2\"${3:  mode = \"${4:[ ]}\" attributes = \"${5:[ ]}\" charset = \"${6:[ ]}\"}>$0",
+		"description": "cffile move",
+		"scope": "embeddable.cfml"
+	},
+	"cffile4": {
+		"prefix": "cffile",
+		"body": "<cffile action = \"read\" file = \"$1\" variable = \"$2\"${3: charset = \"${4:[ ]}\"}>$0",
+		"description": "cffile read",
+		"scope": "embeddable.cfml"
+	},
+	"cffile5": {
+		"prefix": "cffile",
+		"body": "<cffile action = \"readbinary\" file = \"$1\" variable = \"$2\">$0",
+		"description": "cffile readbinary",
+		"scope": "embeddable.cfml"
+	},
+	"cffile6": {
+		"prefix": "cffile",
+		"body": "<cffile action = \"rename\" source = \"$1\" destination = \"$2\"${3:  mode = \"${4:[ ]}\" attributes = \"${5:[ ]}\"}>$0",
+		"description": "cffile rename",
+		"scope": "embeddable.cfml"
+	},
+	"cffile7": {
+		"prefix": "cffile",
+		"body": "<cffile action = \"upload\" fileField = \"$1\" destination = \"$2\"${3: nameConflict = \"${4:[ ]}\" accept = \"${5:[ ]}\" mode = \"${6:[ ]}\" attributes = \"${7:[ ]}\" result = \"${8:[ ]}\"}>$0",
+		"description": "cffile upload",
+		"scope": "embeddable.cfml"
+	},
+	"cffile8": {
+		"prefix": "cffile",
+		"body": "<cffile action = \"$1\" file = \"$2\" output = \"$3\"${4: mode = \"${5:[ ]}\" addNewLine = \"${6:[ ]}\" attributes = \"${7:[ ]}\" charset = \"${8:[ ]}\"  fixnewline = \"${9:[ ]}\"}>$0",
+		"description": "cffile write",
+		"scope": "embeddable.cfml"
+	},
+	"cfflush": {
+		"prefix": "cfflush",
+		"body": "<cfflush${1: interval = \"${2:[ ]}\"}>$0",
+		"description": "cfflush",
+		"scope": "embeddable.cfml"
+	},
+	"cfform": {
+		"prefix": "cfform",
+		"body": "<cfform${1: name = \"${2:[ ]}\" action = \"${3:[ ]}\" method = \"${4:post}\" format = \"${5:html}\" skin = \"${6:[ ]}\" style = \"${7:[ ]}\" preserveData = \"${8:[ ]}\" onSubmit = \"${9:[ ]}\" scriptSrc = \"${10:[ ]}\" codeBase = \"${11:[ ]}\" archive = \"${12:[ ]}\" onLoad = \"${13:[ ]}\" width = \"${14:[ ]}\" height = \"${15:[ ]}\" onError = \"${16:[ ]}\" wMode = \"${17:[ ]}\" accessible = \"${18:[ ]}\" preloader = \"${19:[ ]}\" timeout = \"${20:[ ]}\" class = \"${21:[ ]}\" enctype = \"${22:[ ]}\" id = \"${23:[ ]}\" onReset = \"${24:[ ]}\" target = \"${25:[ ]}\"}>\r\n\t$26\r\n</cfform>$0",
+		"description": "cfform",
+		"scope": "embeddable.cfml"
+	},
+	"cfformgroup": {
+		"prefix": "cfformgroup",
+		"body": "<cfformgroup type = \"$1\" label = \"${2:[ ]}\" style = \"${3:[ ]}\" selectedIndex = \"${4:[ ]}\" width = \"${5:[ ]}\" height = \"${6:[ ]}\" enabled = \"${7:[ ]}\" visible = \"${8:[ ]}\" OnChange = \"${9:[ ]}\" toolTip = \"${10:[ ]}\" id = \"${11:[ ]}\">\r\n\t$12\r\n</cfformgroup>$0",
+		"description": "cfformgroup",
+		"scope": "embeddable.cfml"
+	},
+	"cfformitem": {
+		"prefix": "cfformitem",
+		"body": "<cfformitem type = \"$1\"${2: style = \"${3:[ ]}\" width = \"${4:[ ]}\" height = \"${5:[ ]}\" visible = \"${6:[ ]}\" enabled = \"${7:[ ]}\" tooltip = \"${8:[ ]}\" bind = \"${9:[ ]}\"}>\r\n\t$10\r\n</cfformitem>$0",
+		"description": "cfformitem",
+		"scope": "embeddable.cfml"
+	},
+	"cfftp": {
+		"prefix": "cfftp",
+		"body": "<cfftp action = \"$1\" username = \"$2\" password = \"$3\" server = \"$4\"${5: timeout = \"${6:[ ]}\" port = \"${7:[ ]}\" connection = \"${8:[ ]}\" proxyServer = \"${9:[ ]}\" retryCount = \"${10:[ ]}\" stopOnError = \"${11:[ ]}\" passive = \"yes\"}>$0",
+		"description": "cfftp",
+		"scope": "embeddable.cfml"
+	},
+	"cffunction": {
+		"prefix": "cffunction",
+		"body": "<cffunction name = \"$1\"${2: returnType = \"${3:[ ]}\" roles = \"${4:[ ]}\" access = \"${5:[ ]}\" description = \"${6:[ ]}\" = \"${7:[ ]}\" displayName = \"${8:[ ]}\" hint = \"${9:[ ]}\"}>\r\n\t$10\r\n</cffunction>$0",
+		"description": "cffunction",
+		"scope": "embeddable.cfml"
+	},
+	"cfgrid": {
+		"prefix": "cfgrid",
+		"body": "<cfgrid name = \"$1\"${2: format = \"${3:[ ]}\" height = \"${4:[ ]}\" width = \"${5:[ ]}\" query = \"${6:[ ]}\" selectMode = \"${7:[ ]}\" insert = \"${8:[ ]}\" delete = \"${9:[ ]}\" font = \"${10:[ ]}\" fontSize = \"${11:[ ]}\" italic = \"${12:[ ]}\" bold = \"${13:[ ]}\" textColor = \"${14:[ ]}\" gridLines = \"${15:[ ]}\" rowHeight = \"${16:[ ]}\" colHeaders = \"${17:[ ]}\" colHeaderFont = \"${18:[ ]}\" colHeaderFontSize = \"${19:[ ]}\" colHeaderItalic = \"${20:[ ]}\" colHeaderBold = \"${21:[ ]}\" colHeaderTextColor = \"${22:[ ]}\" bgColor = \"${23:[ ]}\" maxRows = \"${24:[ ]}\" style= \"${25:[ ]}\" enabled = \"${26:[ ]}\" visible = \"${27:[ ]}\" toolTip = \"${28:[ ]}\" onChange = \"${29:[ ]}\" autoWidth = \"${30:[ ]}\" vSpace = \"${31:[ ]}\" hSpace = \"${32:[ ]}\" align = \"${33:[ ]}\" sort = \"${34:[ ]}\" href = \"${35:[ ]}\" hrefKey = \"${36:[ ]}\" target = \"${37:[ ]}\" appendKey = \"${38:[ ]}\" highlightHref = \"${39:[ ]}\" onValidate = \"${40:[ ]}\" onError = \"${41:[ ]}\" gridDataAlign = \"${42:[ ]}\" rowHeaders = \"${43:[ ]}\" rowHeaderAlign = \"${44:[ ]}\" rowHeaderFont = \"${45:[ ]}\" rowHeaderFontSize = \"${46:[ ]}\" rowHeaderItalic = \"${47:[ ]}\" rowHeaderBold = \"${48:[ ]}\" rowHeaderTextColor = \"${49:[ ]}\" colHeaderAlign = \"${50:[ ]}\" selectColor = \"${51:[ ]}\" notSupported = \"${52:[ ]}\" pictureBar = \"${53:[ ]}\" insertButton = \"${54:[ ]}\" deleteButton = \"${55:[ ]}\" sortAscendingButton = \"${56:[ ]}\" sortDescendingButton = \"${57:[ ]}\" onBlur = \"${58:[ ]}\" onFocus = \"${59:[ ]}\"}>\r\n\t$60\r\n</cfgrid>$0",
+		"description": "cfgrid",
+		"scope": "embeddable.cfml"
+	},
+	"cfgridcolumn": {
+		"prefix": "cfgridcolumn",
+		"body": "<cfgridcolumn name = \"$1\"${2: header = \"${3:[ ]}\" width = \"${4:[ ]}\" type = \"${5:[ ]}\" display = \"${6:[ ]}\" select = \"${7:[ ]}\" font = \"${8:[ ]}\" fontSize = \"${9:[ ]}\" italic = \"${10:[ ]}\" bold = \"${11:[ ]}\" textColor = \"${12:[ ]}\" bgColor = \"${13:[ ]}\" dataAlign = \"${14:[ ]}\" mask= \"${15:[ ]}\" href = \"${16:[ ]}\" hrefKey = \"${17:[ ]}\" target = \"${18:[ ]}\" headerFont = \"${19:[ ]}\" headerFontSize = \"${20:[ ]}\" headerItalic = \"${21:[ ]}\" headerBold = \"${22:[ ]}\" headerTextColor = \"${23:[ ]}\" headerAlign = \"${24:[ ]}\" numberFormat = \"${25:[ ]}\" values = \"${26:[ ]}\" valuesDisplay = \"${27:[ ]}\" valuesDelimiter = \"${28:[ ]}\"}>$0\r\r",
+		"description": "cfgridcolumn",
+		"scope": "embeddable.cfml"
+	},
+	"cfgridrow": {
+		"prefix": "cfgridrow",
+		"body": "<cfgridrow data = \"$1\">$0",
+		"description": "cfgridrow",
+		"scope": "embeddable.cfml"
+	},
+	"cfgridupdate": {
+		"prefix": "cfgridupdate",
+		"body": "<cfgridupdate grid = \"$1\" dataSource = \"$2\" tableName = \"$3\"${4: username = \"${5:[ ]}\" password = \"${6:[ ]}\" tableOwner = \"${7:[ ]}\" tableQualifier = \"${8:[ ]}\" keyOnly = \"${9:[ ]}\"}>$0",
+		"description": "cfgridupdate",
+		"scope": "embeddable.cfml"
+	},
+	"cfheader": {
+		"prefix": "cfheader",
+		"body": "<cfheader name = \"$1\"${2: value = \"${3:[ ]}\" charset=\"${4:[ ]}\"}>$0",
+		"description": "cfheader",
+		"scope": "embeddable.cfml"
+	},
+	"cfhtmlhead": {
+		"prefix": "cfhtmlhead",
+		"body": "<cfhtmlhead text = \"$1\">$0",
+		"description": "cfhtmlhead",
+		"scope": "embeddable.cfml"
+	},
+	"cfhttp": {
+		"prefix": "cfhttp",
+		"body": "<cfhttp url = \"$1\"${2: port = \"${3:[ ]}\" method = \"${4:[ ]}\" proxyServer = \"${5:[ ]}\" proxyPort = \"${6:[ ]}\" proxyUser = \"${7:[ ]}\" proxyPassword = \"${8:[ ]}\" username = \"${9:[ ]}\" password = \"${10:[ ]}\" userAgent = \"${11:[ ]}\" charset = \"${12:[ ]}\" resolveURL = \"${13:[ ]}\" throwOnError = \"${14:[ ]}\" redirect = \"${15:[ ]}\" timeout = \"${16:[ ]}\" getAsBinary = \"${17:[ ]}\" multipart = \"${18:[ ]}\" path = \"${19:[ ]}\" file = \"${20:[ ]}\" name = \"${21:[ ]}\" columns = \"${22:[ ]}\" firstrowasheaders = \"${23:[ ]}\" delimiter = \"${24:[ ]}\" textQualifier = \"${25:[ ]}\" result = \"${26:[ ]}\"}>\r\n\t$27\r\n</cfhttp>$0",
+		"description": "cfhttp",
+		"scope": "embeddable.cfml"
+	},
+	"cfhttpparam": {
+		"prefix": "cfhttpparam",
+		"body": "<cfhttpparam type = \"$1\"${2: name = \"${3:[ ]}\" value = \"${4:[ ]}\" file = \"${5:[ ]}\" encoded = \"${6:[ ]}\" mimeType = \"${7:[ ]}\"}>$0",
+		"description": "cfhttpparam",
+		"scope": "embeddable.cfml"
+	},
+	"cfif": {
+		"prefix": "cfif",
+		"body": "<cfif $1>\r\n\t$2\r\n<cfelse>\r\n\t$3\r\n</cfif>$0",
+		"description": "cfif else",
+		"scope": "embeddable.cfml"
+	},
+	"cfif1": {
+		"prefix": "cfif",
+		"body": "<cfif $1>\r\n\t$2\r\n<cfelseif $3>\r\n\t$4\r\n<cfelse>\r\n\t$5\r\n</cfif>$0",
+		"description": "cfif elseif else",
+		"scope": "embeddable.cfml"
+	},
+	"cfif2": {
+		"prefix": "cfif",
+		"body": "<cfif $1>$2</cfif>$0\r\n",
+		"description": "cfif",
+		"scope": "embeddable.cfml"
+	},
+	"cfimport": {
+		"prefix": "cfimport",
+		"body": "<cfimport taglib = \"$1\" prefix = \"$2\">$0",
+		"description": "cfimport",
+		"scope": "embeddable.cfml"
+	},
+	"cfinclude": {
+		"prefix": "cfinclude",
+		"body": "<cfinclude template = \"$1\">$0",
+		"description": "cfinclude",
+		"scope": "embeddable.cfml"
+	},
+	"cfindex": {
+		"prefix": "cfindex",
+		"body": "<cfindex collection = \"$1\" action = \"$2\"${3: type = \"${4:[ ]}\" title = \"${5:[ ]}\" key = \"${6:[ ]}\" body = \"${7:[ ]}\" custom1 = \"${8:[ ]}\" custom2 = \"${9:[ ]}\" custom3 = \"${10:[ ]}\" custom4 = \"${11:[ ]}\" category = \"${12:[ ]}\" categoryTree = \"${13:[ ]}\" URLpath = \"${14:[ ]}\" extensions = \"${15:[ ]}\" query = \"${16:[ ]}\" recurse = \"${17:[ ]}\" language = \"${18:[ ]}\" status = \"${19:[ ]}\" prefix = \"${20:[ ]}\"}>$0",
+		"description": "cfindex",
+		"scope": "embeddable.cfml"
+	},
+	"cfinput": {
+		"prefix": "cfinput",
+		"body": "<cfinput name = \"$1\"${2: type = \"${3:[ ]}\" label = \"${4:[ ]}\" style = \"${5:[ ]}\" required = \"${6:[ ]}\" mask = \"${7:[ ]}\" validate = \"${8:[ ]}\" validateAt= \"${9:[ ]}\" message = \"${10:[ ]}\" range = \"${11:[ ]}\" maxlength = \"${12:[ ]}\" pattern = \"${13:[ ]}\" onValidate = \"${14:[ ]}\" onError = \"${15:[ ]}\" size = \"${16:[ ]}\" value = \"${17:[ ]}\" bind = \"${18:[ ]}\" checked = \"${19:[ ]}\" disabled = \"${20:[ ]}\" src = \"${21:[ ]}\" onKeyUp = \"${22:[ ]}\" onKeyDown = \"${23:[ ]}\" onMouseUp = \"${24:[ ]}\" onMouseDown = \"${25:[ ]}\" onChange = \"${26:[ ]}\" onClick = \"${27:[ ]}\" firstDayOfWeek = \"${28:[ ]}\" dayNames = \"${29:[ ]}\" monthNames = \"${30:[ ]}\" enabled = \"${31:[ ]}\" visible = \"${32:[ ]}\" toolTip = \"${33:[ ]}\" height = \"${34:[ ]}\" width = \"${35:[ ]}\"}>$0",
+		"description": "cfinput",
+		"scope": "embeddable.cfml"
+	},
+	"cfinsert": {
+		"prefix": "cfinsert",
+		"body": "<cfinsert dataSource = \"$1\" tableName = \"$2\"${3: tableOwner = \"${4:[ ]}\" tableQualifier = \"${5:[ ]}\" username = \"${6:[ ]}\" password = \"${7:[ ]}\" formFields = \"${8:[ ]}\"}>$0",
+		"description": "cfinsert",
+		"scope": "embeddable.cfml"
+	},
+	"cfinvoke": {
+		"prefix": "cfinvoke",
+		"body": "<cfinvoke component = \"$1\" method = \"$2\"${3: returnVariable = \"${4:[ ]}\" argumentCollection = \"${5:[ ]}\"}>$0",
+		"description": "cfinvoke",
+		"scope": "embeddable.cfml"
+	},
+	"cfinvokeargument": {
+		"prefix": "cfinvokeargument",
+		"body": "<cfinvokeargument name=\"$1\" value=\"$2\"${3: omit = \"${4:[ ]}\"}>$0",
+		"description": "cfinvokeargument",
+		"scope": "embeddable.cfml"
+	},
+	"cfldap": {
+		"prefix": "cfldap",
+		"body": "<cfldap \n\tserver = \"$1\"${2: \n\tport = \"${3:[ ]}\"\n\tusername = \"${4:[ ]}\"\n\tpassword = \"${5:[ ]}\"\n\taction = \"${6:[ ]}\"\n\tname = \"${7:[ ]}\"\n\ttimeout = \"${8:[ ]}\"\n\tmaxRows = \"${9:[ ]}\"\n\tstart = \"${10:[ ]}\"\n\tscope = \"${11:[ ]}\"\n\tattributes = \"${12:[ ]}\"\n\treturnAsBinary = \"${13:[ ]}\"\n\tfilter = \"${14:[ ]}\"\n\tsort = \"${15:[ ]}\"\n\tsortControl = \"${16:[ ]}\"\n\tdn = \"${17:[ ]}\"\n\tstartRow = \"${18:[ ]}\"\n\tmodifyType = \"${19:[ ]}\"\n\trebind = \"${20:[ ]}\"\n\treferral = \"${21:[ ]}\"\n\tsecure = \"${22:[ ]}\"\n\tseparator = \"${23:[ ]}\"\n\tdelimiter = \"${24:[ ]}\"}>$0\r\r",
+		"description": "cfldap",
+		"scope": "embeddable.cfml"
+	},
+	"cflocation": {
+		"prefix": "cflocation",
+		"body": "<cflocation url = \"$1\">$0",
+		"description": "cflocation",
+		"scope": "embeddable.cfml"
+	},
+	"cflock": {
+		"prefix": "cflock",
+		"body": "<cflock${1: timeout = \"${2:30}\" scope = \"${3:session}\" name = \"${4:[ ]}\"  throwOnTimeout = \"${5:no}\" type = \"${6:exclusive}\"}>\r\n\t$7\n</cflock>$0",
+		"description": "cflock",
+		"scope": "embeddable.cfml"
+	},
+	"cflog": {
+		"prefix": "cflog",
+		"body": "<cflog text = \"$1\"${2: log = \"${3:[ ]}\" file = \"${4:[ ]}\" type = \"${5:[ ]}\" application = \"${6:[ ]}\"}>$0",
+		"description": "cflog",
+		"scope": "embeddable.cfml"
+	},
+	"cflogin": {
+		"prefix": "cflogin",
+		"body": "<cflogin${1: idletimeout = \"${2:1800}\" applicationToken = \"${3:[ ]}\" cookieDomain = \"${4:[ ]}\"}>\r\n\t<cfloginuser name = \"$5\" password = \"$6\" roles = \"${7:[ ]}\">$8\r\n</cflogin>$0",
+		"description": "cflogin",
+		"scope": "embeddable.cfml"
+	},
+	"cfloop": {
+		"prefix": "cfloop",
+		"body": "<cfloop collection = \"$1\" item = \"$2\">\r\n\t$3\r\n</cfloop>$0",
+		"description": "cfloop (COM collection or structure)",
+		"scope": "embeddable.cfml"
+	},
+	"cfloop1": {
+		"prefix": "cfloop",
+		"body": "<cfloop condition = \"$1\">\r\n\t$2\r\n</cfloop>$0",
+		"description": "cfloop (conditional loop)",
+		"scope": "embeddable.cfml"
+	},
+	"cfloop2": {
+		"prefix": "cfloop",
+		"body": "<cfloop from = \"${1:#createdate($2)#}\" to = \"${3:#createdate($4)#}\" index = \"${5:i}\"${6: step = \"${7:[ ]}\"}>\n\t$8\n</cfloop>$0\r\r",
+		"description": "cfloop (date or time loop)",
+		"scope": "embeddable.cfml"
+	},
+	"cfloop3": {
+		"prefix": "cfloop",
+		"body": "<cfloop index = \"${1:i}\" from = \"$2\" to = \"$3\"${4: step = \"${5:[ ]}\"}>\r\n\t$6\r\n</cfloop>$0",
+		"description": "cfloop (index loop)",
+		"scope": "embeddable.cfml"
+	},
+	"cfloop4": {
+		"prefix": "cfloop",
+		"body": "<cfloop index = \"${1:i}\" list = \"$2\"${3: delimiters = \"${4:[ ]}\"}>\r\n\t$5\r\n</cfloop>$0",
+		"description": "cfloop (list or file loop)",
+		"scope": "embeddable.cfml"
+	},
+	"cfloop5": {
+		"prefix": "cfloop",
+		"body": "<cfloop query = \"$1\"${2: startRow = \"${3:[ ]}\" endRow = \"${4:[ ]}\"}>\r\n\t$5\r\n</cfloop>$0",
+		"description": "cfloop (query loop)",
+		"scope": "embeddable.cfml"
+	},
+	"cfmail": {
+		"prefix": "cfmail",
+		"body": "<cfmail \r\n\tto = \"$1\"\r\n\tfrom = \"$2\"\r\n\tsubject = \"$3\"${4:\r\n\tcc = \"${5:[ ]}\"\r\n\tbcc = \"${6:[ ]}\"\r\n\treplyto = \"${7:[ ]}\"\r\n\tfailto = \"${8:[ ]}\"\r\n\tusername = \"${9:[ ]}\"\r\n\tpassword = \"${10:[ ]}\"\r\n\twraptext = \"${11:[ ]}\"\r\n\tcharset = \"${12:[ ]}\"\r\n\ttype = \"${13:[ ]}\"\r\n\tmimeattach = \"${14:[ ]}\"\r\n\tquery = \"${15:[ ]}\"\r\n\tgroup = \"${16:[ ]}\"\r\n\tgroupcasesensitive = \"${17:[ ]}\"\r\n\tstartrow = \"${18:[ ]}\"\r\n\tmaxrows = \"${19:[ ]}\"\r\n\tserver = \"${20:[ ]}\"\r\n\tport = \"${21:[ ]}\"\r\n\tmailerid = \"${22:[ ]}\"\r\n\ttimeout = \"${23:[ ]}\"\r\n\tspoolenable = \"${24:[ ]}\"\r\n\tdebug = \"${25:[ ]}\"}>\r\n\t$26\r\n</cfmail>$0",
+		"description": "cfmail (all attributes)",
+		"scope": "embeddable.cfml"
+	},
+	"cfmail1": {
+		"prefix": "cfmail",
+		"body": "<cfmail to=\"$1\" from=\"$2\" subject=\"$3\" server=\"$4\" type=\"${5:html}\">\r\n\t$6\r\n</cfmail>$0",
+		"description": "cfmail",
+		"scope": "embeddable.cfml"
+	},
+	"cfmailparam": {
+		"prefix": "cfmailparam",
+		"body": "<cfmailparam file = \"${1:[ ]}\" type =\"${2:[ ]}\" contentID = \"${3:[ ]}\" disposition = \"${4:[ ]}\">$5",
+		"description": "cfmailparam",
+		"scope": "embeddable.cfml"
+	},
+	"cfmailpart": {
+		"prefix": "cfmailpart",
+		"body": "<cfmailpart type=\"$1\"${2: charset=\"${3:[ ]}\" wraptext=\"${4:[ ]}\"}>\r\n\t$5\r\n</cfmailpart>$0",
+		"description": "cfmailpart",
+		"scope": "embeddable.cfml"
+	},
+	"cfmodule": {
+		"prefix": "cfmodule",
+		"body": "<cfmodule${1: template = \"${2:required unless name attribute is used}\" name = \"${3:required unless template attribute is used}\" attributeCollection = \"${4:[ ]}\" attribute_name1 = \"${5:[ ]}\" attribute_name2 = \"${6:[ ]}\"}>$0",
+		"description": "cfmodule",
+		"scope": "embeddable.cfml"
+	},
+	"cfntauthenticate": {
+		"prefix": "cfntauthenticate",
+		"body": "<cfntauthenticate username=\"$1\" password=\"$2\" domain=\"$3\"${4: result=\"${5:[ ]}\" listGroups = \"${6:[ ]}\" throwOnError = \"${7:[ ]}\"}>$0",
+		"description": "cfntauthenticate",
+		"scope": "embeddable.cfml"
+	},
+	"cfobject": {
+		"prefix": "cfobject",
+		"body": "<cfobject type = \"com\" action = \"$1\" class = \"$2\" name = \"$3\"${4: context = \"${5:[ ]}\" server = \"${6:[ ]}\"}>$0",
+		"description": "cfobject (COM)",
+		"scope": "embeddable.cfml"
+	},
+	"cfobject1": {
+		"prefix": "cfobject",
+		"body": "<cfobject name = \"$1\" component = \"$2\">$0",
+		"description": "cfobject (component)",
+		"scope": "embeddable.cfml"
+	},
+	"cfobject2": {
+		"prefix": "cfobject",
+		"body": "<cfobject type = \"corba\" context = \"$1\" class = \"$2\" name = \"$3\"${4: locale = \"${5:[ ]}\"}>$0\r\r",
+		"description": "cfobject (CORBA)",
+		"scope": "embeddable.cfml"
+	},
+	"cfobject3": {
+		"prefix": "cfobject",
+		"body": "<cfobject type = \"Java\" action = \"$1\" class = \"$2\" name = \"$3\">$0",
+		"description": "cfobject (java)",
+		"scope": "embeddable.cfml"
+	},
+	"cfobject4": {
+		"prefix": "cfobject",
+		"body": "<cfobject webservice= \"$1\" name = \"$2\">$0",
+		"description": "cfobject (web service)",
+		"scope": "embeddable.cfml"
+	},
+	"cfobjectcache": {
+		"prefix": "cfobjectcache",
+		"body": "<cfobjectcache action = \"clear\">$0",
+		"description": "cfobjectcache",
+		"scope": "embeddable.cfml"
+	},
+	"cfoutput": {
+		"prefix": "cfoutput",
+		"body": "<cfoutput${1: query = \"${2:[ ]}\" group = \"${3:[ ]}\" groupCaseSensitive = \"${4:[ ]}\" startRow = \"${5:[ ]}\" maxRows = \"${6:[ ]}\"}>\r\n\t$7\r\n</cfoutput>$0",
+		"description": "cfoutput (long)",
+		"scope": "embeddable.cfml"
+	},
+	"cfoutput1": {
+		"prefix": "cfoutput",
+		"body": "<cfoutput>\r\n\t$1\r\n</cfoutput>$0",
+		"description": "cfoutput (short)",
+		"scope": "embeddable.cfml"
+	},
+	"cfparam": {
+		"prefix": "cfparam",
+		"body": "<cfparam name=\"$1\"${2: type=\"${3:[string]}\" default=\"${4:[ ]}\"}>$0",
+		"description": "cfparam",
+		"scope": "embeddable.cfml"
+	},
+	"cfpop": {
+		"prefix": "cfpop",
+		"body": "<cfpop \r\n\tserver = \"$1\"${2:\r\n\tport = \"${3:[ ]}\"\r\n\tusername = \"${4:[ ]}\"\r\n\tpassword = \"${5:[ ]}\"\r\n\taction = \"${6:[ ]}\"\r\n\tname = \"${7:required if action is getall or getheaderonly}\"\r\n\tmessageNumber = \"${8:[ ]}\"\r\n\tuid = \"${9:[ ]}\" \r\n\tattachmentPath = \"${10:[ ]}\"\r\n\ttimeout = \"${11:[ ]}\"\r\n\tmaxRows = \"${12:[ ]}\"\r\n\tstartRow = \"${13:[ ]}\"\r\n\tgenerateUniqueFilenames = \"${14:[ ]}\"\r\n\tdebug = \"${15:[ ]}\"}>$0",
+		"description": "cfpop",
+		"scope": "embeddable.cfml"
+	},
+	"cfprocessingdirective": {
+		"prefix": "cfprocessingdirective",
+		"body": "<cfprocessingdirective suppressWhiteSpace = \"${1:yes or no}\"${2: pageEncoding = \"${3:[ ]}\"}>\r\n\t$4\r\n</cfprocessingdirective>$0",
+		"description": "cfprocessingdirective",
+		"scope": "embeddable.cfml"
+	},
+	"cfprocparam": {
+		"prefix": "cfprocparam",
+		"body": "<cfprocparam${1: type = \"${2:[ ]}\" variable = \"${3:required if type is out or inout}\" value = \"${4:required if type is in}\" CFSQLType = \"$5\" maxLength = \"${6:[ ]}\" scale = \"${7:[ ]}\" null = \"${8:[ ]}\"}>$0",
+		"description": "cfprocparam",
+		"scope": "embeddable.cfml"
+	},
+	"cfprocresult": {
+		"prefix": "cfprocresult",
+		"body": "<cfprocresult name = \"$1\"${2: resultSet = \"${3:[ ]}\" maxRows = \"${4:[ ]}\"}>$0",
+		"description": "cfprocresult",
+		"scope": "embeddable.cfml"
+	},
+	"cfproperty": {
+		"prefix": "cfproperty",
+		"body": "<cfproperty name=\"$1\"${2: type=\"${3:[ ]}\" required=\"${4:[ ]}\" default=\"${5:[ ]}\" displayname=\"${6:[ ]}\" hint=\"${7:[ ]}\"}>$0",
+		"description": "cfproperty",
+		"scope": "embeddable.cfml"
+	},
+	"cfquery": {
+		"prefix": "cfquery",
+		"body": "<cfquery name = \"$1\" datasource = \"$2\"${3: username = \"${4:[ ]}\" password = \"${5:[ ]}\"}>\r\n\tdelete from $6\r\n     where $7\r\n</cfquery>$0",
+		"description": "cfquery (delete sql)",
+		"scope": "embeddable.cfml"
+	},
+	"cfquery1": {
+		"prefix": "cfquery",
+		"body": "<cfquery name = \"$1\" datasource = \"$2\"${3: username = \"${4:[ ]}\" password = \"${5:[ ]}\"}>\r\n\tinsert into $6($7)\r\n\tvalues($8)\r\n</cfquery>$0\r\n",
+		"description": "cfquery (insert sql)",
+		"scope": "embeddable.cfml"
+	},
+	"cfquery2": {
+		"prefix": "cfquery",
+		"body": "<cfquery name = \"$1\"${2: dataSource = \"${3:[ ]}\" dbtype = \"${4:[ ]}\" username = \"${5:[ ]}\" password = \"${6:[ ]}\" maxRows = \"${7:[ ]}\" blockFactor = \"${8:[ ]}\" timeout = \"${9:[ ]}\" cachedAfter = \"${10:[ ]}\" cachedWithin = \"${11:[ ]}\" result = \"${12:[ ]}\"}>\r\n\t$13\r\n</cfquery>$0",
+		"description": "cfquery (long, all attributes)",
+		"scope": "embeddable.cfml"
+	},
+	"cfquery3": {
+		"prefix": "cfquery",
+		"body": "<cfquery name = \"$1\" datasource = \"$2\"${3: username = \"${4:[ ]}\" password = \"${5:[ ]}\"}>\r\n    select $6\r\n      from $7\r\n     where $8\r\n</cfquery>$0",
+		"description": "cfquery (select sql)",
+		"scope": "embeddable.cfml"
+	},
+	"cfquery4": {
+		"prefix": "cfquery",
+		"body": "<cfquery name=\"$1\" datasource=\"$2\">\r\n\t$3\r\n</cfquery>$0",
+		"description": "cfquery (short)",
+		"scope": "embeddable.cfml"
+	},
+	"cfquery5": {
+		"prefix": "cfquery",
+		"body": "<cfquery name = \"$1\" datasource = \"$2\"${3: username = \"${4:[ ]}\" password = \"${5:[ ]}\"}>\r\n    update $6\r\n       set $7\r\n     where $8\r\n</cfquery>$0",
+		"description": "cfquery (update sql)",
+		"scope": "embeddable.cfml"
+	},
+	"cfqueryparam": {
+		"prefix": "cfqueryparam",
+		"body": "<cfqueryparam value = \"$1\"${2: CFSQLType = \"${3:[ ]}\" maxLength = \"${4:[ ]}\" scale = \"${5:[ ]}\" null = \"${6:[ ]}\" list = \"${7:[ ]}\" separator = \"${8:[ ]}\"}>$0",
+		"description": "cfqueryparam",
+		"scope": "embeddable.cfml"
+	},
+	"cfregistry": {
+		"prefix": "cfregistry",
+		"body": "<cfregistry action = \"$1\" branch = \"$2\" entry = \"$3\">$0",
+		"description": "cfregistry (delete)",
+		"scope": "embeddable.cfml"
+	},
+	"cfregistry1": {
+		"prefix": "cfregistry",
+		"body": "<cfregistry action = \"getAll\" branch = \"$1\"${2: type = \"${3:[ ]}\" name = \"${4:[ ]}\"  sort = \"${5:[ ]}\"}>$0\r\r",
+		"description": "cfregistry (get all)",
+		"scope": "embeddable.cfml"
+	},
+	"cfregistry2": {
+		"prefix": "cfregistry",
+		"body": "<cfregistry action = \"get\" branch = \"$1\" entry = \"$2\" variable = \"$3\"${4: type = \"${5:[ ]}\"}>$0",
+		"description": "cfregistry (get)",
+		"scope": "embeddable.cfml"
+	},
+	"cfregistry3": {
+		"prefix": "cfregistry",
+		"body": "<cfregistry action = \"$1\" branch = \"$2\" entry = \"$3\"${4: type = \"${5:[ ]}\" value = \"${6:[ ]}\"}>$0",
+		"description": "cfregistry (set)",
+		"scope": "embeddable.cfml"
+	},
+	"cfreport": {
+		"prefix": "cfreport",
+		"body": "<cfreport template = \"$1\" format = \"$2\"${3: name = \"${4:[ ]}\" filename = \"${5:[ ]}\" query = \"${6:[ ]}\" overwrite = \"${7:[ ]}\" encryption = \"${8:[ ]}\" ownerpassword = \"${9:[ ]}\" userpassword = \"${10:[ ]}\" permissions = \"${11:[ ]}\"}>\r\n\t$12\r\n</cfreport>$0",
+		"description": "cfreport",
+		"scope": "embeddable.cfml"
+	},
+	"cfreportparam": {
+		"prefix": "cfreportparam",
+		"body": "<cfreportparam name = \"$1\" value = \"$2\">$0\r\r",
+		"description": "cfreportparam",
+		"scope": "embeddable.cfml"
+	},
+	"cfrethrow": {
+		"prefix": "cfrethrow",
+		"body": "<cfrethrow>",
+		"description": "cfrethrow",
+		"scope": "embeddable.cfml"
+	},
+	"cfreturn": {
+		"prefix": "cfreturn",
+		"body": "<cfreturn $1>$0",
+		"description": "cfreturn",
+		"scope": "embeddable.cfml"
+	},
+	"cfsavecontent": {
+		"prefix": "cfsavecontent",
+		"body": "<cfsavecontent variable = \"$1\">\r\n\t$2\r\n</cfsavecontent>$0",
+		"description": "cfsavecontent",
+		"scope": "embeddable.cfml"
+	},
+	"cfschedule": {
+		"prefix": "cfschedule",
+		"body": "<cfschedule\r\n\taction = \"$1\"\r\n\ttask = \"$2\"${3:\r\n\toperation = \"${4:[required if action equals update]}\"\r\n\tfile = \"${5:[required if publish equals yes]}\"\r\n\tpath = \"${6:[required if publish equals yes]}\"\r\n\tstartDate = \"${7:[required if action equals update]}\"\r\n\tstartTime = \"${8:[required if action equals update]}\"\r\n\turl = \"${9:[required if action equals update]}\"\r\n\tport = \"${10:[ ]}\"\r\n\tpublish = \"${11:[ ]}\"\r\n\tendDate = \"${12:[ ]}\"\r\n\tendTime = \"${13:[ ]}\"\r\n\tinterval = \"${14:[required if action equals update]}\"\r\n\trequestTimeOut = \"${15:[ ]}\"\r\n\tusername = \"${16:[ ]}\"\r\n\tpassword = \"${17:[ ]}\"\r\n\tproxyServer = \"${18:[ ]}\"\r\n\tproxyPort = \"${19:[ ]}\"\r\n\tproxyUser = \"${20:[ ]}\"\r\n\tproxyPassword = \"${21:[ ]}\"\r\n\tresolveURL = \"${22:[ ]}\"}>$0",
+		"description": "cfschedule",
+		"scope": "embeddable.cfml"
+	},
+	"cfscript": {
+		"prefix": "cfscript",
+		"body": "<cfscript>\r\n\t$1\r\n</cfscript>$0",
+		"description": "cfscript",
+		"scope": "embeddable.cfml"
+	},
+	"cfsearch": {
+		"prefix": "cfsearch",
+		"body": "<cfsearch \n\tname = \"$1\"\n\tcollection = \"$2\"${3:\n\tcategory = \"${4:[ ]}\"\n\tcategoryTree = \"${5:[ ]}\"\n\tstatus = \"${6:[ ]}\"\n\ttype = \"${7:[ ]}\"\n\tcriteria = \"${8:[ ]}\"\n\tmaxRows = \"${9:[ ]}\"\n\tstartRow = \"${10:[ ]}\"\n\tsuggestions = \"${11:[ ]}\"\n\tcontextPassages = \"${12:[ ]}\"\n\tcontextBytes = \"${13:[ ]}\"\n\tcontextHighlightBegin = \"${14:[ ]}\"\n\tcontextHighlightEnd = \"${15:[ ]}\"\n\tpreviousCriteria = \"${16:[ ]}\"\n\tlanguage = \"${17:[ ]}\"}>$0\r\r",
+		"description": "cfsearch",
+		"scope": "embeddable.cfml"
+	},
+	"cfselect": {
+		"prefix": "cfselect",
+		"body": "<cfselect name = \"$1\"${2: label = \"${3:[ ]}\" style = \"${4:[ ]}\" size = \"${5:[ ]}\" required = \"${6:[ ]}\" message = \"${7:[ ]}\" onError = \"${8:[ ]}\" multiple = \"${9:[ ]}\" query = \"${10:[ ]}\" value = \"${11:[ ]}\" display = \"${12:[ ]}\" group = \"${13:[ ]}\" queryPosition = \"${14:[ ]}\" selected = \"${15:[ ]}\" onKeyUp = \"${16:[ ]}\" onKeyDown = \"${17:[ ]}\" onMouseUp = \"${18:[ ]}\" onMouseDown = \"${19:[ ]}\" onChange = \"${20:[ ]}\" onClick = \"${21:[ ]}\" enabled = \"${22:[ ]}\" visible = \"${23:[ ]}\" tooltip = \"${24:[ ]}\" height = \"${25:[ ]}\" width = \"${26:[ ]}\" editable=\"${27:[ ]}\"}>\n\t$28\n</cfselect>$0\r",
+		"description": "cfselect",
+		"scope": "embeddable.cfml"
+	},
+	"cfset": {
+		"prefix": "cfset",
+		"body": "<cfset $1 = $0${TM_XHTML}>",
+		"description": "cfset",
+		"scope": "embeddable.cfml"
+	},
+	"cfsetting": {
+		"prefix": "cfsetting",
+		"body": "<cfsetting${1: enableCFoutputOnly = \"${2:[ ]}\" showDebugOutput = \"${3:no}\" requestTimeOut = \"${4:30}\"}>$0",
+		"description": "cfsetting",
+		"scope": "embeddable.cfml"
+	},
+	"cfsilent": {
+		"prefix": "cfsilent",
+		"body": "<cfsilent>\r\n\t$1\r\n</cfsilent>$0",
+		"description": "cfsilent",
+		"scope": "embeddable.cfml"
+	},
+	"cfslider": {
+		"prefix": "cfslider",
+		"body": "<cfslider \n\tname = \"$1\"${2: \n\tlabel = \"${3:[ ]}\"\n\trange = \"${4:[ ]}\"\n\tscale = \"${5:[ ]}\"\n\tvalue = \"${6:[ ]}\"\n\tonValidate = \"${7:[ ]}\"\n\tmessage = \"${8:[ ]}\"\n\tonError = \"${9:[ ]}\"\n\theight = \"${10:[ ]}\"\n\twidth = \"${11:[ ]}\"\n\tvSpace = \"${12:[ ]}\"\n\thSpace = \"${13:[ ]}\"\n\talign = \"${14:[ ]}\"\n\tlookAndFeel = \"${15:[ ]}\"\n\tvertical = \"${16:[ ]}\"\n\tbgColor = \"${17:[ ]}\"\n\ttextColor = \"${18:[ ]}\"\n\tfont = \"${19:[ ]}\"\n\tfontSize = \"${20:[ ]}\"\n\titalic = \"${21:[ ]}\"\n\tbold = \"${22:[ ]}\"\n\tnotSupported = \"${23:[ ]}\"}>$0\r\r",
+		"description": "cfslider",
+		"scope": "embeddable.cfml"
+	},
+	"cfstoredproc": {
+		"prefix": "cfstoredproc",
+		"body": "<cfstoredproc procedure = \"$1\" dataSource = \"$2\"${3: username = \"${4:[ ]}\" password = \"${5:[ ]}\" blockFactor = \"${6:[ ]}\" debug = \"${7:[ ]}\" returnCode = \"${8:[ ]}\" result = \"${9:[ ]}\"}>$0",
+		"description": "cfstoredproc",
+		"scope": "embeddable.cfml"
+	},
+	"cfswitch": {
+		"prefix": "cfswitch",
+		"body": "<cfswitch expression=\"$1\">\r\n\t<cfcase value=\"$2\">$3</cfcase>\r\n\t<cfdefaultcase>$4</cfdefaultcase>\r\n</cfswitch>$0",
+		"description": "cfswitch",
+		"scope": "embeddable.cfml"
+	},
+	"cftable": {
+		"prefix": "cftable",
+		"body": "<cftable query = \"$1\"${2: maxRows = \"${3:[ ]}\" colSpacing = \"${4:[ ]}\" headerLines = \"${5:[ ]}\" startRow = \"${6:[ ]}\"}>\r\n\t$7\r\n</cftable>$0",
+		"description": "cftable",
+		"scope": "embeddable.cfml"
+	},
+	"cftextarea": {
+		"prefix": "cftextarea",
+		"body": "<cftextarea name = \"$1\"${2: label = \"${3:[ ]}\" style = \"${4:[ ]}\" required = \"${5:[ ]}\" validate = \"${6:[ ]}\" validateAt= \"${7:[ ]}\" message = \"${8:[ ]}\" range = \"${9:[ ]}\" maxlength = \"${10:[ ]}\" pattern = \"${11:[ ]}\" onValidate = \"${12:[ ]}\" onError = \"${13:[ ]}\" disabled = \"${14:[ ]}\" value = \"${15:[ ]}\" bind = \"${16:[ ]}\" onKeyUp = \"${17:[ ]}\" onKeyDown = \"${18:[ ]}\" onMouseUp = \"${19:[ ]}\" onMouseDown = \"${20:[ ]}\" onChange = \"${21:[ ]}\" onClick = \"${22:[ ]}\" enabled = \"${23:[ ]}\" visible = \"${24:[ ]}\" tooltip = \"${25:[ ]}\" height = \"${26:[ ]}\" width = \"${27:[ ]}\" html = \"${28:[ ]}\"}>\r\n\t$29\r\n</cftextarea>$0",
+		"description": "cftextarea",
+		"scope": "embeddable.cfml"
+	},
+	"cfthrow": {
+		"prefix": "cfthrow",
+		"body": "<cfthrow${1: type = \"${2:[ ]}\" message = \"${3:[ ]}\" detail = \"${4:[ ]} \" errorCode = \"${5:[ ]} \" extendedInfo = \"${6:[ ]}\" object = \"${7:[ ]}\"}>$0",
+		"description": "cfthrow",
+		"scope": "embeddable.cfml"
+	},
+	"cftimer": {
+		"prefix": "cftimer",
+		"body": "<cftimer${1: label= \"${2:[ ]}\" type = \"${3:[ ]}\"}>\r\n\t$4\r\n</cftimer>$0",
+		"description": "cftimer",
+		"scope": "embeddable.cfml"
+	},
+	"cftrace": {
+		"prefix": "cftrace",
+		"body": "<cftrace${1: abort = \"${2:[ ]}\" category = \"${3:[ ]}\" inline = \"${4:[ ]}\" text = \"${5:[ ]}\" type = \"${6:[ ]}\" var = \"${7:[ ]}\"}>\r\n\t$8\r\n</cftrace>$0",
+		"description": "cftrace",
+		"scope": "embeddable.cfml"
+	},
+	"cftransaction": {
+		"prefix": "cftransaction",
+		"body": "<cftransaction${1: action = \"${2:[ ]}\" isolation = \"${3:[ ]}\"}>\r\n\t$4\r\n</cftransaction>$0",
+		"description": "cftransaction",
+		"scope": "embeddable.cfml"
+	},
+	"cftree": {
+		"prefix": "cftree",
+		"body": "<cftree \r\n\tname = \"$1\"${2:  \r\n\tformat=\"${3:[ ]}\"\r\n\trequired = \"${4:[ ]}\"\r\n\tdelimiter = \"${5:[ ]}\"\r\n\tcompletePath = \"${6:[ ]}\"\r\n\tappendKey = \"${7:[ ]}\"\r\n\thighlightHref = \"${8:[ ]}\"\r\n\tonValidate = \"${9:[ ]}\"\r\n\tmessage = \"${10:[ ]}\"\r\n\tonError = \"${11:[ ]}\"\r\n\tlookAndFeel = \"${12:[ ]}\"\r\n\tfont = \"${13:[ ]}\"\r\n\tfontSize = \"${14:[ ]}\"\r\n\titalic = \"${16:[ ]}\"\r\n\tbold = \"${17:[ ]}\"\r\n\theight = \"${18:[ ]}\"\r\n\twidth = \"${19:[ ]}\"\r\n\tvSpace = \"${20:[ ]}\"\r\n\thSpace = \"${21:[ ]}\"\r\n\talign = \"${22:[ ]}\"\r\n\tborder = \"${23:[ ]}\"\r\n\thScroll = \"${22:[ ]}\"\r\n\tvScroll = \"${24:[ ]}\"\r\n\tstyle= \"${25:[ ]}\"\r\n\tenabled = \"${26:[ ]}\"\r\n\tvisible = \"${27:[ ]}\"\r\n\ttooltip = \"${28:[ ]}\"\r\n\tonChange = \"${29:[ ]}\"\r\n\tnotSupported = \"${30:[ ]}\"\r\n\tonBlur = \"${31:[ ]}\"\r\n\tonFocus = \"${32:[ ]}\"}>\r\n\t$33\r\n</cftree>$0",
+		"description": "cftree",
+		"scope": "embeddable.cfml"
+	},
+	"cftreeitem": {
+		"prefix": "cftreeitem",
+		"body": "<cftreeitem  value = \"$1\"${2: display = \"${3:[ ]}\" parent = \"${4:[ ]}\" img = \"${5:[ ]}\" imgopen = \"${6:[ ]}\" href = \"${7:[ ]}\" target = \"${8:[ ]}\" query = \"${9:[ ]}\" queryAsRoot = \"${10:[ ]}\" expand = \"${11:[ ]}\"}>$0",
+		"description": "cftreeitem",
+		"scope": "embeddable.cfml"
+	},
+	"cftry": {
+		"prefix": "cftry",
+		"body": "<cftry>\r\n\t$1\r\n</cftry>$0",
+		"description": "cftry",
+		"scope": "embeddable.cfml"
+	},
+	"cfupdate": {
+		"prefix": "cfupdate",
+		"body": "<cfupdate dataSource = \"$1\" tableName = \"$2\"${3: tableOwner = \"${4:[ ]}\" tableQualifier = \"${5:[ ]}\" username = \"${6:[ ]}\" password = \"${7:[ ]}\" formFields = \"${8:[ ]}\"}>$0",
+		"description": "cfupdate",
+		"scope": "embeddable.cfml"
+	},
+	"cfwddx": {
+		"prefix": "cfwddx",
+		"body": "<cfwddx action = \"$1\"  input = \"$2\"${3: output = \"${4:required if action equals wddx2cfml}\"  topLevelVariable = \"${5:required if action = wddx2js or cfml2js}\" useTimeZoneInfo = \"${6:[ ]}\" validate = \"${7:[ ]}\"}>$0",
+		"description": "cfwddx",
+		"scope": "embeddable.cfml"
+	},
+	"cfxml": {
+		"prefix": "cfxml",
+		"body": "<cfxml variable=\"$1\"${2: caseSensitive=\"${3:[ ]}\"}>$0",
+		"description": "cfxml",
+		"scope": "embeddable.cfml"
+	},
+	"charsetdecode": {
+		"prefix": "charsetdecode",
+		"body": "CharsetDecode(${1:string}, ${2:encoding})$0",
+		"description": "charsetdecode",
+		"scope": "embeddable.cfml"
+	},
+	"charsetencode": {
+		"prefix": "charsetencode",
+		"body": "CharsetEncode(${1:binaryobject}, ${2:encoding})$0",
+		"description": "charsetencode",
+		"scope": "embeddable.cfml"
+	},
+	"chr": {
+		"prefix": "chr",
+		"body": "Chr(${1:number})$0",
+		"description": "chr",
+		"scope": "embeddable.cfml"
+	},
+	"cjustify": {
+		"prefix": "cjustify",
+		"body": "Cjustify(${1:string}, ${2:length})$0",
+		"description": "cjustify",
+		"scope": "embeddable.cfml"
+	},
+	"compare": {
+		"prefix": "compare",
+		"body": "Compare(${1:string1}, ${2:string2})$0",
+		"description": "compare",
+		"scope": "embeddable.cfml"
+	},
+	"comparenocase": {
+		"prefix": "comparenocase",
+		"body": "CompareNoCase(${1:string1}, ${2:string2})$0",
+		"description": "comparenocase",
+		"scope": "embeddable.cfml"
+	},
+	"cos": {
+		"prefix": "cos",
+		"body": "Cos(${1:number})$0",
+		"description": "cos",
+		"scope": "embeddable.cfml"
+	},
+	"createdate": {
+		"prefix": "createdate",
+		"body": "CreateDate(${1:year}, ${2:month}, ${3:day})$0",
+		"description": "createdate",
+		"scope": "embeddable.cfml"
+	},
+	"createdatetime": {
+		"prefix": "createdatetime",
+		"body": "CreateDateTime(${1:year}, ${2:month}, ${3:day}, ${4:hour}, ${5:minute}, ${6:second})$0",
+		"description": "createdatetime",
+		"scope": "embeddable.cfml"
+	},
+	"createodbcdate": {
+		"prefix": "createodbcdate",
+		"body": "CreateODBCDate(${1:date})$0",
+		"description": "createodbcdate",
+		"scope": "embeddable.cfml"
+	},
+	"createodbcdatetime": {
+		"prefix": "createodbcdatetime",
+		"body": "CreateODBCDateTime(${1:date})$0",
+		"description": "createodbcdatetime",
+		"scope": "embeddable.cfml"
+	},
+	"createodbctime": {
+		"prefix": "createodbctime",
+		"body": "CreateODBCTime(${1:date})$0",
+		"description": "createodbctime",
+		"scope": "embeddable.cfml"
+	},
+	"createtime": {
+		"prefix": "createtime",
+		"body": "CreateTime(${1:hour}, ${2:minute}, ${3:second})$0",
+		"description": "createtime",
+		"scope": "embeddable.cfml"
+	},
+	"createtimespan": {
+		"prefix": "createtimespan",
+		"body": "CreateTimeSpan(${1:days}, ${2:hours}, ${3:minutes}, ${4:seconds})$0",
+		"description": "createtimespan",
+		"scope": "embeddable.cfml"
+	},
+	"createuuid": {
+		"prefix": "createuuid",
+		"body": "CreateUUID($1)$0",
+		"description": "createuuid",
+		"scope": "embeddable.cfml"
+	},
+	"dateadd": {
+		"prefix": "dateadd",
+		"body": "DateAdd(${1:\"datepart\"}, ${2:number}, ${3:\"date\"})$0",
+		"description": "dateadd",
+		"scope": "embeddable.cfml"
+	},
+	"datecompare": {
+		"prefix": "datecompare",
+		"body": "DateCompare(${1:\"date1\"}, ${2:\"date2\"} ${3:[, \"datePart\"]})$0",
+		"description": "datecompare",
+		"scope": "embeddable.cfml"
+	},
+	"dateconvert": {
+		"prefix": "dateconvert",
+		"body": "DateConvert(${1:\"conversion-type\"}, ${2:\"date\"})$0",
+		"description": "dateconvert",
+		"scope": "embeddable.cfml"
+	},
+	"datediff": {
+		"prefix": "datediff",
+		"body": "DateDiff(${1:\"datepart\"}, ${2:\"date1\"}, ${3:\"date2\"})$0",
+		"description": "datediff",
+		"scope": "embeddable.cfml"
+	},
+	"dateformat": {
+		"prefix": "dateformat",
+		"body": "DateFormat(${1:\"date\"} ${2:[, \"mask\"]})$0",
+		"description": "dateformat",
+		"scope": "embeddable.cfml"
+	},
+	"datepart": {
+		"prefix": "datepart",
+		"body": "DatePart(${1:\"datepart\"}, ${2:\"date\"})$0",
+		"description": "datepart",
+		"scope": "embeddable.cfml"
+	},
+	"day": {
+		"prefix": "day",
+		"body": "Day(${1:\"date\"})$0",
+		"description": "day",
+		"scope": "embeddable.cfml"
+	},
+	"dayofweek": {
+		"prefix": "dayofweek",
+		"body": "DayOfWeek(${1:\"date\"})$0",
+		"description": "dayofweek",
+		"scope": "embeddable.cfml"
+	},
+	"dayofweekasstring": {
+		"prefix": "dayofweekasstring",
+		"body": "DayOfWeekAsString(${1:day_of_week})$0",
+		"description": "dayofweekasstring",
+		"scope": "embeddable.cfml"
+	},
+	"dayofyear": {
+		"prefix": "dayofyear",
+		"body": "DayOfYear(${1:\"date\"})$0",
+		"description": "dayofyear",
+		"scope": "embeddable.cfml"
+	},
+	"daysinmonth": {
+		"prefix": "daysinmonth",
+		"body": "DaysInMonth(${1:\"date\"})$0",
+		"description": "daysinmonth",
+		"scope": "embeddable.cfml"
+	},
+	"daysinyear": {
+		"prefix": "daysinyear",
+		"body": "DaysInYear(${1:\"date\"})$0",
+		"description": "daysinyear",
+		"scope": "embeddable.cfml"
+	},
+	"de": {
+		"prefix": "de",
+		"body": "DE(${1:string})$0",
+		"description": "de",
+		"scope": "embeddable.cfml"
+	},
+	"decimalformat": {
+		"prefix": "decimalformat",
+		"body": "DecimalFormat(${1:number})$0",
+		"description": "decimalformat",
+		"scope": "embeddable.cfml"
+	},
+	"decrementvalue": {
+		"prefix": "decrementvalue",
+		"body": "DecrementValue(${1:number})$0",
+		"description": "decrementvalue",
+		"scope": "embeddable.cfml"
+	},
+	"decrypt": {
+		"prefix": "decrypt",
+		"body": "Decrypt(${1:encrypted_string}, ${2:key}${3: [, algorithm]}${4: [, encoding]}${5: [, IVorSalt]}${6: [, iterations]})$0",
+		"description": "decrypt",
+		"scope": "embeddable.cfml"
+	},
+	"decryptbinary": {
+		"prefix": "decryptbinary",
+		"body": "DecryptBinary(${1:bytes}, ${2:key}, ${3:[, algorithm]} ${4:[, IVorSalt]} ${5:[, iterations]})$0",
+		"description": "decryptbinary",
+		"scope": "embeddable.cfml"
+	},
+	"deleteclientvariable": {
+		"prefix": "deleteclientvariable",
+		"body": "DeleteClientVariable(${1:\"name\"})$0",
+		"description": "deleteclientvariable",
+		"scope": "embeddable.cfml"
+	},
+	"directoryexists": {
+		"prefix": "directoryexists",
+		"body": "DirectoryExists(${1:absolute_path})$0",
+		"description": "directoryexists",
+		"scope": "embeddable.cfml"
+	},
+	"dollarformat": {
+		"prefix": "dollarformat",
+		"body": "DollarFormat(${1:number})$0",
+		"description": "dollarformat",
+		"scope": "embeddable.cfml"
+	},
+	"duplicate": {
+		"prefix": "duplicate",
+		"body": "Duplicate(${1:variable_name})$0",
+		"description": "duplicate",
+		"scope": "embeddable.cfml"
+	},
+	"encrypt": {
+		"prefix": "encrypt",
+		"body": "Encrypt(${1:string}, ${2:key}${3: [, algorithm]}${4: [, encoding]}${5: [, IVorSalt]}${6: [, iterations]})$0",
+		"description": "encrypt",
+		"scope": "embeddable.cfml"
+	},
+	"encryptbinary": {
+		"prefix": "encryptbinary",
+		"body": "EncryptBinary(${1:bytes}, ${2:key}${3: [, algorithm]}${4: [, IVorSalt]}${5: [, iterations]})$0",
+		"description": "encryptbinary",
+		"scope": "embeddable.cfml"
+	},
+	"evaluate": {
+		"prefix": "evaluate",
+		"body": "Evaluate(${1:string_expression1}${2: [, string_expression2]}${3: [, ]})$0",
+		"description": "evaluate",
+		"scope": "embeddable.cfml"
+	},
+	"exp": {
+		"prefix": "exp",
+		"body": "Exp(${1:number})$0",
+		"description": "exp",
+		"scope": "embeddable.cfml"
+	},
+	"expandpath": {
+		"prefix": "expandpath",
+		"body": "Expandpath(${1:relative_path})$0",
+		"description": "expandpath",
+		"scope": "embeddable.cfml"
+	},
+	"fileexists": {
+		"prefix": "fileexists",
+		"body": "FileExists(${1:absolute_path})$0",
+		"description": "fileexists",
+		"scope": "embeddable.cfml"
+	},
+	"find": {
+		"prefix": "find",
+		"body": "Find(${1:substring}, ${2:string} ${3:[, start ]})$0",
+		"description": "find",
+		"scope": "embeddable.cfml"
+	},
+	"findnocase": {
+		"prefix": "findnocase",
+		"body": "FindNoCase(${1:substring}, ${2:string} ${3:[, start ]})$0",
+		"description": "findnocase",
+		"scope": "embeddable.cfml"
+	},
+	"findoneof": {
+		"prefix": "findoneof",
+		"body": "FindOneOf(${1:set}, ${2:string} ${3:[, start ]})$0",
+		"description": "findoneof",
+		"scope": "embeddable.cfml"
+	},
+	"firstdayofmonth": {
+		"prefix": "firstdayofmonth",
+		"body": "FirstDayOfMonth(${1:date})$0",
+		"description": "firstdayofmonth",
+		"scope": "embeddable.cfml"
+	},
+	"fix": {
+		"prefix": "fix",
+		"body": "Fix(${1:number})$0",
+		"description": "fix",
+		"scope": "embeddable.cfml"
+	},
+	"formatbasen": {
+		"prefix": "formatbasen",
+		"body": "FormatBaseN(${1:number}, ${2:radix})$0",
+		"description": "formatbasen",
+		"scope": "embeddable.cfml"
+	},
+	"generatesecretkey": {
+		"prefix": "generatesecretkey",
+		"body": "GenerateSecretKey(${1:algorithm})$0",
+		"description": "generatesecretkey",
+		"scope": "embeddable.cfml"
+	},
+	"getauthuser": {
+		"prefix": "getauthuser",
+		"body": "GetAuthUser(${1:})$0",
+		"description": "getauthuser",
+		"scope": "embeddable.cfml"
+	},
+	"getbasetagdata": {
+		"prefix": "getbasetagdata",
+		"body": "GetBaseTagData(${1:tagname} ${2:[, instancenumber ]})$0",
+		"description": "getbasetagdata",
+		"scope": "embeddable.cfml"
+	},
+	"getbasetaglist": {
+		"prefix": "getbasetaglist",
+		"body": "GetBaseTagList(${1:})$0",
+		"description": "getbasetaglist",
+		"scope": "embeddable.cfml"
+	},
+	"getbasetemplatepath": {
+		"prefix": "getbasetemplatepath",
+		"body": "GetBaseTemplatePath(${1:})$0",
+		"description": "getbasetemplatepath",
+		"scope": "embeddable.cfml"
+	},
+	"getclientvariableslist": {
+		"prefix": "getclientvariableslist",
+		"body": "GetClientVariablesList(${1:})$0",
+		"description": "getclientvariableslist",
+		"scope": "embeddable.cfml"
+	},
+	"getcontextroot": {
+		"prefix": "getcontextroot",
+		"body": "GetContextRoot(${1:})$0",
+		"description": "getcontextroot",
+		"scope": "embeddable.cfml"
+	},
+	"getcurrenttemplatepath": {
+		"prefix": "getcurrenttemplatepath",
+		"body": "GetCurrentTemplatePath(${1:})$0",
+		"description": "getcurrenttemplatepath",
+		"scope": "embeddable.cfml"
+	},
+	"getdirectoryfrompath": {
+		"prefix": "getdirectoryfrompath",
+		"body": "GetDirectoryFromPath(${1:path})$0",
+		"description": "getdirectoryfrompath",
+		"scope": "embeddable.cfml"
+	},
+	"getencoding": {
+		"prefix": "getencoding",
+		"body": "GetEncoding(${1:scope_name})$0",
+		"description": "getencoding",
+		"scope": "embeddable.cfml"
+	},
+	"getexception": {
+		"prefix": "getexception",
+		"body": "GetException(${1:object})$0",
+		"description": "getexception",
+		"scope": "embeddable.cfml"
+	},
+	"getfilefrompath": {
+		"prefix": "getfilefrompath",
+		"body": "GetFileFromPath(${1:path})$0",
+		"description": "getfilefrompath",
+		"scope": "embeddable.cfml"
+	},
+	"getfunctionlist": {
+		"prefix": "getfunctionlist",
+		"body": "GetFunctionList(${1:})$0",
+		"description": "getfunctionlist",
+		"scope": "embeddable.cfml"
+	},
+	"getgatewayhelper": {
+		"prefix": "getgatewayhelper",
+		"body": "GetGatewayHelper(${1:gatewayID})$0",
+		"description": "getgatewayhelper",
+		"scope": "embeddable.cfml"
+	},
+	"gethttprequestdata": {
+		"prefix": "gethttprequestdata",
+		"body": "GetHttpRequestData(${1:})$0",
+		"description": "gethttprequestdata",
+		"scope": "embeddable.cfml"
+	},
+	"gethttptimestring": {
+		"prefix": "gethttptimestring",
+		"body": "GetHttpTimeString(${1:date_time_object})$0",
+		"description": "gethttptimestring",
+		"scope": "embeddable.cfml"
+	},
+	"getk2serverdoccount": {
+		"prefix": "getk2serverdoccount",
+		"body": "GetK2ServerDocCount(${1:})$0",
+		"description": "getk2serverdoccount",
+		"scope": "embeddable.cfml"
+	},
+	"getk2serverdoccountlimit": {
+		"prefix": "getk2serverdoccountlimit",
+		"body": "GetK2ServerDocCountLimit(${1:})$0",
+		"description": "getk2serverdoccountlimit",
+		"scope": "embeddable.cfml"
+	},
+	"getlocale": {
+		"prefix": "getlocale",
+		"body": "GetLocale(${1:})$0",
+		"description": "getlocale",
+		"scope": "embeddable.cfml"
+	},
+	"getlocaledisplayname": {
+		"prefix": "getlocaledisplayname",
+		"body": "GetLocaleDisplayName(${1:[locale]}${2: [, inLocale]})$0",
+		"description": "getlocaledisplayname",
+		"scope": "embeddable.cfml"
+	},
+	"getlocalhostip": {
+		"prefix": "getlocalhostip",
+		"body": "GetLocalHostIP(${1:})$0",
+		"description": "getlocalhostip",
+		"scope": "embeddable.cfml"
+	},
+	"getmetadata": {
+		"prefix": "getmetadata",
+		"body": "GetMetaData(${1:object})$0",
+		"description": "getmetadata",
+		"scope": "embeddable.cfml"
+	},
+	"getmetricdata": {
+		"prefix": "getmetricdata",
+		"body": "GetMetricData(${1:mode})$0",
+		"description": "getmetricdata",
+		"scope": "embeddable.cfml"
+	},
+	"getpagecontext": {
+		"prefix": "getpagecontext",
+		"body": "GetPageContext(${1:})$0",
+		"description": "getpagecontext",
+		"scope": "embeddable.cfml"
+	},
+	"getprofilesections": {
+		"prefix": "getprofilesections",
+		"body": "GetProfileSections(${1:iniFile})$0",
+		"description": "getprofilesections",
+		"scope": "embeddable.cfml"
+	},
+	"getprofilestring": {
+		"prefix": "getprofilestring",
+		"body": "GetProfileString(${1:iniPath}, ${2:section}, ${3:entry})$0",
+		"description": "getprofilestring",
+		"scope": "embeddable.cfml"
+	},
+	"getsoaprequest": {
+		"prefix": "getsoaprequest",
+		"body": "GetSOAPRequest(${1:})$0",
+		"description": "getsoaprequest",
+		"scope": "embeddable.cfml"
+	},
+	"getsoaprequestheader": {
+		"prefix": "getsoaprequestheader",
+		"body": "GetSOAPRequestHeader(${1:namespace}, ${2:name} ${3:[, asXML]})$0",
+		"description": "getsoaprequestheader",
+		"scope": "embeddable.cfml"
+	},
+	"getsoapresponse": {
+		"prefix": "getsoapresponse",
+		"body": "GetSOAPResponse(${1:webservice})$0",
+		"description": "getsoapresponse",
+		"scope": "embeddable.cfml"
+	},
+	"getsoapresponseheader": {
+		"prefix": "getsoapresponseheader",
+		"body": "GetSOAPResponseHeader(${1:webservice}, ${2:namespace}, ${3:name} ${4:[, asXML]})$0",
+		"description": "getsoapresponseheader",
+		"scope": "embeddable.cfml"
+	},
+	"gettempdirectory": {
+		"prefix": "gettempdirectory",
+		"body": "GetTempDirectory(${1:})$0",
+		"description": "gettempdirectory",
+		"scope": "embeddable.cfml"
+	},
+	"gettempfile": {
+		"prefix": "gettempfile",
+		"body": "GetTempFile(${1:dir}, ${2:prefix})$0",
+		"description": "gettempfile",
+		"scope": "embeddable.cfml"
+	},
+	"gettickcount": {
+		"prefix": "gettickcount",
+		"body": "GetTickCount(${1:})$0",
+		"description": "gettickcount",
+		"scope": "embeddable.cfml"
+	},
+	"gettimezoneinfo": {
+		"prefix": "gettimezoneinfo",
+		"body": "GetTimeZoneInfo(${1:})$0",
+		"description": "gettimezoneinfo",
+		"scope": "embeddable.cfml"
+	},
+	"gettoken": {
+		"prefix": "gettoken",
+		"body": "GetToken(${1:string}, ${2:index} ${3:[, delimiters ]})$0",
+		"description": "gettoken",
+		"scope": "embeddable.cfml"
+	},
+	"hash": {
+		"prefix": "hash",
+		"body": "Hash(${1:string$}${2: [, algorithm]}${3: [, encoding]})$0",
+		"description": "hash",
+		"scope": "embeddable.cfml"
+	},
+	"hour": {
+		"prefix": "hour",
+		"body": "hour(${1:date})$0",
+		"description": "hour",
+		"scope": "embeddable.cfml"
+	},
+	"htmlcodeformat": {
+		"prefix": "htmlcodeformat",
+		"body": "HTMLCodeFormat(${1:string} ${2:[, version ]})$0",
+		"description": "htmlcodeformat",
+		"scope": "embeddable.cfml"
+	},
+	"htmleditformat": {
+		"prefix": "htmleditformat",
+		"body": "HTMLEditFormat(${1:string} ${2:[, version ]})$0",
+		"description": "htmleditformat",
+		"scope": "embeddable.cfml"
+	},
+	"iif": {
+		"prefix": "iif",
+		"body": "IIf(${1:condition}, ${2:string_expression1}, ${3:string_expression2})$0",
+		"description": "iif",
+		"scope": "embeddable.cfml"
+	},
+	"incrementvalue": {
+		"prefix": "incrementvalue",
+		"body": "IncrementValue(${1:number})$0",
+		"description": "incrementvalue",
+		"scope": "embeddable.cfml"
+	},
+	"inputbasen": {
+		"prefix": "inputbasen",
+		"body": "InputBaseN(${1:string}, ${2:radix})$0",
+		"description": "inputbasen",
+		"scope": "embeddable.cfml"
+	},
+	"insert": {
+		"prefix": "insert",
+		"body": "Insert(${1:substring}, ${2:string}, ${3:position})$0",
+		"description": "insert",
+		"scope": "embeddable.cfml"
+	},
+	"int": {
+		"prefix": "int",
+		"body": "Int(${1:number})$0",
+		"description": "int",
+		"scope": "embeddable.cfml"
+	},
+	"isarray": {
+		"prefix": "isarray",
+		"body": "IsArray(${1:value} ${2:[, number ]})$0",
+		"description": "isarray",
+		"scope": "embeddable.cfml"
+	},
+	"isbinary": {
+		"prefix": "isbinary",
+		"body": "IsBinary(${1:value})$0",
+		"description": "isbinary",
+		"scope": "embeddable.cfml"
+	},
+	"isboolean": {
+		"prefix": "isboolean",
+		"body": "IsBoolean(${1:value})$0",
+		"description": "isboolean",
+		"scope": "embeddable.cfml"
+	},
+	"iscustomfunction": {
+		"prefix": "iscustomfunction",
+		"body": "IsCustomFunction(${1:name})$0",
+		"description": "iscustomfunction",
+		"scope": "embeddable.cfml"
+	},
+	"isdate": {
+		"prefix": "isdate",
+		"body": "IsDate(${1:string})$0",
+		"description": "isdate",
+		"scope": "embeddable.cfml"
+	},
+	"isdebugmode": {
+		"prefix": "isdebugmode",
+		"body": "IsDebugMode($1)$0",
+		"description": "isdebugmode",
+		"scope": "embeddable.cfml"
+	},
+	"isdefined": {
+		"prefix": "isdefined",
+		"body": "IsDefined(${1:\"variable_name\"})$0",
+		"description": "isdefined",
+		"scope": "embeddable.cfml"
+	},
+	"isk2serverabroker": {
+		"prefix": "isk2serverabroker",
+		"body": "IsK2ServerABroker(${1:})$0\t\t\t",
+		"description": "isk2serverabroker",
+		"scope": "embeddable.cfml"
+	},
+	"isk2serverdoccountexceeded": {
+		"prefix": "isk2serverdoccountexceeded",
+		"body": "IsK2ServerDocCountExceeded(${1:})$0\t\t\t\t",
+		"description": "isk2serverdoccountexceeded",
+		"scope": "embeddable.cfml"
+	},
+	"isk2serveronline": {
+		"prefix": "isk2serveronline",
+		"body": "IsK2ServerOnline(${1:})$0",
+		"description": "isk2serveronline",
+		"scope": "embeddable.cfml"
+	},
+	"isleapyear": {
+		"prefix": "isleapyear",
+		"body": "IsLeapYear(${1:year})$0",
+		"description": "isleapyear",
+		"scope": "embeddable.cfml"
+	},
+	"islocalhost": {
+		"prefix": "islocalhost",
+		"body": "IsLocalHost(${1:ipaddress})$0",
+		"description": "islocalhost",
+		"scope": "embeddable.cfml"
+	},
+	"isnumeric": {
+		"prefix": "isnumeric",
+		"body": "IsNumeric(${1:string})$0",
+		"description": "isnumeric",
+		"scope": "embeddable.cfml"
+	},
+	"isnumericdate": {
+		"prefix": "isnumericdate",
+		"body": "IsNumericDate(${1:number})$0",
+		"description": "isnumericdate",
+		"scope": "embeddable.cfml"
+	},
+	"isobject": {
+		"prefix": "isobject",
+		"body": "IsObject(${1:value})$0",
+		"description": "isobject",
+		"scope": "embeddable.cfml"
+	},
+	"isquery": {
+		"prefix": "isquery",
+		"body": "IsQuery(${1:value})$0",
+		"description": "isquery",
+		"scope": "embeddable.cfml"
+	},
+	"issimplevalue": {
+		"prefix": "issimplevalue",
+		"body": "IsSimpleValue(${1:value})$0",
+		"description": "issimplevalue",
+		"scope": "embeddable.cfml"
+	},
+	"issoaprequest": {
+		"prefix": "issoaprequest",
+		"body": "IsSOAPRequest(${1:})$0",
+		"description": "issoaprequest",
+		"scope": "embeddable.cfml"
+	},
+	"isstruct": {
+		"prefix": "isstruct",
+		"body": "IsStruct(${1:variable})$0",
+		"description": "isstruct",
+		"scope": "embeddable.cfml"
+	},
+	"isuserinrole": {
+		"prefix": "isuserinrole",
+		"body": "IsUserInRole(${1:\"role_name\"})$0",
+		"description": "isuserinrole",
+		"scope": "embeddable.cfml"
+	},
+	"isvalid": {
+		"prefix": "isvalid",
+		"body": "IsValid(${1:type}, ${2:value})$0",
+		"description": "isvalid",
+		"scope": "embeddable.cfml"
+	},
+	"iswddx": {
+		"prefix": "iswddx",
+		"body": "IsWDDX(${1:value})$0",
+		"description": "iswddx",
+		"scope": "embeddable.cfml"
+	},
+	"isxml": {
+		"prefix": "isxml",
+		"body": "IsXML(${1:value})$0",
+		"description": "isxml",
+		"scope": "embeddable.cfml"
+	},
+	"isxmlattribute": {
+		"prefix": "isxmlattribute",
+		"body": "IsXmlAttribute(${1:value})$0",
+		"description": "isxmlattribute",
+		"scope": "embeddable.cfml"
+	},
+	"isxmldoc": {
+		"prefix": "isxmldoc",
+		"body": "IsXmlDoc(${1:value})$0",
+		"description": "isxmldoc",
+		"scope": "embeddable.cfml"
+	},
+	"isxmlelem": {
+		"prefix": "isxmlelem",
+		"body": "IsXmlElem(${1:value})$0",
+		"description": "isxmlelem",
+		"scope": "embeddable.cfml"
+	},
+	"isxmlnode": {
+		"prefix": "isxmlnode",
+		"body": "IsXmlNode(${1:value})$0",
+		"description": "isxmlnode",
+		"scope": "embeddable.cfml"
+	},
+	"isxmlroot": {
+		"prefix": "isxmlroot",
+		"body": "IsXmlRoot(${1:value})$0",
+		"description": "isxmlroot",
+		"scope": "embeddable.cfml"
+	},
+	"javacast": {
+		"prefix": "javacast",
+		"body": "JavaCast(${1:type}, ${2:variable})$0",
+		"description": "javacast",
+		"scope": "embeddable.cfml"
+	},
+	"jsstringformat": {
+		"prefix": "jsstringformat",
+		"body": "JSStringFormat(${1:string})$0",
+		"description": "jsstringformat",
+		"scope": "embeddable.cfml"
+	},
+	"lcase": {
+		"prefix": "lcase",
+		"body": "LCase(${1:string})$0",
+		"description": "lcase",
+		"scope": "embeddable.cfml"
+	},
+	"left": {
+		"prefix": "left",
+		"body": "Left(${1:string}, ${2:count})$0",
+		"description": "left",
+		"scope": "embeddable.cfml"
+	},
+	"len": {
+		"prefix": "len",
+		"body": "Len(${1:string or binary object})$0",
+		"description": "len",
+		"scope": "embeddable.cfml"
+	},
+	"listappend": {
+		"prefix": "listappend",
+		"body": "ListAppend(${1:list}, ${2:value}${3: [, delimiters ]})$0",
+		"description": "listappend",
+		"scope": "embeddable.cfml"
+	},
+	"listchangedelims": {
+		"prefix": "listchangedelims",
+		"body": "ListChangeDelims(${1:list}, ${2:new_delimiter}${3: [, delimiters ]})$0",
+		"description": "listchangedelims",
+		"scope": "embeddable.cfml"
+	},
+	"listcontains": {
+		"prefix": "listcontains",
+		"body": "ListContains(${1:list}, ${2:substring}${3: [, delimiters ]})$0",
+		"description": "listcontains",
+		"scope": "embeddable.cfml"
+	},
+	"listcontainsnocase": {
+		"prefix": "listcontainsnocase",
+		"body": "ListContainsNoCase(${1:list}, ${2:substring} ${3:[, delimiters ]})$0",
+		"description": "listcontainsnocase",
+		"scope": "embeddable.cfml"
+	},
+	"listdeleteat": {
+		"prefix": "listdeleteat",
+		"body": "ListDeleteAt(${1:list}, ${2:position}${3: [, delimiters ]})$0",
+		"description": "listdeleteat",
+		"scope": "embeddable.cfml"
+	},
+	"listfind": {
+		"prefix": "listfind",
+		"body": "ListFind(${1:list}, ${2:value}${3: [, delimiters ]})$0",
+		"description": "listfind",
+		"scope": "embeddable.cfml"
+	},
+	"listfindnocase": {
+		"prefix": "listfindnocase",
+		"body": "ListFindNoCase(${1:list}, ${2:value}${3: [, delimiters ]})$0",
+		"description": "listfindnocase",
+		"scope": "embeddable.cfml"
+	},
+	"listfirst": {
+		"prefix": "listfirst",
+		"body": "ListFirst(${1:list}${2: [, delimiters]})$0",
+		"description": "listfirst",
+		"scope": "embeddable.cfml"
+	},
+	"listgetat": {
+		"prefix": "listgetat",
+		"body": "ListGetAt(${1:list}, ${2:position}${3: [, delimiters]})$0",
+		"description": "listgetat",
+		"scope": "embeddable.cfml"
+	},
+	"listinsertat": {
+		"prefix": "listinsertat",
+		"body": "ListInsertAt(${1:list}, ${2:position}, ${3:value}${4: [, delimiters]})$0",
+		"description": "listinsertat",
+		"scope": "embeddable.cfml"
+	},
+	"listlast": {
+		"prefix": "listlast",
+		"body": "ListLast(${1:list}${2: [, delimiters]})$0",
+		"description": "listlast",
+		"scope": "embeddable.cfml"
+	},
+	"listlen": {
+		"prefix": "listlen",
+		"body": "ListLen(${1:list}${2: [, delimiters ]})$0",
+		"description": "listlen",
+		"scope": "embeddable.cfml"
+	},
+	"listprepend": {
+		"prefix": "listprepend",
+		"body": "ListPrepend(${1:list}, ${2:value}${3: [, delimiters ]})$0",
+		"description": "listprepend",
+		"scope": "embeddable.cfml"
+	},
+	"listqualify": {
+		"prefix": "listqualify",
+		"body": "ListQualify(${1:list}, ${2:qualifier}${3: [, delimiters ]}${4: [, elements ]})$0",
+		"description": "listqualify",
+		"scope": "embeddable.cfml"
+	},
+	"listrest": {
+		"prefix": "listrest",
+		"body": "ListRest(${1:list}${2: [, delimiters ]})$0",
+		"description": "listrest",
+		"scope": "embeddable.cfml"
+	},
+	"listsetat": {
+		"prefix": "listsetat",
+		"body": "ListSetAt(${1:list}, ${2:position}, ${3:value}${4: [, delimiters]})$0",
+		"description": "listsetat",
+		"scope": "embeddable.cfml"
+	},
+	"listsort": {
+		"prefix": "listsort",
+		"body": "ListSort(${1:list}, ${2:sort_type}${3: [, sort_order]}${4:[, delimiters]})$0",
+		"description": "listsort",
+		"scope": "embeddable.cfml"
+	},
+	"listtoarray": {
+		"prefix": "listtoarray",
+		"body": "ListToArray(${1:list}${2: [, delimiters ]})$0",
+		"description": "listtoarray",
+		"scope": "embeddable.cfml"
+	},
+	"listvaluecount": {
+		"prefix": "listvaluecount",
+		"body": "ListValueCount(${1:list}, ${2:value}${3: [, delimiters ]})$0",
+		"description": "listvaluecount",
+		"scope": "embeddable.cfml"
+	},
+	"listvaluecountnocase": {
+		"prefix": "listvaluecountnocase",
+		"body": "ListValueCountNoCase(${1:list}, ${2:value}${3: [, delimiters ]})$0",
+		"description": "listvaluecountnocase",
+		"scope": "embeddable.cfml"
+	},
+	"ljustify": {
+		"prefix": "ljustify",
+		"body": "LJustify(${1:string}, ${2:length})$0",
+		"description": "ljustify",
+		"scope": "embeddable.cfml"
+	},
+	"log": {
+		"prefix": "log",
+		"body": "Log(${1:number})$0",
+		"description": "log",
+		"scope": "embeddable.cfml"
+	},
+	"log10": {
+		"prefix": "log10",
+		"body": "Log10(${1:number})$0",
+		"description": "log10",
+		"scope": "embeddable.cfml"
+	},
+	"lscurrencyformat": {
+		"prefix": "lscurrencyformat",
+		"body": "LSCurrencyFormat(${1:number}${2: [, type]})$0",
+		"description": "lscurrencyformat",
+		"scope": "embeddable.cfml"
+	},
+	"lsdateformat": {
+		"prefix": "lsdateformat",
+		"body": "LSDateFormat(${1:date}${2: [, mask]})$0",
+		"description": "lsdateformat",
+		"scope": "embeddable.cfml"
+	},
+	"lseurocurrencyformat": {
+		"prefix": "lseurocurrencyformat",
+		"body": "LSEuroCurrencyFormat(${1:currency-number}${2: [, type]})$0",
+		"description": "lseurocurrencyformat",
+		"scope": "embeddable.cfml"
+	},
+	"lsiscurrency": {
+		"prefix": "lsiscurrency",
+		"body": "LSIsCurrency(${1:string})$0",
+		"description": "lsiscurrency",
+		"scope": "embeddable.cfml"
+	},
+	"lsisdate": {
+		"prefix": "lsisdate",
+		"body": "LSIsDate(${1:string})$0",
+		"description": "lsisdate",
+		"scope": "embeddable.cfml"
+	},
+	"lsisnumeric": {
+		"prefix": "lsisnumeric",
+		"body": "LSIsNumeric(${1:string})$0",
+		"description": "lsisnumeric",
+		"scope": "embeddable.cfml"
+	},
+	"lsnumberformat": {
+		"prefix": "lsnumberformat",
+		"body": "LSNumberFormat(${1:number}${2: [, mask ]})$0",
+		"description": "lsnumberformat",
+		"scope": "embeddable.cfml"
+	},
+	"lsparsecurrency": {
+		"prefix": "lsparsecurrency",
+		"body": "LSParseCurrency(${1:string})$0",
+		"description": "lsparsecurrency",
+		"scope": "embeddable.cfml"
+	},
+	"lsparsedatetime": {
+		"prefix": "lsparsedatetime",
+		"body": "LSParseDateTime(${1:date/time-string})$0",
+		"description": "lsparsedatetime",
+		"scope": "embeddable.cfml"
+	},
+	"lsparseeurocurrency": {
+		"prefix": "lsparseeurocurrency",
+		"body": "LSParseEuroCurrency(${1:currency-string})$0",
+		"description": "lsparseeurocurrency",
+		"scope": "embeddable.cfml"
+	},
+	"lsparsenumber": {
+		"prefix": "lsparsenumber",
+		"body": "LSParseNumber(${1:string})$0",
+		"description": "lsparsenumber",
+		"scope": "embeddable.cfml"
+	},
+	"lstimeformat": {
+		"prefix": "lstimeformat",
+		"body": "LSTimeFormat(${1:time}${2: [, mask ]})$0",
+		"description": "lstimeformat",
+		"scope": "embeddable.cfml"
+	},
+	"ltrim": {
+		"prefix": "ltrim",
+		"body": "LTrim(${1:string})$0",
+		"description": "ltrim",
+		"scope": "embeddable.cfml"
+	},
+	"max": {
+		"prefix": "max",
+		"body": "Max(${1:number1}, ${2:number2})$0",
+		"description": "max",
+		"scope": "embeddable.cfml"
+	},
+	"mid": {
+		"prefix": "mid",
+		"body": "Mid(${1:string}, ${2:start}, ${3:count})$0",
+		"description": "mid",
+		"scope": "embeddable.cfml"
+	},
+	"min": {
+		"prefix": "min",
+		"body": "Min(${1:number1}, ${2:number2})$0",
+		"description": "min",
+		"scope": "embeddable.cfml"
+	},
+	"minute": {
+		"prefix": "minute",
+		"body": "Minute(${1:date})$0",
+		"description": "minute",
+		"scope": "embeddable.cfml"
+	},
+	"month": {
+		"prefix": "month",
+		"body": "Month(${1:date})$0",
+		"description": "month",
+		"scope": "embeddable.cfml"
+	},
+	"monthasstring": {
+		"prefix": "monthasstring",
+		"body": "MonthAsString(${1:month_number})$0",
+		"description": "monthasstring",
+		"scope": "embeddable.cfml"
+	},
+	"now": {
+		"prefix": "now",
+		"body": "Now(${1:})$0",
+		"description": "now",
+		"scope": "embeddable.cfml"
+	},
+	"numberformat": {
+		"prefix": "numberformat",
+		"body": "NumberFormat(${1:number}${2: [, mask ]})$0",
+		"description": "numberformat",
+		"scope": "embeddable.cfml"
+	},
+	"paragraphformat": {
+		"prefix": "paragraphformat",
+		"body": "ParagraphFormat(${1:string})$0",
+		"description": "paragraphformat",
+		"scope": "embeddable.cfml"
+	},
+	"parsedatetime": {
+		"prefix": "parsedatetime",
+		"body": "ParseDateTime(${1:date/time-string}${2: [, pop-conversion ]})$0",
+		"description": "parsedatetime",
+		"scope": "embeddable.cfml"
+	},
+	"pi": {
+		"prefix": "pi",
+		"body": "Pi($1)$0",
+		"description": "pi",
+		"scope": "embeddable.cfml"
+	},
+	"preservesinglequotes": {
+		"prefix": "preservesinglequotes",
+		"body": "PreserveSingleQuotes(${1:variable})$0",
+		"description": "preservesinglequotes",
+		"scope": "embeddable.cfml"
+	},
+	"quarter": {
+		"prefix": "quarter",
+		"body": "Quarter(${1:date})$0",
+		"description": "quarter",
+		"scope": "embeddable.cfml"
+	},
+	"queryaddcolumn": {
+		"prefix": "queryaddcolumn",
+		"body": "QueryAddColumn(${1:query}, ${2:column-name}${3: [, datatype]}${4: [, array-name]})$0",
+		"description": "queryaddcolumn",
+		"scope": "embeddable.cfml"
+	},
+	"queryaddrow": {
+		"prefix": "queryaddrow",
+		"body": "QueryAddRow(${1:query}${2: [,number]})$0",
+		"description": "queryaddrow",
+		"scope": "embeddable.cfml"
+	},
+	"querynew": {
+		"prefix": "querynew",
+		"body": "QueryNew(${1:columnlist}${2: [, columntypelist]})$0",
+		"description": "querynew",
+		"scope": "embeddable.cfml"
+	},
+	"querysetcell": {
+		"prefix": "querysetcell",
+		"body": "QuerySetCell(${1:query}, ${2:column_name}, ${3:value}${4: [, row_number ]})$0",
+		"description": "querysetcell",
+		"scope": "embeddable.cfml"
+	},
+	"quotedvaluelist": {
+		"prefix": "quotedvaluelist",
+		"body": "QuotedValueList(${1:query.column}${2: [, delimiter]})$0",
+		"description": "quotedvaluelist",
+		"scope": "embeddable.cfml"
+	},
+	"rand": {
+		"prefix": "rand",
+		"body": "Rand(${1:[algorithm]})$0",
+		"description": "rand",
+		"scope": "embeddable.cfml"
+	},
+	"randomize": {
+		"prefix": "randomize",
+		"body": "Randomize(${1:number}${2: [, algorithm]})$0",
+		"description": "randomize",
+		"scope": "embeddable.cfml"
+	},
+	"randrange": {
+		"prefix": "randrange",
+		"body": "RandRange(${1:number1}, ${2:number2}${3: [, algorithm]})$0",
+		"description": "randrange",
+		"scope": "embeddable.cfml"
+	},
+	"refind": {
+		"prefix": "refind",
+		"body": "REFind(${1:reg_expression}, ${2:string}${3: [, start]}${4: [, returnsubexpressions]})$0",
+		"description": "refind",
+		"scope": "embeddable.cfml"
+	},
+	"refindnocase": {
+		"prefix": "refindnocase",
+		"body": "REFindNoCase(${1:reg_expression}, ${2:string}${3: [, start]}${4: [, returnsubexpressions]})$0",
+		"description": "refindnocase",
+		"scope": "embeddable.cfml"
+	},
+	"releasecomobject": {
+		"prefix": "releasecomobject",
+		"body": "ReleaseComObject(${1:objectName})$0",
+		"description": "releasecomobject",
+		"scope": "embeddable.cfml"
+	},
+	"removechars": {
+		"prefix": "removechars",
+		"body": "RemoveChars(${1:string}, ${2:start}, ${3:count})$0",
+		"description": "removechars",
+		"scope": "embeddable.cfml"
+	},
+	"repeatstring": {
+		"prefix": "repeatstring",
+		"body": "RepeatString(${1:string}, ${2:count})$0",
+		"description": "repeatstring",
+		"scope": "embeddable.cfml"
+	},
+	"replace": {
+		"prefix": "replace",
+		"body": "Replace(${1:string}, ${2:substring1}, ${3:substring2}${4: [, scope]})$0",
+		"description": "replace",
+		"scope": "embeddable.cfml"
+	},
+	"replacelist": {
+		"prefix": "replacelist",
+		"body": "ReplaceList(${1:string}, ${2:list1}, ${3:list2})$0",
+		"description": "replacelist",
+		"scope": "embeddable.cfml"
+	},
+	"replacenocase": {
+		"prefix": "replacenocase",
+		"body": "ReplaceNoCase(${1:string}, ${2:substring1}, ${3:substring2}${4: [, scope]})$0",
+		"description": "replacenocase",
+		"scope": "embeddable.cfml"
+	},
+	"rereplace": {
+		"prefix": "rereplace",
+		"body": "REReplace(${1:string}, ${2:reg_expression}, ${3:substring}${4: [, scope]})$0",
+		"description": "rereplace",
+		"scope": "embeddable.cfml"
+	},
+	"rereplacenocase": {
+		"prefix": "rereplacenocase",
+		"body": "REReplaceNoCase(${1:string}, ${2:reg_expression}, ${3:substring}${4: [, scope]})$0",
+		"description": "rereplacenocase",
+		"scope": "embeddable.cfml"
+	},
+	"reverse": {
+		"prefix": "reverse",
+		"body": "Reverse(${1:string})$0",
+		"description": "reverse",
+		"scope": "embeddable.cfml"
+	},
+	"right": {
+		"prefix": "right",
+		"body": "Right(${1:string}, ${2:count})$0",
+		"description": "right",
+		"scope": "embeddable.cfml"
+	},
+	"rjustify": {
+		"prefix": "rjustify",
+		"body": "RJustify(${1:string}, ${2:length})$0",
+		"description": "rjustify",
+		"scope": "embeddable.cfml"
+	},
+	"round": {
+		"prefix": "round",
+		"body": "Round(${1:number})$0",
+		"description": "round",
+		"scope": "embeddable.cfml"
+	},
+	"rtrim": {
+		"prefix": "rtrim",
+		"body": "RTrim(${1:string})$0",
+		"description": "rtrim",
+		"scope": "embeddable.cfml"
+	},
+	"second": {
+		"prefix": "second",
+		"body": "Second(${1:date})$0",
+		"description": "second",
+		"scope": "embeddable.cfml"
+	},
+	"sendgatewaymessage": {
+		"prefix": "sendgatewaymessage",
+		"body": "SendGatewayMessage(${1:gatewayID}, ${2:data})$0",
+		"description": "sendgatewaymessage",
+		"scope": "embeddable.cfml"
+	},
+	"setencoding": {
+		"prefix": "setencoding",
+		"body": "SetEncoding(${1:scope_name,charset})$0",
+		"description": "setencoding",
+		"scope": "embeddable.cfml"
+	},
+	"setlocale": {
+		"prefix": "setlocale",
+		"body": "SetLocale(${1:new_locale})$0",
+		"description": "setlocale",
+		"scope": "embeddable.cfml"
+	},
+	"setprofilestring": {
+		"prefix": "setprofilestring",
+		"body": "SetProfileString(${1:iniPath}, ${2:section}, ${3:entry}, ${4:value})$0",
+		"description": "setprofilestring",
+		"scope": "embeddable.cfml"
+	},
+	"setvariable": {
+		"prefix": "setvariable",
+		"body": "SetVariable(${1:name}, ${2:value})$0",
+		"description": "setvariable",
+		"scope": "embeddable.cfml"
+	},
+	"sgn": {
+		"prefix": "sgn",
+		"body": "Sgn(${1:number})$0",
+		"description": "sgn",
+		"scope": "embeddable.cfml"
+	},
+	"sin": {
+		"prefix": "sin",
+		"body": "Sin(${1:number})$0",
+		"description": "sin",
+		"scope": "embeddable.cfml"
+	},
+	"spanexcluding": {
+		"prefix": "spanexcluding",
+		"body": "SpanExcluding(${1:string}, ${2:set})$0",
+		"description": "spanexcluding",
+		"scope": "embeddable.cfml"
+	},
+	"spanincluding": {
+		"prefix": "spanincluding",
+		"body": "SpanIncluding(${1:string}, ${2:set})$0",
+		"description": "spanincluding",
+		"scope": "embeddable.cfml"
+	},
+	"sqr": {
+		"prefix": "sqr",
+		"body": "Sqr(${1:number})$0",
+		"description": "sqr",
+		"scope": "embeddable.cfml"
+	},
+	"stripcr": {
+		"prefix": "stripcr",
+		"body": "StripCR(${1:string})$0",
+		"description": "stripcr",
+		"scope": "embeddable.cfml"
+	},
+	"structappend": {
+		"prefix": "structappend",
+		"body": "StructAppend(${1:struct1}, ${2:struct2}, ${3:overwriteFlag})$0",
+		"description": "structappend",
+		"scope": "embeddable.cfml"
+	},
+	"structclear": {
+		"prefix": "structclear",
+		"body": "StructClear(${1:structure})$0",
+		"description": "structclear",
+		"scope": "embeddable.cfml"
+	},
+	"structcopy": {
+		"prefix": "structcopy",
+		"body": "StructCopy(${1:structure})$0",
+		"description": "structcopy",
+		"scope": "embeddable.cfml"
+	},
+	"structcount": {
+		"prefix": "structcount",
+		"body": "StructCount(${1:structure})$0",
+		"description": "structcount",
+		"scope": "embeddable.cfml"
+	},
+	"structdelete": {
+		"prefix": "structdelete",
+		"body": "StructDelete(${1:structure}, ${2:key}${3: [, indicatenotexisting]})$0",
+		"description": "structdelete",
+		"scope": "embeddable.cfml"
+	},
+	"structfind": {
+		"prefix": "structfind",
+		"body": "StructFind(${1:structure}, ${2:key})$0",
+		"description": "structfind",
+		"scope": "embeddable.cfml"
+	},
+	"structfindkey": {
+		"prefix": "structfindkey",
+		"body": "StructFindKey(${1:top}, ${2:value}, ${3:scope})$0",
+		"description": "structfindkey",
+		"scope": "embeddable.cfml"
+	},
+	"structfindvalue": {
+		"prefix": "structfindvalue",
+		"body": "StructFindValue(${1: top}, ${2:value}${3: [, scope]})$0",
+		"description": "structfindvalue",
+		"scope": "embeddable.cfml"
+	},
+	"structget": {
+		"prefix": "structget",
+		"body": "StructGet(${1:pathDesired})$0",
+		"description": "structget",
+		"scope": "embeddable.cfml"
+	},
+	"structinsert": {
+		"prefix": "structinsert",
+		"body": "StructInsert(${1:structure}, ${2:key}, ${3:value}${4: [, allowoverwrite]})$0",
+		"description": "structinsert",
+		"scope": "embeddable.cfml"
+	},
+	"structisempty": {
+		"prefix": "structisempty",
+		"body": "StructIsEmpty(${1:structure})$0",
+		"description": "structisempty",
+		"scope": "embeddable.cfml"
+	},
+	"structkeyarray": {
+		"prefix": "structkeyarray",
+		"body": "StructKeyArray(${1:structure})$0",
+		"description": "structkeyarray",
+		"scope": "embeddable.cfml"
+	},
+	"structkeyexists": {
+		"prefix": "structkeyexists",
+		"body": "StructKeyExists(${1:structure}, ${2:\"key\"})$0",
+		"description": "structkeyexists",
+		"scope": "embeddable.cfml"
+	},
+	"structkeylist": {
+		"prefix": "structkeylist",
+		"body": "StructKeyList(${1:structure}${2: [, delimiter]})$0",
+		"description": "structkeylist",
+		"scope": "embeddable.cfml"
+	},
+	"structnew": {
+		"prefix": "structnew",
+		"body": "StructNew($1)$0",
+		"description": "structnew",
+		"scope": "embeddable.cfml"
+	},
+	"structsort": {
+		"prefix": "structsort",
+		"body": "StructSort(${1:base}, ${2:sortType}, ${3:sortOrder}, ${4:pathToSubElement})$0",
+		"description": "structsort",
+		"scope": "embeddable.cfml"
+	},
+	"structupdate": {
+		"prefix": "structupdate",
+		"body": "StructUpdate(${1:structure}, ${2:key}, ${3:value})$0",
+		"description": "structupdate",
+		"scope": "embeddable.cfml"
+	},
+	"tan": {
+		"prefix": "tan",
+		"body": "Tan(${1:number})$0",
+		"description": "tan",
+		"scope": "embeddable.cfml"
+	},
+	"timeformat": {
+		"prefix": "timeformat",
+		"body": "TimeFormat(${1:time}${2: [, mask]})$0",
+		"description": "timeformat",
+		"scope": "embeddable.cfml"
+	},
+	"tobase64": {
+		"prefix": "tobase64",
+		"body": "ToBase64(${1:string or binary_object}${2: [, encoding]})$0",
+		"description": "tobase64",
+		"scope": "embeddable.cfml"
+	},
+	"tobinary": {
+		"prefix": "tobinary",
+		"body": "ToBinary(${1:string_in_Base64 or binary_value})$0",
+		"description": "tobinary",
+		"scope": "embeddable.cfml"
+	},
+	"toscript": {
+		"prefix": "toscript",
+		"body": "ToScript(${1:cfvar}, ${2:javascriptvar}, ${3:outputformat}, ${4:ASFormat})$0",
+		"description": "toscript",
+		"scope": "embeddable.cfml"
+	},
+	"tostring": {
+		"prefix": "tostring",
+		"body": "ToString(${1:value}${2: [, encoding]})$0",
+		"description": "tostring",
+		"scope": "embeddable.cfml"
+	},
+	"trim": {
+		"prefix": "trim",
+		"body": "Trim(${1:string})$0",
+		"description": "trim",
+		"scope": "embeddable.cfml"
+	},
+	"ucase": {
+		"prefix": "ucase",
+		"body": "UCase(${1:string})$0",
+		"description": "ucase",
+		"scope": "embeddable.cfml"
+	},
+	"urldecode": {
+		"prefix": "urldecode",
+		"body": "URLDecode(${1:urlEncodedString}${2: [, charset]})$0",
+		"description": "urldecode",
+		"scope": "embeddable.cfml"
+	},
+	"urlencodedformat": {
+		"prefix": "urlencodedformat",
+		"body": "URLEncodedFormat(${1:string}${2: [, charset]})$0",
+		"description": "urlencodedformat",
+		"scope": "embeddable.cfml"
+	},
+	"urlsessionformat": {
+		"prefix": "urlsessionformat",
+		"body": "URLSessionFormat(${1:request_URL})$0",
+		"description": "urlsessionformat",
+		"scope": "embeddable.cfml"
+	},
+	"val": {
+		"prefix": "val",
+		"body": "Val(${1:string})$0",
+		"description": "val",
+		"scope": "embeddable.cfml"
+	},
+	"valuelist": {
+		"prefix": "valuelist",
+		"body": "ValueList(${1:query.column}${2: [, delimiter]})$0",
+		"description": "valuelist",
+		"scope": "embeddable.cfml"
+	},
+	"week": {
+		"prefix": "week",
+		"body": "Week(${1:date})$0",
+		"description": "week",
+		"scope": "embeddable.cfml"
+	},
+	"wrap": {
+		"prefix": "wrap",
+		"body": "Wrap(${1:string}, ${2:limit}${3: [, strip]})$0",
+		"description": "wrap",
+		"scope": "embeddable.cfml"
+	},
+	"writeoutput": {
+		"prefix": "writeoutput",
+		"body": "WriteOutput(${1:string})$0",
+		"description": "writeoutput",
+		"scope": "embeddable.cfml"
+	},
+	"xmlchildpos": {
+		"prefix": "xmlchildpos",
+		"body": "XmlChildPos(${1:elem}, ${2:childName}, ${3:N})$0",
+		"description": "xmlchildpos",
+		"scope": "embeddable.cfml"
+	},
+	"xmlelemnew": {
+		"prefix": "xmlelemnew",
+		"body": "XmlElemNew(${1:xmlObj}${2: [, namespace]}${3: [, childName]})$0",
+		"description": "xmlelemnew",
+		"scope": "embeddable.cfml"
+	},
+	"xmlformat": {
+		"prefix": "xmlformat",
+		"body": "XmlFormat(${1:string})$0",
+		"description": "xmlformat",
+		"scope": "embeddable.cfml"
+	},
+	"xmlgetnodetype": {
+		"prefix": "xmlgetnodetype",
+		"body": "XmlGetNodeType(${1:xmlNode})$0",
+		"description": "xmlgetnodetype",
+		"scope": "embeddable.cfml"
+	},
+	"xmlnew": {
+		"prefix": "xmlnew",
+		"body": "XmlNew(${1:[caseSensitive]})$0",
+		"description": "xmlnew",
+		"scope": "embeddable.cfml"
+	},
+	"xmlparse": {
+		"prefix": "xmlparse",
+		"body": "XmlParse(${1:xmlText}${2: [, caseSensitive ]}${3: [, validator]})$0",
+		"description": "xmlparse",
+		"scope": "embeddable.cfml"
+	},
+	"xmlsearch": {
+		"prefix": "xmlsearch",
+		"body": "XmlSearch(${1:xmlDoc}, ${2:xPathString})$0",
+		"description": "xmlsearch",
+		"scope": "embeddable.cfml"
+	},
+	"xmltransform": {
+		"prefix": "xmltransform",
+		"body": "XmlTransform(${1:xml}, ${2:xsl}${3: [, parameters]})$0",
+		"description": "xmltransform",
+		"scope": "embeddable.cfml"
+	},
+	"xmlvalidate": {
+		"prefix": "xmlvalidate",
+		"body": "XmlValidate(${1:xmlDoc}${2: [, validator]})$0",
+		"description": "xmlvalidate",
+		"scope": "embeddable.cfml"
+	},
+	"year": {
+		"prefix": "year",
+		"body": "Year(${1:date})$0",
+		"description": "year",
+		"scope": "embeddable.cfml"
+	},
+	"yesnoformat": {
+		"prefix": "yesnoformat",
+		"body": "YesNoFormat(${1:value})$0",
+		"description": "yesnoformat",
+		"scope": "embeddable.cfml"
+	}
+}
