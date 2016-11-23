@@ -5,5 +5,5 @@ CFML (ColdFusion) language support based on https://github.com/SublimeText/ColdF
 ## Contributors
 
 * Ilya Verbitskiy (@ilich_x86)
-* Andrew Myers (http://abm.id.au/blog/)
-* Cory Silva (https://www.geo-syntax.com/)
+* Andrew Myers (@am2605)
+* Cory Silva (@coryasilva)
