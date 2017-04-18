@@ -14,7 +14,7 @@
 	<array>
 		<dict>
 			<key>begin</key>
-			<string>(?i)(?=^\s*(/\*|//|import\b|(component|interface)(\s+|{)))</string>
+			<string>(?i)(?=^\s*(/\*|//|import\b|(component|abstract\s*component|final\s*component|interface)(\s+|{)))</string>
 			<key>contentName</key>
 			<string>source.cfml.script</string>
 			<key>end</key>
@@ -72,6 +72,48 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>cfargument</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?i)(&lt;)(cfargument)\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.begin.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(/?&gt;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.tag.cfml meta.tag.argument.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#tag-generic-attribute</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>cfcomponent</key>
 		<dict>
 			<key>begin</key>
@@ -120,15 +162,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>&gt;</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.tag.end.cfml</string>
-						</dict>
-					</dict>
+					<string>(?=&gt;)</string>
 					<key>name</key>
 					<string>meta.tag.cfml meta.class.cfml</string>
 					<key>patterns</key>
@@ -144,8 +178,27 @@
 					</array>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#cfml-tags</string>
+					<key>begin</key>
+					<string>&gt;</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.tag.cfml meta.class.cfml punctuation.definition.tag.end.cfml</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>meta.class.body.tag.cfml</string>
+					<key>end</key>
+					<string>(?i)(?=&lt;/cfcomponent&gt;)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#cfml-tags</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -197,15 +250,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>&gt;</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.tag.end.cfml</string>
-						</dict>
-					</dict>
+					<string>(?=&gt;)</string>
 					<key>name</key>
 					<string>meta.tag.cfml meta.function.cfml</string>
 					<key>patterns</key>
@@ -346,11 +391,19 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=&gt;)</string>
+					<string>&gt;</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.tag.cfml meta.function.cfml punctuation.definition.tag.end.cfml</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>meta.function.body.tag.cfml text.html.cfml</string>
 					<key>end</key>
 					<string>(?i)(?=&lt;/cffunction&gt;)</string>
-					<key>name</key>
-					<string>text.html.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -516,6 +569,14 @@
 				<dict>
 					<key>include</key>
 					<string>#cfproperty</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#cfargument</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#custom-tags</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -1003,6 +1064,142 @@
 				</dict>
 			</array>
 		</dict>
+		<key>custom-tags</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?i)(&lt;)(cf_[a-z]*)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.begin.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.custom.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(/?&gt;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.tag.custom.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#tag-generic-attribute</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.begin.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.custom.cfml</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.end.cfml</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?i)(&lt;/)(cf_[a-z]*)(&gt;)</string>
+					<key>name</key>
+					<string>meta.tag.custom.cfml</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?i)(&lt;)([a-z]+)(\:)([a-z]*)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.begin.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.custom.cfml</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.custom.cfml punctuation.separator.prefix.cfml</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.custom.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(/?&gt;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.tag.custom.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#tag-generic-attribute</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.begin.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.custom.cfml</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.end.cfml</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?i)(&lt;/)([a-z]+\:[a-z]*)(&gt;)</string>
+					<key>name</key>
+					<string>meta.tag.custom.cfml</string>
+				</dict>
+			</array>
+		</dict>
 		<key>extends</key>
 		<dict>
 			<key>begin</key>
@@ -1012,7 +1209,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.modifier.extends.cfml</string>
+					<string>entity.other.attribute-name.cfml storage.modifier.extends.cfml</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -1122,7 +1319,344 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#source-cfml-script-core</string>
+					<string>#source-cfml-script-main</string>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-anonymous-function</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?=(\s*\bfunction\b|\s*\([^\(]*?\)\s*=&gt;\s*\{))</string>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.body.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.block.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\})</string>
+							<key>name</key>
+							<string>meta.function.body.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-statements</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>meta.function.anonymous.cfml meta.function.declaration.cfml</string>
+								</dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>storage.type.function.cfml</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>\b(function)\b\s*</string>
+						</dict>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>meta.function.anonymous.cfml meta.function.declaration.cfml</string>
+								</dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>storage.type.function.arrow.cfml</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>\s*(=&gt;)\s*</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[_$a-zA-Z][$\w]*</string>
+							<key>name</key>
+							<string>meta.function.anonymous.cfml meta.function.declaration.cfml entity.name.function.cfml</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\(</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.parameters.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\))</string>
+							<key>name</key>
+							<string>meta.function.anonymous.cfml meta.function.declaration.cfml meta.function.parameters.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-function-parameter</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\)</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>meta.function.parameters.cfml punctuation.definition.parameters.end.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=(\{|=&gt;))</string>
+							<key>name</key>
+							<string>meta.function.anonymous.cfml meta.function.declaration.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-tag-generic-attribute</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=\s*\([^\(]*?\)\s*=&gt;)</string>
+					<key>end</key>
+					<string>(?=[);}\],\n])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\s*(=&gt;)\s*</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>meta.function.anonymous.cfml meta.function.declaration.cfml</string>
+								</dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>storage.type.function.arrow.cfml</string>
+								</dict>
+							</dict>
+							<key>contentName</key>
+							<string>meta.function.body.cfml</string>
+							<key>end</key>
+							<string>(?=[);}\],\n])</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-expressions</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\(</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.parameters.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>\)</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.parameters.end.cfml</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>meta.function.anonymous.cfml meta.function.declaration.cfml meta.function.parameters.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-function-parameter</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-arrow-function-declaration</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?=\([^\(]*?\)\s*=&gt;\s*\{)</string>
+					<key>end</key>
+					<string>(=&gt;)\s*</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.arrow.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.function.declaration.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-arrow-function-declaration-parameters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=\([^\(]*?\)\s*=&gt;)</string>
+					<key>end</key>
+					<string>(?=[);}\],\n])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?=\()</string>
+							<key>end</key>
+							<string>(?=(=&gt;))</string>
+							<key>name</key>
+							<string>meta.function.declaration.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-arrow-function-declaration-parameters</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(=&gt;)\s*</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>meta.function.declaration.cfml</string>
+								</dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>storage.type.function.arrow.cfml</string>
+								</dict>
+							</dict>
+							<key>contentName</key>
+							<string>meta.function.body.cfml</string>
+							<key>end</key>
+							<string>(?=[);}\],\n])</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-expressions</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-arrow-function-declaration-parameters</key>
+		<dict>
+			<key>begin</key>
+			<string>\(</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.parameters.begin.cfml</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.parameters.end.cfml</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.function.parameters.cfml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-function-parameter</string>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-block-scope</key>
+		<dict>
+			<key>begin</key>
+			<string>\{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.begin.cfml</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=\})</string>
+			<key>name</key>
+			<string>meta.block.cfml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-statements</string>
 				</dict>
 			</array>
 		</dict>
@@ -1138,9 +1672,156 @@
 					<key>include</key>
 					<string>#source-cfml-script-square-brackets</string>
 				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-call</key>
+		<dict>
+			<key>patterns</key>
+			<array>
 				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-curly-brackets</string>
+					<key>begin</key>
+					<string>(?=\b[_$a-zA-Z][$\w]*\s*\()</string>
+					<key>end</key>
+					<string>(?&lt;=\))</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-support-call</string>
+						</dict>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>meta.function-call.cfml variable.function.cfml</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>([_$a-zA-Z][$\w]*)\s*(?=\()</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-function-call-params</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=[_$a-zA-Z][$\w]*\s*\.\s*[_$a-zA-Z][$\w]*\s*\()</string>
+					<key>end</key>
+					<string>(?&lt;=\))</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?=[_$a-zA-Z][$\w]*\s*\.)</string>
+							<key>end</key>
+							<string>\.</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.accessor.cfml</string>
+								</dict>
+							</dict>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-cfml-scopes</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>[_$a-zA-Z][$\w]*</string>
+									<key>name</key>
+									<string>variable.other.object.cfml</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\.</string>
+							<key>name</key>
+							<string>keyword.other.accessor.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-method-call</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=[_$a-zA-Z][$\w.]*\s*::\s*[_$a-zA-Z][$\w]*\s*\()</string>
+					<key>end</key>
+					<string>(?&lt;=\))</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?=[_$a-zA-Z][$\w.]*\s*::)</string>
+							<key>end</key>
+							<string>::</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.accessor.static.cfml</string>
+								</dict>
+							</dict>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>[_$a-zA-Z][$\w.]*</string>
+									<key>name</key>
+									<string>entity.name.class.cfml</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-static-method-call</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-cfml-scopes</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\b(?i:super)\b</string>
+					<key>name</key>
+					<string>variable.language.super.cfml</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?i:this)\b</string>
+					<key>name</key>
+					<string>variable.language.this.cfml</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?i:thread)\b(?=[\[.])</string>
+					<key>name</key>
+					<string>variable.language.scope.cfml</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?x)
+  \b(?i:(
+  application|arguments|attributes|caller|cgi|client|cookie|flash|form|
+  local|request|server|session|thistag|url|variables|self|static|argumentcollection
+))\b</string>
+					<key>name</key>
+					<string>variable.language.scope.cfml</string>
 				</dict>
 			</array>
 		</dict>
@@ -1150,8 +1831,8 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>/\*\*(?!/)</string>
-					<key>captures</key>
+					<string>(/\*\*)\s*$</string>
+					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
@@ -1161,13 +1842,67 @@
 					</dict>
 					<key>end</key>
 					<string>\*/</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.comment.cfml</string>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>comment.block.documentation.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>^\s*\*?\s*((\@)\S*)\s</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.other.documentation.cfml</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.keyword.cfml</string>
+								</dict>
+							</dict>
+							<key>contentName</key>
+							<string>text.html</string>
+							<key>end</key>
+							<string>(\n|(?=\*/))</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>text.html.basic</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>^\s*(\*(?!/))?\s*(?=\w)</string>
+							<key>contentName</key>
+							<string>text.html</string>
+							<key>end</key>
+							<string>(\n|(?=\*/))</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>text.html.basic</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
 					<string>/\*</string>
-					<key>captures</key>
+					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
@@ -1177,20 +1912,30 @@
 					</dict>
 					<key>end</key>
 					<string>\*/</string>
-					<key>name</key>
-					<string>comment.block.cfml</string>
-				</dict>
-				<dict>
-					<key>captures</key>
+					<key>endCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.definition.comment.cfml</string>
 						</dict>
 					</dict>
-					<key>match</key>
-					<string>(//).*$\n?</string>
+					<key>name</key>
+					<string>comment.block.cfml</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>//</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.comment.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\n</string>
 					<key>name</key>
 					<string>comment.line.double-slash.cfml</string>
 				</dict>
@@ -1206,51 +1951,140 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?i)^\s*(component)(?=(\s+|{))</string>
-					<key>beginCaptures</key>
+					<string>(?i)^(?=\s*(?:(abstract|final)\s+)?(component)\b)</string>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>storage.type.class.cfml</string>
+							<string>meta.class.body.cfml punctuation.definition.block.end.cfml</string>
 						</dict>
 					</dict>
-					<key>end</key>
-					<string>(?={)</string>
-					<key>name</key>
-					<string>meta.class.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>include</key>
-							<string>#source-cfml-script-comments</string>
+							<key>begin</key>
+							<string>\b(?:(abstract|final)\s+)?(component)\b</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>storage.modifier.cfml</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>storage.type.class.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\{)</string>
+							<key>name</key>
+							<string>meta.class.declaration.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-comments</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-component-attributes</string>
+								</dict>
+							</array>
 						</dict>
 						<dict>
-							<key>include</key>
-							<string>#source-cfml-script-component-attributes</string>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.block.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=})</string>
+							<key>name</key>
+							<string>meta.class.body.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-statements</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?i)^\s*(interface)(?=(\s+|{))</string>
-					<key>beginCaptures</key>
+					<string>(?i)^(?=\s*(interface)\b)</string>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>storage.type.interface.cfml</string>
+							<string>meta.interface.body.cfml punctuation.definition.block.end.cfml</string>
 						</dict>
 					</dict>
-					<key>end</key>
-					<string>(?={)</string>
-					<key>name</key>
-					<string>meta.interface.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>include</key>
-							<string>#source-cfml-script-component-attributes</string>
+							<key>begin</key>
+							<string>\b(interface)\b</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>storage.type.interface.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\{)</string>
+							<key>name</key>
+							<string>meta.interface.declaration.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-comments</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-component-attributes</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.block.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=})</string>
+							<key>name</key>
+							<string>meta.interface.body.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-statements</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
@@ -1268,7 +2102,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>storage.modifier.extends.cfml</string>
+							<string>entity.other.attribute-name.cfml storage.modifier.extends.cfml</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1335,129 +2169,19 @@
 				</dict>
 			</array>
 		</dict>
-		<key>source-cfml-script-constructor</key>
+		<key>source-cfml-script-conditional</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\b(new)\s+</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.new.cfml</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?&lt;=\))|(?=[^_$\w.\(])</string>
-					<key>name</key>
-					<string>meta.instance.constructor</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>captures</key>
-							<dict>
-								<key>2</key>
-								<dict>
-									<key>name</key>
-									<string>entity.name.class.cfml</string>
-								</dict>
-							</dict>
-							<key>match</key>
-							<string>([_$\w.]*\.)?([_$\w]*)(?=\()</string>
-						</dict>
-						<dict>
-							<key>begin</key>
-							<string>\(</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.arguments.begin.cfml</string>
-								</dict>
-							</dict>
-							<key>end</key>
-							<string>\)</string>
-							<key>endCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.arguments.end.cfml</string>
-								</dict>
-							</dict>
-							<key>name</key>
-							<string>meta.function-call.method.arguments.cfml</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>match</key>
-									<string>,</string>
-									<key>name</key>
-									<string>punctuation.definition.separator.arguments.cfml</string>
-								</dict>
-								<dict>
-									<key>match</key>
-									<string>(?i:(\w+)\s*(?=\=[^\=]))</string>
-									<key>name</key>
-									<string>entity.other.method-parameter.cfml</string>
-								</dict>
-								<dict>
-									<key>include</key>
-									<string>#source-cfml-script-expression</string>
-								</dict>
-							</array>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<key>source-cfml-script-core</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-labels</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-keywords</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-for</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-switch</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-expression</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-punctuation</string>
-				</dict>
-			</array>
-		</dict>
-		<key>source-cfml-script-curly-brackets</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>\{</string>
+					<string>\bswitch\b</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.brace.curly.cfml</string>
+							<string>keyword.control.switch.cfml</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1467,101 +2191,67 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.brace.curly.cfml</string>
+							<string>meta.block.cfml punctuation.definition.block.end.cfml</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.group.braces.curly</string>
+					<string>meta.switch.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-core</string>
+							<string>#source-cfml-script-round-brackets</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.block.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\})</string>
+							<key>name</key>
+							<string>meta.block.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>begin</key>
+									<string>:</string>
+									<key>end</key>
+									<string>(?=(\bcase\b|\bdefault\b|\}))</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#source-cfml-script-statements</string>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>\b(case|default)\b</string>
+									<key>name</key>
+									<string>keyword.control.switch.cfml</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-expressions</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
-			</array>
-		</dict>
-		<key>source-cfml-script-expression</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-support</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-function</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-number</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-language-constant</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-language-variable</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-constructor</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-component</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-method-call</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-tag-in-script-cf</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-function-call</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-comments</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-brackets</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-operators</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-tag-in-script</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-variable</string>
-				</dict>
-			</array>
-		</dict>
-		<key>source-cfml-script-for</key>
-		<dict>
-			<key>patterns</key>
-			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;!\.)\b(for)\b</string>
+					<string>\bdo\b</string>
 					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.control.loop.cfml</string>
@@ -1574,13 +2264,50 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.brace.round.cfml</string>
+							<string>meta.group.cfml punctuation.definition.group.end.cfml</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.for.cfml</string>
+					<string>meta.do-while.cfml</string>
 					<key>patterns</key>
 					<array>
+						<dict>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.block.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>\}</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.block.end.cfml</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>meta.block.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-statements</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\bwhile\b</string>
+							<key>name</key>
+							<string>keyword.control.loop.cfml</string>
+						</dict>
 						<dict>
 							<key>begin</key>
 							<string>\(</string>
@@ -1589,199 +2316,298 @@
 								<key>0</key>
 								<dict>
 									<key>name</key>
-									<string>meta.brace.round.cfml</string>
+									<string>punctuation.definition.group.begin.cfml</string>
 								</dict>
 							</dict>
 							<key>end</key>
 							<string>(?=\))</string>
+							<key>name</key>
+							<string>meta.group.cfml</string>
 							<key>patterns</key>
 							<array>
 								<dict>
 									<key>include</key>
-									<string>#source-cfml-script-keyword-storage</string>
-								</dict>
-								<dict>
-									<key>include</key>
-									<string>#source-cfml-script-expression</string>
-								</dict>
-								<dict>
-									<key>include</key>
-									<string>#source-cfml-script-punctuation</string>
+									<string>#source-cfml-script-expressions</string>
 								</dict>
 							</array>
 						</dict>
 					</array>
 				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\bfor\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.loop.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?:(\})|(?=[^\(\{\}\s]))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.block.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.for.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-parens-block-scope</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\bwhile\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.loop.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?:(\})|(?=[^\(\{\}\s]))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.block.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.while.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-parens-block-scope</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b(else\s+if|if)\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.conditional.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?:(\})|(?=[^\(\{\}\s]))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.block.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.conditional.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-parens-block-scope</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\belse\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.conditional.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?:(\})|(?=[^\{\}\s]))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.block.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.conditional.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-block-scope</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\btry\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.trycatch.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?:(\})|(?=[^\{\}\s]))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.block.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.try.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-block-scope</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\bfinally\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.trycatch.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?:(\})|(?=[^\{\}\s]))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.block.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.finally.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-block-scope</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\bcatch\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.trycatch.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?:(\})|(?=[^\(\{\}\s]))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.block.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.catch.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-parens-block-scope</string>
+						</dict>
+					</array>
+				</dict>
 			</array>
 		</dict>
-		<key>source-cfml-script-function</key>
+		<key>source-cfml-script-constants</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>(?x)
-(?:
-  (?:
-    (?i:\b(private|package|public|remote)\s+)?
-    (?i:\b
-      (void)\s+
-      |
-      (any|array|binary|boolean|component|date|guid|numeric|query|string|struct|xml|uuid)\s+
-      |
-      ([A-Za-z0-9_\.$]+)\s+
-      |
-      ([A-Za-z0-9_\.$]+)(\[\])?\s+
-    )?
-  )
-)
-(?i:(function))
-\s+
-(?:
-  (init)
-  |
-  ([_$a-zA-Z][$\w]*)
-)\b</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>storage.modifier.cfml</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.return-type.void.cfml</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.return-type.primitive.cfml</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.return-type.object.cfml</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.return-type.object.array.cfml</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>meta.group.braces.square meta.brace.square.cfml</string>
-						</dict>
-						<key>7</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.cfml</string>
-						</dict>
-						<key>8</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.constructor.cfml</string>
-						</dict>
-						<key>9</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.cfml</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?={)</string>
+					<key>match</key>
+					<string>\btrue\b</string>
 					<key>name</key>
-					<string>meta.function.cfml</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#source-cfml-script-function-declaration-parameters</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#source-cfml-script-function-properties</string>
-						</dict>
-					</array>
+					<string>constant.language.boolean.true.cfml</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>(\b[_$a-zA-Z][$\w]*)\s*=\s*(function)(?:(?=\s|[(]))\s*([_$a-zA-Z][$\w]*)?\s*</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.cfml</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.cfml</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.cfml</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?&lt;=\))</string>
+					<key>match</key>
+					<string>\bfalse\b</string>
 					<key>name</key>
-					<string>meta.function.cfml</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#source-cfml-script-function-declaration-parameters</string>
-						</dict>
-					</array>
+					<string>constant.language.boolean.false.cfml</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>(?&lt;!\.)\b(function)(?=\s*\()</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.cfml</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?&lt;=\))</string>
+					<key>match</key>
+					<string>\bnull\b</string>
 					<key>name</key>
-					<string>meta.function.cfml</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#source-cfml-script-function-declaration-parameters</string>
-						</dict>
-					</array>
+					<string>constant.language.null.cfml</string>
 				</dict>
 			</array>
 		</dict>
-		<key>source-cfml-script-function-call</key>
+		<key>source-cfml-script-constructor</key>
 		<dict>
 			<key>begin</key>
-			<string>([_$a-zA-Z][$\w]*)\s*(?=\()</string>
+			<string>\b(new)\s+</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>variable.function.cfml</string>
+					<string>keyword.operator.new.cfml</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?&lt;=\))</string>
+			<string>(\))|(?=[^_$\w.\(\)])</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>meta.function-call.parameters.method.cfml punctuation.definition.group.end.cfml</string>
+				</dict>
+			</dict>
 			<key>name</key>
-			<string>meta.function-call.cfml</string>
+			<string>meta.instance.constructor.cfml</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>match</key>
+					<string>\b[_$a-zA-Z][$\w\.]*</string>
+					<key>name</key>
+					<string>entity.name.class.cfml</string>
+				</dict>
 				<dict>
 					<key>begin</key>
 					<string>\(</string>
@@ -1790,40 +2616,215 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.arguments.begin.cfml</string>
+							<string>punctuation.definition.group.begin.cfml</string>
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>\)</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.arguments.end.cfml</string>
-						</dict>
-					</dict>
+					<string>(?=\))</string>
 					<key>name</key>
-					<string>meta.function-call.arguments.cfml</string>
+					<string>meta.function-call.parameters.method.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>match</key>
 							<string>,</string>
 							<key>name</key>
-							<string>punctuation.definition.separator.arguments.cfml</string>
+							<string>punctuation.separator.function-call.method.cfml</string>
 						</dict>
 						<dict>
-							<key>match</key>
-							<string>(?i:(\w+)\s*(?=\=[^\=]))</string>
-							<key>name</key>
-							<string>entity.other.function-parameter.cfml</string>
+							<key>begin</key>
+							<string>\b([_$a-zA-Z][$\w]*)\s*(=)(?!=)</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>entity.other.method-parameter.cfml</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.assignment.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=[,\)])</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-expressions</string>
+								</dict>
+							</array>
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-expression</string>
+							<string>#source-cfml-script-expressions</string>
 						</dict>
 					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-expressions</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-comments</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-constructor</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-operators</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-keywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-constants</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-named-function</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-anonymous-function</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-struct-literal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-brackets</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-number</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-call</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-variable</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-punctuation</string>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-function-call-params</key>
+		<dict>
+			<key>begin</key>
+			<string>\(</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.group.begin.cfml</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.group.end.cfml</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.function-call.cfml meta.function-call.parameters.cfml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>,</string>
+					<key>name</key>
+					<string>punctuation.separator.function-call.cfml</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b([_$a-zA-Z][$\w]*)\s*(=)(?!=)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.other.function-parameter.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.assignment.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=[,\)])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-expressions</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-expressions</string>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-function-declaration</key>
+		<dict>
+			<key>begin</key>
+			<string>(?=\s*\bfunction\b)</string>
+			<key>end</key>
+			<string>(?=\{)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.declaration.cfml</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.cfml</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(function)\b\s*</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[_$a-zA-Z][$\w]*</string>
+					<key>name</key>
+					<string>meta.function.declaration.cfml entity.name.function.cfml</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-function-declaration-parameters</string>
 				</dict>
 			</array>
 		</dict>
@@ -1843,77 +2844,160 @@
 						</dict>
 					</dict>
 					<key>end</key>
+					<string>(?=\))</string>
+					<key>name</key>
+					<string>meta.function.declaration.cfml meta.function.parameters.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-function-parameter</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
 					<string>\)</string>
-					<key>endCaptures</key>
+					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.end.cfml</string>
+							<string>meta.function.parameters.cfml punctuation.definition.parameters.end.cfml</string>
 						</dict>
 					</dict>
+					<key>end</key>
+					<string>(?=(\{|;|=&gt;))</string>
+					<key>name</key>
+					<string>meta.function.declaration.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>match</key>
-							<string>(?i:required)</string>
-							<key>name</key>
-							<string>keyword.other.required.argument.cfml</string>
-						</dict>
-						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-storage-types</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>[_$a-zA-Z][$\w]*</string>
-							<key>name</key>
-							<string>variable.parameter.function.cfml</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>,</string>
-							<key>name</key>
-							<string>punctuation.separator.parameter.function.cfml</string>
-						</dict>
-						<dict>
-							<key>begin</key>
-							<string>=</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>keyword.operator.assignment.cfml</string>
-								</dict>
-							</dict>
-							<key>end</key>
-							<string>(?=[,)])</string>
-							<key>name</key>
-							<string>meta.parameter.optional.cfml</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>include</key>
-									<string>#source-cfml-script-expression</string>
-								</dict>
-							</array>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#source-cfml-script-comments</string>
+							<string>#source-cfml-script-tag-generic-attribute</string>
 						</dict>
 					</array>
 				</dict>
 			</array>
 		</dict>
-		<key>source-cfml-script-function-properties</key>
+		<key>source-cfml-script-function-parameter</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>match</key>
+					<string>,</string>
+					<key>name</key>
+					<string>punctuation.separator.function.cfml</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i:required)</string>
+					<key>name</key>
+					<string>keyword.other.required.argument.cfml</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?:([_$a-zA-Z][$\w]*)\s+)?([_$a-zA-Z][$\w.]*)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.function.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=[,)])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?=[_$a-zA-Z][$\w]*)</string>
+							<key>end</key>
+							<string>(?=[,)])</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-tag-generic-attribute</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(=)\s*(?i:(\btrue\b)|(\bfalse\b)|(\bnull\b)|([_$a-zA-Z][$\w]*))?</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.assignment.cfml</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>constant.language.boolean.true.cfml</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>constant.language.boolean.false.cfml</string>
+								</dict>
+								<key>4</key>
+								<dict>
+									<key>name</key>
+									<string>constant.language.null.cfml</string>
+								</dict>
+								<key>5</key>
+								<dict>
+									<key>name</key>
+									<string>variable.other.readwrite.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=([_$a-zA-Z][$\w]*|[,)]))</string>
+							<key>name</key>
+							<string>meta.parameter.optional.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>begin</key>
+									<string>(?=\s*([+\-*/&amp;%])\s*[_$a-zA-Z][$\w]*)</string>
+									<key>end</key>
+									<string>[_$a-zA-Z][$\w]*</string>
+									<key>endCaptures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>variable.other.readwrite.cfml</string>
+										</dict>
+									</dict>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#source-cfml-script-operators</string>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-expressions</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
 					<key>include</key>
-					<string>#source-cfml-script-tag-generic-attribute</string>
+					<string>#source-cfml-script-comments</string>
 				</dict>
 			</array>
 		</dict>
@@ -1954,21 +3038,9 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-core</string>
+							<string>#source-cfml-script-expressions</string>
 						</dict>
 					</array>
-				</dict>
-			</array>
-		</dict>
-		<key>source-cfml-script-keyword-storage</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(var)\b</string>
-					<key>name</key>
-					<string>storage.modifier.cfml</string>
 				</dict>
 			</array>
 		</dict>
@@ -1977,147 +3049,949 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-keyword-storage</string>
-				</dict>
-				<dict>
 					<key>match</key>
-					<string>(?&lt;!\.)\b(return)\b</string>
-					<key>name</key>
-					<string>keyword.control.flow.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(if|else)\b</string>
-					<key>name</key>
-					<string>keyword.control.conditional.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(catch|finally|rethrow|throw|try)\b(?!\()</string>
+					<string>\b(throw|rethrow)\b(?!\()</string>
 					<key>name</key>
 					<string>keyword.control.trycatch.cfml</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;!\.)\b(break|continue|do|while)\b</string>
+					<string>(?&lt;!\.)\b(break|continue)\b</string>
 					<key>name</key>
 					<string>keyword.control.loop.cfml</string>
 				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(abort)\b</string>
+					<key>name</key>
+					<string>keyword.control.flow.cfml</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;!\.)\b(return)\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.flow.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bvar\b</string>
+					<key>name</key>
+					<string>storage.type.cfml</string>
+				</dict>
 			</array>
 		</dict>
-		<key>source-cfml-script-labels</key>
+		<key>source-cfml-script-keywords-top-level</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?x)
-(?&lt;!\?)(?&lt;!\?\s)(?=(
-  ((')((?:[^']|\\')*)('))|
-  ((")((?:[^"]|\\")*)("))
-)\s*:)</string>
-					<key>end</key>
-					<string>:</string>
-					<key>endCaptures</key>
+					<string>\bimport\b</string>
+					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.separator.key-value.cfml</string>
+							<string>keyword.control.import.cfml</string>
 						</dict>
 					</dict>
+					<key>end</key>
+					<string>(?=\n|;)</string>
+					<key>name</key>
+					<string>meta.import.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
 							<string>#source-cfml-script-string</string>
 						</dict>
+						<dict>
+							<key>match</key>
+							<string>[_$a-zA-Z][$\w]*</string>
+							<key>name</key>
+							<string>variable.other.readwrite.cfml</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\*</string>
+							<key>name</key>
+							<string>constant.other.cfml</string>
+						</dict>
 					</array>
 				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>string.unquoted.label.cfml</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.key-value.cfml</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>(?&lt;!\.|\?|\?\s)([_$a-zA-Z][$\w]*)\s*(:)</string>
-					<key>name</key>
-					<string>constant.other.object.key.cfml</string>
-				</dict>
 			</array>
 		</dict>
-		<key>source-cfml-script-language-constant</key>
+		<key>source-cfml-script-main</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(?i:true)\b</string>
-					<key>name</key>
-					<string>constant.language.boolean.true.cfml</string>
+					<key>include</key>
+					<string>#source-cfml-script-keywords-top-level</string>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(?i:false)\b</string>
-					<key>name</key>
-					<string>constant.language.boolean.false.cfml</string>
+					<key>include</key>
+					<string>#source-cfml-script-component</string>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(?i:null)\b</string>
-					<key>name</key>
-					<string>constant.language.null.cfml</string>
-				</dict>
-			</array>
-		</dict>
-		<key>source-cfml-script-language-variable</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(?i:super)\b</string>
-					<key>name</key>
-					<string>variable.language.super.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(?i:this)\b</string>
-					<key>name</key>
-					<string>variable.language.this.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(?i:thread)\b(?=[\[.])</string>
-					<key>name</key>
-					<string>variable.language.scope.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(?i:(application|arguments|attributes|caller|cgi|client|cookie|flash|form|local|request|server|session|thistag|url|variables|self|argumentcollection))\b</string>
-					<key>name</key>
-					<string>variable.language.scope.cfml</string>
+					<key>include</key>
+					<string>#source-cfml-script-statements</string>
 				</dict>
 			</array>
 		</dict>
 		<key>source-cfml-script-method-call</key>
 		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-support-method-call</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>([_$a-zA-Z][$\w]*)\s*(?=\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.function.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.group.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.function-call.method.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-method-call-params</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-method-call-params</key>
+		<dict>
 			<key>begin</key>
-			<string>(?&lt;=\.)([_$a-zA-Z][$\w]*)\s*(?=\()</string>
+			<string>\(</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.group.begin.cfml</string>
+				</dict>
+			</dict>
 			<key>end</key>
-			<string>(?&lt;=\))</string>
+			<string>(?=\))</string>
 			<key>name</key>
-			<string>meta.function-call.method.cfml</string>
+			<string>meta.function-call.parameters.method.cfml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>,</string>
+					<key>name</key>
+					<string>punctuation.separator.function-call.method.cfml</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b([_$a-zA-Z][$\w]*)\s*(=)(?!=)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.other.method-parameter.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.assignment.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=[,\)])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-expressions</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-expressions</string>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-named-function</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?x)
+(?:
+  (?:
+    (?i:\b(private|package|public|remote|static|final|abstract)\s+)?
+    (?i:\b(private|package|public|remote|static|final|abstract)\s+)?
+    (?i:\b
+      (void)\s+
+      |
+      (any|array|binary|boolean|component|date|guid|numeric|query|string|struct|xml|uuid)\s+
+      |
+      ([A-Za-z0-9_\.$]+)\s+
+      |
+      ([A-Za-z0-9_\.$]+)(\[)(\])?\s+
+    )?
+  )
+)
+(?i:(function))
+\s+
+(?:
+  (init)
+  |
+  ([_$a-zA-Z][$\w]*)
+)\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.declaration.cfml</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.cfml</string>
+						</dict>
+						<key>10</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.constructor.cfml</string>
+						</dict>
+						<key>11</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.cfml</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.return-type.void.cfml</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.return-type.primitive.cfml</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.return-type.object.cfml</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.return-type.object.array.cfml</string>
+						</dict>
+						<key>7</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brackets.cfml punctuation.definition.brackets.begin.cfml</string>
+						</dict>
+						<key>8</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brackets.cfml punctuation.definition.brackets.end.cfml</string>
+						</dict>
+						<key>9</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\}|(?=;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.body.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-function-declaration-parameters</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.block.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\})</string>
+							<key>name</key>
+							<string>meta.function.body.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-statements</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=(([_$a-zA-Z][$\w]*)\s*(\.)\s*)+([_$a-zA-Z][$\w]*)\s*(=)\s*(\s*\bfunction\b|\s*\([^\(]*?\)\s*=&gt;\s*\{))</string>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.body.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.block.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\})</string>
+							<key>name</key>
+							<string>meta.function.body.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-statements</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-arrow-function-declaration</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-function-declaration</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=[_$a-zA-Z][$\w]*\s*\.)</string>
+							<key>end</key>
+							<string>\.</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.accessor.cfml</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>meta.function.declaration.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-cfml-scopes</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>[_$a-zA-Z][$\w]*</string>
+									<key>name</key>
+									<string>support.class.cfml</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=[_$a-zA-Z][$\w]*\s*(=)\s*)</string>
+							<key>end</key>
+							<string>\s*(=)\s*</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.assignment.cfml</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>meta.function.declaration.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>[_$a-zA-Z][$\w]*</string>
+									<key>name</key>
+									<string>meta.property.cfml entity.name.function.cfml</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=(([_$a-zA-Z][$\w]*)\s*(\.)\s*)+([_$a-zA-Z][$\w]*)\s*(=)\s*\([^\(]*?\)\s*=&gt;)</string>
+					<key>end</key>
+					<string>(?=[);}\],\n])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-arrow-function-declaration</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=[_$a-zA-Z][$\w]*\s*\.)</string>
+							<key>end</key>
+							<string>\.</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.accessor.cfml</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>meta.function.declaration.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-cfml-scopes</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>[_$a-zA-Z][$\w]*</string>
+									<key>name</key>
+									<string>support.class.cfml</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=[_$a-zA-Z][$\w]*\s*(=)\s*)</string>
+							<key>end</key>
+							<string>\s*(=)\s*</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.assignment.cfml</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>meta.function.declaration.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>[_$a-zA-Z][$\w]*</string>
+									<key>name</key>
+									<string>meta.property.cfml entity.name.function.cfml</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=([_$a-zA-Z][$\w]*)\s*(=)\s*(\s*\bfunction\b|\s*\([^\(]*?\)\s*=&gt;\s*\{))</string>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.body.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.block.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\})</string>
+							<key>name</key>
+							<string>meta.function.body.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-statements</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-arrow-function-declaration</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-function-declaration</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=[_$a-zA-Z][$\w]*\s*(=)\s*)</string>
+							<key>end</key>
+							<string>\s*(=)\s*</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.assignment.cfml</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>meta.function.declaration.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>[A-Z][_$\dA-Z]*</string>
+									<key>name</key>
+									<string>variable.other.constant.cfml entity.name.function.cfml</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>[_$a-zA-Z][$\w]*</string>
+									<key>name</key>
+									<string>variable.other.readwrite.cfml entity.name.function.cfml</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=([_$a-zA-Z][$\w]*)\s*(=)\s*\([^\(]*?\)\s*=&gt;)</string>
+					<key>end</key>
+					<string>(?=[);}\],\n])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-arrow-function-declaration</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=[_$a-zA-Z][$\w]*\s*(=)\s*)</string>
+							<key>end</key>
+							<string>\s*(=)\s*</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.assignment.cfml</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>meta.function.declaration.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>[A-Z][_$\dA-Z]*</string>
+									<key>name</key>
+									<string>variable.other.constant.cfml entity.name.function.cfml</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>[_$a-zA-Z][$\w]*</string>
+									<key>name</key>
+									<string>variable.other.readwrite.cfml entity.name.function.cfml</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=\s*\bfunction\b\s+[_$a-zA-Z][$\w]*)</string>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.body.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.block.begin.cfml</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\})</string>
+							<key>name</key>
+							<string>meta.function.body.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-statements</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-function-declaration</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-number</key>
+		<dict>
+			<key>match</key>
+			<string>(?xi)(?:\B[-+])?(?:\b0x[0-9a-f]*|(\B\.[0-9]+|\b[0-9]+(\.[0-9]*)?))</string>
+			<key>name</key>
+			<string>constant.numeric.cfml</string>
+		</dict>
+		<key>source-cfml-script-operators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>!(?!=)</string>
+					<key>name</key>
+					<string>keyword.operator.logical.cfml</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?i:not)\b</string>
+					<key>name</key>
+					<string>keyword.operator.logical.cfml</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>--|\+\+</string>
+					<key>name</key>
+					<string>keyword.operator.arithmetic.cfml</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bnew\b</string>
+					<key>name</key>
+					<string>keyword.operator.new.cfml</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\bin\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>&amp;&amp;|\|\|</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.logical.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b(?i:(and|or|xor|eqv|imp))\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.logical.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>=(?!=)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.assignment.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b(?i:(greater|less|than|equal\s+to|does|contains|equal|eq|neq|lt|lte|le|gt|gte|ge|and|is))\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.decision.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>%=|&amp;=|\*=|\+=|-=|/=</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.assignment.augmented.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>&amp;</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.concat.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>&lt;=|&gt;=|&lt;|&gt;</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.relational.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>==|!=</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.comparison.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>/|%|\*|\+|-</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.arithmetic.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\?|:(?!:)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.ternary.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|(?=[^\s\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-parens-block-scope</key>
+		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -2128,7 +4002,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.arguments.begin.cfml</string>
+							<string>punctuation.definition.group.begin.cfml</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -2138,115 +4012,22 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.arguments.end.cfml</string>
+							<string>punctuation.definition.group.end.cfml</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.function-call.method.arguments.cfml</string>
+					<string>meta.group.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>match</key>
-							<string>,</string>
-							<key>name</key>
-							<string>punctuation.definition.separator.arguments.cfml</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>(?i:(\w+)\s*(?=\=[^\=]))</string>
-							<key>name</key>
-							<string>entity.other.method-parameter.cfml</string>
-						</dict>
-						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-expression</string>
+							<string>#source-cfml-script-expressions</string>
 						</dict>
 					</array>
 				</dict>
-			</array>
-		</dict>
-		<key>source-cfml-script-number</key>
-		<dict>
-			<key>match</key>
-			<string>((\b[0-9]+)|(\.[0-9]+[0-9\.]*)|(0(x|X)[0-9a-fA-F]+)|(\.[0-9]+)((e|E)(\+|-)?[0-9]+)?([LlFfUuDd]|UL|ul)?)\b</string>
-			<key>name</key>
-			<string>constant.numeric.cfml</string>
-		</dict>
-		<key>source-cfml-script-operators</key>
-		<dict>
-			<key>patterns</key>
-			<array>
 				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.)\b(in|new|void)\b</string>
-					<key>name</key>
-					<string>keyword.operator.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>!(?!=)|&amp;&amp;|\|\|</string>
-					<key>name</key>
-					<string>keyword.operator.logical.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(?i:(not|and|or|xor|eqv|imp))\b</string>
-					<key>name</key>
-					<string>keyword.operator.logical.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(?i:(greater|less|than|equal\s+to|does|contains|equal|eq|neq|lt|lte|le|gt|gte|ge|and|is))\b</string>
-					<key>name</key>
-					<string>keyword.operator.decision.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>=(?!=)</string>
-					<key>name</key>
-					<string>keyword.operator.assignment.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>%=|&amp;=|\*=|\+=|-=|/=</string>
-					<key>name</key>
-					<string>keyword.operator.assignment.augmented.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>&amp;</string>
-					<key>name</key>
-					<string>keyword.operator.concat.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>&lt;=|&gt;=|&lt;|&gt;</string>
-					<key>name</key>
-					<string>keyword.operator.relational.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>==|!=</string>
-					<key>name</key>
-					<string>keyword.operator.comparison.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>--|\+\+|/|%|\*|\+|-</string>
-					<key>name</key>
-					<string>keyword.operator.arithmetic.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\?|:</string>
-					<key>name</key>
-					<string>keyword.operator.ternary.cfml</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\.</string>
-					<key>name</key>
-					<string>keyword.operator.accessor.cfml</string>
+					<key>include</key>
+					<string>#source-cfml-script-block-scope</string>
 				</dict>
 			</array>
 		</dict>
@@ -2255,8 +4036,290 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>begin</key>
+					<string>\.</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.accessor.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\))|(?=\n)|(\})|(;)|(?:([A-Z][_$\dA-Z]*)|([_$a-zA-Z][$\w]*))(?=\n|[^$\w])(?!(\s*\(|\s*=\s*(function\b|\([^\(]*?\)\s*=&gt;)))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.body.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.terminator.statement.cfml</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>meta.property.constant.cfml</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>meta.property.cfml</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?=([_$a-zA-Z][$\w]*)\s*(=)\s*(function\b|\([^\(]*?\)\s*=&gt;\s*\{))</string>
+							<key>end</key>
+							<string>(?=\})</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>begin</key>
+									<string>\{</string>
+									<key>beginCaptures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>punctuation.definition.block.begin.cfml</string>
+										</dict>
+									</dict>
+									<key>end</key>
+									<string>(?=\})</string>
+									<key>name</key>
+									<string>meta.function.body.cfml</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#source-cfml-script-statements</string>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>captures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>meta.function.declaration.cfml</string>
+										</dict>
+										<key>1</key>
+										<dict>
+											<key>name</key>
+											<string>meta.property.cfml entity.name.function.cfml</string>
+										</dict>
+										<key>2</key>
+										<dict>
+											<key>name</key>
+											<string>keyword.operator.assignment.cfml</string>
+										</dict>
+									</dict>
+									<key>match</key>
+									<string>([_$a-zA-Z][$\w]*)\s*(=)\s*</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-function-declaration</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-arrow-function-declaration</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=([_$a-zA-Z][$\w]*)\s*(=)\s*\([^\(]*?\)\s*=&gt;)</string>
+							<key>end</key>
+							<string>(?=[);}\],\n])</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>captures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>meta.function.declaration.cfml</string>
+										</dict>
+										<key>1</key>
+										<dict>
+											<key>name</key>
+											<string>meta.property.cfml entity.name.function.cfml</string>
+										</dict>
+										<key>2</key>
+										<dict>
+											<key>name</key>
+											<string>keyword.operator.assignment.cfml</string>
+										</dict>
+									</dict>
+									<key>match</key>
+									<string>([_$a-zA-Z][$\w]*)\s*(=)\s*</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-arrow-function-declaration</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-method-call</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>::</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.accessor.static.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\))|(?=\n)|(\})|(;)|(?:([A-Z][_$\dA-Z]*)|([_$a-zA-Z][$\w]*))(?=\n|[^$\w])(?!(\s*\(|\s*=\s*(function\b|\([^\(]*?\)\s*=&gt;)))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.body.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.terminator.statement.cfml</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>meta.property.constant.cfml</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>meta.property.cfml</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?=([_$a-zA-Z][$\w]*)\s*(=)\s*(function\b|\([^\(]*?\)\s*=&gt;\s*\{))</string>
+							<key>end</key>
+							<string>(?=\})</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>begin</key>
+									<string>\{</string>
+									<key>beginCaptures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>punctuation.definition.block.begin.cfml</string>
+										</dict>
+									</dict>
+									<key>end</key>
+									<string>(?=\})</string>
+									<key>name</key>
+									<string>meta.function.body.cfml</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#source-cfml-script-statements</string>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>captures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>meta.function.declaration.cfml</string>
+										</dict>
+										<key>1</key>
+										<dict>
+											<key>name</key>
+											<string>meta.property.cfml entity.name.function.cfml</string>
+										</dict>
+										<key>2</key>
+										<dict>
+											<key>name</key>
+											<string>keyword.operator.assignment.cfml</string>
+										</dict>
+									</dict>
+									<key>match</key>
+									<string>([_$a-zA-Z][$\w]*)\s*(=)\s*</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-function-declaration</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-arrow-function-declaration</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=([_$a-zA-Z][$\w]*)\s*(=)\s*\([^\(]*?\)\s*=&gt;)</string>
+							<key>end</key>
+							<string>(?=[);}\],\n])</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>captures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>meta.function.declaration.cfml</string>
+										</dict>
+										<key>1</key>
+										<dict>
+											<key>name</key>
+											<string>meta.property.cfml entity.name.function.cfml</string>
+										</dict>
+										<key>2</key>
+										<dict>
+											<key>name</key>
+											<string>keyword.operator.assignment.cfml</string>
+										</dict>
+									</dict>
+									<key>match</key>
+									<string>([_$a-zA-Z][$\w]*)\s*(=)\s*</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-arrow-function-declaration</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-static-method-call</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
 					<key>match</key>
-					<string>;</string>
+					<string>\;</string>
 					<key>name</key>
 					<string>punctuation.terminator.statement.cfml</string>
 				</dict>
@@ -2265,6 +4328,42 @@
 					<string>,</string>
 					<key>name</key>
 					<string>meta.delimiter.comma.cfml</string>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-queryexecute-parameter</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\b(sql)\s*(=)(?!=)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.other.function-parameter.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.assignment.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=[,\)])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-sql-string</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-expressions</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -2280,7 +4379,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.brace.round.cfml</string>
+							<string>punctuation.definition.group.begin.cfml</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -2290,16 +4389,16 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.brace.round.cfml</string>
+							<string>punctuation.definition.group.end.cfml</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.group.braces.round</string>
+					<string>meta.group.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-expression</string>
+							<string>#source-cfml-script-expressions</string>
 						</dict>
 					</array>
 				</dict>
@@ -2311,19 +4410,111 @@
 				</dict>
 			</array>
 		</dict>
+		<key>source-cfml-script-sql-string</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>"</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.double.cfml punctuation.definition.string.begin.cfml</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>source.sql</string>
+					<key>end</key>
+					<string>(")(?!")</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.double.cfml punctuation.definition.string.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.queryexecute.sql.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>""</string>
+							<key>name</key>
+							<string>constant.character.escape.quote.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-hash-delimiters</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-sql</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>'</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.single.cfml punctuation.definition.string.begin.cfml</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>source.sql</string>
+					<key>end</key>
+					<string>(')(?!')</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.single.cfml punctuation.definition.string.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.queryexecute.sql.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>''</string>
+							<key>name</key>
+							<string>constant.character.escape.quote.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-hash-delimiters</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-sql</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>source-cfml-script-square-brackets</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\[</string>
+					<string>(?&lt;=[$\w\)\]])\s*(\[)</string>
 					<key>beginCaptures</key>
 					<dict>
-						<key>0</key>
+						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>meta.brace.square.cfml</string>
+							<string>punctuation.definition.brackets.begin.cfml</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -2333,27 +4524,183 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.brace.square.cfml</string>
+							<string>punctuation.definition.brackets.end.cfml</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.group.braces.square</string>
+					<string>meta.brackets.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-expression</string>
+							<string>#source-cfml-script-expressions</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\[</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.brackets.begin.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\]</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.brackets.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.array-literal.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>punctuation.separator.array-literal.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-expressions</string>
 						</dict>
 					</array>
 				</dict>
 			</array>
 		</dict>
-		<key>source-cfml-script-storage-types</key>
+		<key>source-cfml-script-statements</key>
 		<dict>
-			<key>match</key>
-			<string>\b(?i:(function|string|date|struct|array|void|binary|numeric|boolean|query|xml|uuid|any))\b</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-conditional</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-static</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\{</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.block.begin.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.block.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-statements</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-tag-in-script</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-tag-in-script-cf</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-expressions</string>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-static</key>
+		<dict>
+			<key>begin</key>
+			<string>\bstatic\b(?=\s*[\n\{])</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.static.cfml</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?:(\})|(?=[^\{\}\s]))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>meta.block.static.cfml punctuation.definition.block.end.cfml</string>
+				</dict>
+			</dict>
 			<key>name</key>
-			<string>storage.type.primitive.cfml</string>
+			<string>meta.block.static.cfml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-block-scope</string>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-static-method-call</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>([_$a-zA-Z][$\w]*)\s*(?=\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.function.static.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.group.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.function-call.method.static.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-method-call-params</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
 		</dict>
 		<key>source-cfml-script-string</key>
 		<dict>
@@ -2375,35 +4722,81 @@
 			<string>"</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>1</key>
+				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.cfml</string>
+					<string>string.quoted.double.cfml punctuation.definition.string.begin.cfml</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>"(?!")</string>
+			<string>(")(?!")</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.cfml</string>
+					<string>string.quoted.double.cfml punctuation.definition.string.end.cfml</string>
 				</dict>
 			</dict>
-			<key>name</key>
-			<string>string.quoted.double.cfml</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>""</string>
 					<key>name</key>
-					<string>constant.character.escape.quote.cfml</string>
+					<string>string.quoted.double.cfml constant.character.escape.quote.cfml</string>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-hash-delimiters</string>
+					<key>begin</key>
+					<string>(?=\s*(?:SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER|WITH|DECLARE|FROM|WHERE|AND|ORDER BY|GROUP BY|INNER JOIN|OUTER JOIN|LEFT JOIN)\b)</string>
+					<key>end</key>
+					<string>(?="[^"])</string>
+					<key>name</key>
+					<string>meta.string.quoted.double.cfml source.sql</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>""</string>
+							<key>name</key>
+							<string>constant.character.escape.quote.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-hash-delimiters</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-sql</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=\S)</string>
+					<key>end</key>
+					<string>(?="[^"])</string>
+					<key>name</key>
+					<string>string.quoted.double.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>""</string>
+							<key>name</key>
+							<string>constant.character.escape.quote.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-hash-delimiters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[\s\n]</string>
+					<key>name</key>
+					<string>string.quoted.double.cfml</string>
 				</dict>
 			</array>
 		</dict>
@@ -2413,45 +4806,385 @@
 			<string>'</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>1</key>
+				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.cfml</string>
+					<string>string.quoted.single.cfml punctuation.definition.string.begin.cfml</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>'(?!')</string>
+			<string>(')(?!')</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.cfml</string>
+					<string>string.quoted.single.cfml punctuation.definition.string.end.cfml</string>
 				</dict>
 			</dict>
-			<key>name</key>
-			<string>string.quoted.single.cfml</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>''</string>
 					<key>name</key>
-					<string>constant.character.escape.quote.cfml</string>
+					<string>string.quoted.single.cfml constant.character.escape.quote.cfml</string>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#source-cfml-script-hash-delimiters</string>
+					<key>begin</key>
+					<string>(?=\s*(?:SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER|WITH|DECLARE|FROM|WHERE|AND|ORDER BY|GROUP BY|INNER JOIN|OUTER JOIN|LEFT JOIN)\b)</string>
+					<key>end</key>
+					<string>(?='[^'])</string>
+					<key>name</key>
+					<string>meta.string.quoted.single.cfml source.sql</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>''</string>
+							<key>name</key>
+							<string>constant.character.escape.quote.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-hash-delimiters</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-sql</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=\S)</string>
+					<key>end</key>
+					<string>(?='[^'])</string>
+					<key>name</key>
+					<string>string.quoted.single.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>''</string>
+							<key>name</key>
+							<string>constant.character.escape.quote.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-hash-delimiters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[\s\n]</string>
+					<key>name</key>
+					<string>string.quoted.single.cfml</string>
 				</dict>
 			</array>
 		</dict>
-		<key>source-cfml-script-support</key>
+		<key>source-cfml-script-struct-literal</key>
+		<dict>
+			<key>begin</key>
+			<string>\{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.begin.cfml</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.end.cfml</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.struct-literal.cfml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-comments</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=(\'[^']*\'|\"[^"]*\"|[_$a-zA-Z][$\w]*)\s*(:|=)\s*(\bfunction\b|\([^\(]*?\)\s*=&gt;\s*\{))</string>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.body.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal-function-keys</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=\s*\bfunction\b)</string>
+							<key>end</key>
+							<string>(?=\})</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-function-declaration</string>
+								</dict>
+								<dict>
+									<key>begin</key>
+									<string>\{</string>
+									<key>beginCaptures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>punctuation.definition.block.begin.cfml</string>
+										</dict>
+									</dict>
+									<key>end</key>
+									<string>(?=\})</string>
+									<key>name</key>
+									<string>meta.function.body.cfml</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#source-cfml-script-statements</string>
+										</dict>
+									</array>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=\s*\([^\(]*?\)\s*=&gt;\s*\{)</string>
+							<key>end</key>
+							<string>(?=\})</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-arrow-function-declaration</string>
+								</dict>
+								<dict>
+									<key>begin</key>
+									<string>\{</string>
+									<key>beginCaptures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>punctuation.definition.block.begin.cfml</string>
+										</dict>
+									</dict>
+									<key>end</key>
+									<string>(?=\})</string>
+									<key>name</key>
+									<string>meta.function.body.cfml</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#source-cfml-script-statements</string>
+										</dict>
+									</array>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=(\'[^']*\'|\"[^"]*\"|[_$a-zA-Z][$\w]*)\s*(:|=)\s*\([^\(]*?\)\s*=&gt;)</string>
+					<key>end</key>
+					<string>(?=[);}\],\n])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-struct-literal-function-keys</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-arrow-function-declaration</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?="|')</string>
+					<key>end</key>
+					<string>(?&lt;="|')</string>
+					<key>name</key>
+					<string>meta.struct-literal.key.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-string</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[_$a-zA-Z][$\w]*</string>
+					<key>name</key>
+					<string>meta.struct-literal.key.cfml</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(:|=)\s*</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.key-value.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(,)|(?=\})</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.struct-literal.cfml</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-expressions</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>,</string>
+					<key>name</key>
+					<string>punctuation.separator.struct-literal.cfml</string>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-struct-literal-function-keys</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?i)(?&lt;!\.)\b(createobject)(\()(?=(?:\s*type\s*=)?\s*["']component["']\s*,)</string>
+					<string>'</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.cfml</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>entity.name.function.cfml</string>
+					<key>end</key>
+					<string>(')(?!')</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.function.declaration.cfml meta.struct-literal.key.cfml string.quoted.single.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>''</string>
+							<key>name</key>
+							<string>constant.character.escape.quote.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-hash-delimiters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>"</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.cfml</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>entity.name.function.cfml</string>
+					<key>end</key>
+					<string>(")(?!")</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.function.declaration.cfml meta.struct-literal.key.cfml string.quoted.double.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>""</string>
+							<key>name</key>
+							<string>constant.character.escape.quote.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-hash-delimiters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[_$a-zA-Z][$\w]*</string>
+					<key>name</key>
+					<string>meta.function.declaration.cfml meta.struct-literal.key.cfml entity.name.function.cfml</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(:|=)</string>
+					<key>name</key>
+					<string>meta.function.declaration.cfml punctuation.separator.key-value.cfml</string>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-support-call</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?i)\b(createobject)(\()(?=(?:\s*type\s*=)?\s*["']component["']\s*,)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2462,11 +5195,11 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>meta.support.function-call.arguments.cfml punctuation.definition.arguments.begin.cfml</string>
+							<string>meta.function-call.parameters.support.cfml punctuation.definition.group.begin.cfml</string>
 						</dict>
 					</dict>
 					<key>contentName</key>
-					<string>meta.support.function-call.arguments.cfml</string>
+					<string>meta.function-call.parameters.support.cfml</string>
 					<key>end</key>
 					<string>\)</string>
 					<key>endCaptures</key>
@@ -2474,22 +5207,32 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.support.function-call.arguments.cfml punctuation.definition.arguments.end.cfml</string>
+							<string>meta.function-call.parameters.support.cfml punctuation.definition.group.end.cfml</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.support.function-call.cfml meta.support.function-call.createcomponent.cfml</string>
+					<string>meta.function-call.support.cfml meta.function-call.support.createcomponent.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>punctuation.separator.function-call.support.cfml</string>
+						</dict>
+						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-expression</string>
+							<string>#source-cfml-script-support-call-parameter</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-expressions</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?i)(?&lt;!\.)\b(createobject)(\()(?=(?:\s*type\s*=)?\s*["']java["']\s*,)</string>
+					<string>(?i)\b(createobject)(\()(?=(?:\s*type\s*=)?\s*["']java["']\s*,)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2500,11 +5243,11 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>meta.support.function-call.arguments.cfml punctuation.definition.arguments.begin.cfml</string>
+							<string>meta.function-call.parameters.support.cfml punctuation.definition.group.begin.cfml</string>
 						</dict>
 					</dict>
 					<key>contentName</key>
-					<string>meta.support.function-call.arguments.cfml</string>
+					<string>meta.function-call.parameters.support.cfml</string>
 					<key>end</key>
 					<string>\)</string>
 					<key>endCaptures</key>
@@ -2512,99 +5255,202 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.support.function-call.arguments.cfml punctuation.definition.arguments.end.cfml</string>
+							<string>meta.function-call.parameters.support.cfml punctuation.definition.group.end.cfml</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.support.function-call.cfml meta.support.function-call.createjavaobject.cfml</string>
+					<string>meta.function-call.support.cfml meta.function-call.support.createjavaobject.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>punctuation.separator.function-call.support.cfml</string>
+						</dict>
+						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-expression</string>
+							<string>#source-cfml-script-support-call-parameter</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-expressions</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?x)
-(?&lt;!\.)\b
+					<string>(?i)\b(queryexecute)(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function-call.parameters.support.cfml punctuation.definition.group.begin.cfml</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>meta.function-call.parameters.support.cfml</string>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function-call.parameters.support.cfml punctuation.definition.group.end.cfml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.function-call.support.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?i)(?&lt;=queryexecute\()</string>
+							<key>end</key>
+							<string>(?=[,)])</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-sql-string</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-queryexecute-parameter</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-support-call-parameter</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#source-cfml-script-expressions</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>punctuation.separator.function-call.support.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-queryexecute-parameter</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-support-call-parameter</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-expressions</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?x)\b
 (?i:
-    (abs|acos|addsoaprequestheader|addsoapresponseheader|ajaxlink|ajaxonload|applicationstarttime
-    |applicationstop|array|arrayappend|arrayavg|arrayclear|arraycontains|arraycontainsnocase
-    |arraydelete|arraydeleteat|arrayeach|arrayevery|arrayfilter|arrayfind|arrayfindall|arrayfindallnocase
-    |arrayfindnocase|arrayfirst|arrayindexexists|arrayinsertat|arrayisdefined|arrayisempty
-    |arraylast|arraylen|arraymap|arraymax|arraymedian|arraymerge|arraymid|arraymin|arraynew|arrayprepend
-    |arrayreduce|arrayresize|arrayreverse|arrayset|arrayslice|arraysome|arraysort|arraysum|arrayswap
-    |arraytolist|arraytostruct|asc|asin|atn|beat|binarydecode|binaryencode|bitand|bitmaskclear|bitmaskread
-    |bitmaskset|bitnot|bitor|bitshln|bitshrn|bitxor|cacheclear|cachecount|cachedelete|cacheget|cachegetall
-    |cachegetallids|cachegetdefaultcachename|cachegetmetadata|cachegetproperties|cacheidexists|cachekeyexists
-    |cacheput|cacheremove|cacheremoveall|cachesetproperties|callstackdump|callstackget|canonicalize|ceiling
-    |cfusion_decrypt|cfusion_encrypt|charsetdecode|charsetencode|chr|cjustify|collectioneach|collectionevery
-    |collectionfilter|collectionmap|collectionreduce|collectionsome|compare|comparenocase|componentcacheclear
-    |componentcachelist|componentinfo|compress|contractpath|cos|createdate|createdatetime|createdynamicproxy
-    |createguid|createobject|createodbcdate|createodbcdatetime|createodbctime|createtime|createtimespan
-    |createuniqueid|createuuid|csrfgeneratetoken|csrfverifytoken|ctcacheclear|ctcachelist
-    |datasourceflushmetacache|dateadd|datecompare|dateconvert|datediff|dateformat|datepart|datetimeformat|day
-    |dayofweek|dayofweekasstring|dayofweekshortasstring|dayofyear|daysinmonth|daysinyear|de|decimalformat
-    |decodefromurl|decrementvalue|decrypt|decryptbinary|deleteclientvariable|deserializejson|directorycopy
-    |directorycreate|directorydelete|directoryexists|directorylist|directoryrename|dollarformat|dump|duplicate
+    (array(?:append|avg|clear|contains|containsnocase|delete|deleteat|deletenocase|each
+    |every|filter|find|findall|findallnocase|findnocase|first|indexexists|insertat|isdefined
+    |isempty|last|len|map|max|median|merge|mid|min|new|prepend|reduce|resize|reverse
+    |set|slice|some|sort|sum|swap|tolist|tostruct)|cache(?:clear|count|delete|get|getall
+    |getallids|getdefaultcachename|getmetadata|getproperties|getsession|idexists|keyexists
+    |put|regionexists|regionnew|regionremove|remove|removeall|setproperties)|component(?:cacheclear
+    |cachelist|info)|create(?:date|datetime|dynamicproxy|guid|object|odbcdate|odbcdatetime
+    |odbctime|time|timespan|uniqueid|uuid)|date(?:add|compare|convert|diff|format|part
+    |timeformat)|entity(?:delete|load|loadbyexample|loadbypk|merge|namearray|namelist
+    |new|reload|save|toquery)|get(?:applicationmetadata|applicationsettings|authuser
+    |basetagdata|basetaglist|basetemplatepath|builtinfunction|canonicalpath|classpath
+    |clientvariableslist|componentmetadata|contextroot|cpuusage|currentcontext|currenttemplatepath
+    |directoryfrompath|encoding|exception|filefrompath|fileinfo|freespace|functioncalledname
+    |functiondata|functionkeywords|functionlist|gatewayhelper|httprequestdata|httptimestring
+    |k2serverdoccount|k2serverdoccountlimit|locale|localedisplayname|localhostip|luceeid
+    |memoryusage|metadata|metricdata|numericdate|pagecontext|printerinfo|printerlist
+    |profilesections|profilestring|readableimageformats|safehtml|soaprequest|soaprequestheader
+    |soapresponse|soapresponseheader|systemfreememory|systemtotalmemory|tagdata|taglist
+    |tempdirectory|tempfile|templatepath|tickcount|timezone|timezoneinfo|token|totalspace
+    |userroles|variable|vfsmetadata|writeableimageformats)|image(?:addborder|blur|clearrect
+    |copy|createcaptcha|crop|drawarc|drawbeveledrect|drawcubiccurve|drawimage|drawline
+    |drawlines|drawoval|drawpoint|drawquadraticcurve|drawrect|drawroundrect|drawtext
+    |filter|filtercolormap|filtercurves|filterkernel|filterwarpgrid|flip|fonts|formats
+    |getblob|getbufferedimage|getexifmetadata|getexiftag|getheight|getiptcmetadata|getiptctag
+    |getmetadata|getwidth|grayscale|info|makecolortransparent|maketranslucent|negative
+    |new|overlay|paste|read|readbase64|resize|rotate|rotatedrawingaxis|scaletofit|setantialiasing
+    |setbackgroundcolor|setdrawingalpha|setdrawingcolor|setdrawingstroke|setdrawingtransparency
+    |sharpen|shear|sheardrawingaxis|translate|translatedrawingaxis|write|writebase64
+    |xordrawingmode)|is(?:array|binary|boolean|closure|customfunction|date|ddx|debugmode
+    |defined|empty|fileobject|image|imagefile|instanceof|ipinrange|ipv6|json|leapyear
+    |localhost|notmap|null|numeric|numericdate|object|pdffile|pdfobject|query|safehtml
+    |simplevalue|soaprequest|spreadsheetfile|spreadsheetobject|struct|userinanyrole|userinrole
+    |userloggedin|valid|validoauthaccesstoken|videofile|wddx|xml|xmlattribute|xmldoc
+    |xmlelem|xmlnode|xmlroot|zipfile)|list(?:append|avg|changedelims|compact|contains
+    |containsnocase|deleteat|each|every|filter|find|findnocase|first|getat|indexexists
+    |insertat|itemtrim|last|len|map|prepend|qualify|reduce|removeduplicates|rest|setat
+    |some|sort|toarray|trim|valuecount|valuecountnocase)|object(?:equals|load|save)|orm(?:clearsession
+    |closeallsessions|closesession|evictcollection|evictentity|evictqueries|executequery
+    |flush|flushall|getsession|getsessionfactory|index|indexpurge|reload|search|searchoffline)
+    |query(?:addcolumn|addrow|columnarray|columncount|columndata|columnexists|columnlist
+    |convertforgrid|currentrow|deletecolumn|deleterow|each|every|execute|filter|getcell
+    |getrow|map|new|recordcount|reduce|rowdata|setcell|slice|some|sort)|replace(?:list
+    |nocase)|spreadsheet(?:addautofilter|addcolumn|addfreezepane|addimage|addinfo|addpagebreaks
+    |addrow|addrows|addsplitpane|createsheet|deletecolumn|deletecolumns|deleterow|deleterows
+    |formatcell|formatcellrange|formatcolumn|formatcolumns|formatrow|formatrows|getcellcomment
+    |getcellformula|getcellvalue|info|mergecells|new|read|readbinary|removesheet|setactivesheet
+    |setactivesheetnumber|setcellcomment|setcellformula|setcellvalue|setcolumnwidth|setfooter
+    |setheader|setrowheight|shiftcolumns|shiftrows|write)|store(?:addacl|getacl|getmetadata
+    |setacl|setmetadata)|struct(?:append|clear|copy|count|delete|each|every|filter|find
+    |findkey|findvalue|get|insert|isempty|keyarray|keyexists|keylist|keytranslate|map
+    |new|reduce|some|sort|update)|to(?:base64|binary|numeric|script|string)|transaction(?:commit
+    |rollback|setsavepoint)|url(?:decode|encode|encodedformat|sessionformat)|xml(?:childpos
+    |elemnew|format|getnodetype|new|parse|search|transform|validate)|abs|acos|addsoaprequestheader
+    |addsoapresponseheader|ajaxlink|ajaxonload|applicationstarttime|applicationstop|array
+    |asc|asin|atn|beat|binarydecode|binaryencode|bitand|bitmaskclear|bitmaskread|bitmaskset
+    |bitnot|bitor|bitshln|bitshrn|bitxor|booleanformat|callstackdump|callstackget|canonicalize
+    |ceiling|cfusion_decrypt|cfusion_encrypt|charsetdecode|charsetencode|chr|cjustify
+    |collectioneach|collectionevery|collectionfilter|collectionmap|collectionreduce|collectionsome
+    |compare|comparenocase|compress|contractpath|cos|csrfgeneratetoken|csrfverifytoken
+    |ctcacheclear|ctcachelist|datasourceflushmetacache|day|dayofweek|dayofweekasstring
+    |dayofweekshortasstring|dayofyear|daysinmonth|daysinyear|de|decimalformat|decodeforhtml
+    |decodefromurl|decrementvalue|decrypt|decryptbinary|deleteclientvariable|deserialize
+    |deserializejson|deserializexml|directorycopy|directorycreate|directorydelete|directoryexists
+    |directorylist|directoryrename|directorysize|dollarformat|dotnettocftype|duplicate
     |each|echo|empty|encodeforcss|encodefordn|encodeforhtml|encodeforhtmlattribute|encodeforjavascript
-    |encodeforldap|encodeforurl|encodeforxml|encodeforxmlattribute|encodeforxpath|encrypt|encryptbinary|entitydelete
-    |entityload|entityloadbyexample|entityloadbypk|entitymerge|entitynamearray|entitynamelist|entitynew|entityreload
-    |entitysave|entitytoquery|esapidecode|esapiencode|evaluate|exp|expandpath|extract|fileappend|fileclose|filecopy
-    |filedelete|fileexists|filegetmimetype|fileiseof|filemove|fileopen|fileread|filereadbinary|filereadline|fileseek
-    |filesetaccessmode|filesetattribute|filesetlastmodified|fileskipbytes|fileupload|fileuploadall|filewrite
-    |filewriteline|find|findnocase|findoneof|firstdayofmonth|fix|formatbasen|generatesecretkey|getapplicationmetadata
-    |getapplicationsettings|getauthuser|getbasetagdata|getbasetaglist|getbasetemplatepath|getbuiltinfunction
-    |getcanonicalpath|getclasspath|getclientvariableslist|getcomponentmetadata|getcontextroot|getcpuusage
-    |getcurrentcontext|getcurrenttemplatepath|getdirectoryfrompath|getencoding|getfilefrompath|getfileinfo|getfreespace
-    |getfunctioncalledname|getfunctiondata|getfunctionkeywords|getfunctionlist|gethttprequestdata|gethttptimestring
-    |getk2serverdoccount|getk2serverdoccountlimit|getlocale|getlocaledisplayname|getlocalhostip|getluceeid
-    |getmemoryusage|getmetadata|getmetricdata|getnumericdate|getpagecontext|getprinterlist|getprofilesections
-    |getprofilestring|getreadableimageformats|getsoaprequest|getsoaprequestheader|getsoapresponse|getsoapresponseheader
-    |getsystemfreememory|getsystemtotalmemory|gettagdata|gettaglist|gettempdirectory|gettempfile|gettemplatepath
-    |gettickcount|gettimezone|gettimezoneinfo|gettoken|gettotalspace|getuserroles|getvariable|getvfsmetadata
-    |getwriteableimageformats|hash|hash40|hmac|hour|htmlcodeformat|htmleditformat|htmlparse|iif|imageaddborder
-    |imageblur|imageclearrect|imagecopy|imagecrop|imagedrawarc|imagedrawbeveledrect|imagedrawcubiccurve|imagedrawimage
-    |imagedrawline|imagedrawlines|imagedrawoval|imagedrawpoint|imagedrawquadraticcurve|imagedrawrect|imagedrawroundrect
-    |imagedrawtext|imagefilter|imagefiltercolormap|imagefiltercurves|imagefilterkernel|imagefilterwarpgrid|imageflip
-    |imagefonts|imageformats|imagegetblob|imagegetbufferedimage|imagegetexifmetadata|imagegetexiftag|imagegetheight
-    |imagegetiptctag|imagegetwidth|imagegrayscale|imageinfo|imagenegative|imagenew|imageoverlay|imagepaste|imageread
-    |imagereadbase64|imageresize|imagerotate|imagerotatedrawingaxis|imagescaletofit|imagesetantialiasing
-    |imagesetbackgroundcolor|imagesetdrawingalpha|imagesetdrawingcolor|imagesetdrawingstroke|imagesetdrawingtransparency
-    |imagesharpen|imageshear|imagesheardrawingaxis|imagetranslate|imagetranslatedrawingaxis|imagewrite|imagewritebase64
-    |imagexordrawingmode|incrementvalue|inputbasen|insert|int|invoke|isarray|isbinary|isboolean|isclosure
-    |iscustomfunction|isdate|isdebugmode|isdefined|isempty|isimage|isimagefile|isinstanceof|isipinrange|isipv6
-    |isjson|isleapyear|islocalhost|isnotmap|isnull|isnumeric|isnumericdate|isobject|ispdfobject|isquery|issimplevalue
-    |issoaprequest|isstruct|isuserinanyrole|isuserinrole|isuserloggedin|isvalid|isvideofile|iswddx|isxml|isxmlattribute
-    |isxmldoc|isxmlelem|isxmlnode|isxmlroot|iszipfile|javacast|jsstringformat|lcase|left|len|listappend|listavg
-    |listchangedelims|listcompact|listcontains|listcontainsnocase|listdeleteat|listeach|listevery|listfilter|listfind
-    |listfindnocase|listfirst|listgetat|listindexexists|listinsertat|listitemtrim|listlast|listlen|listmap|listprepend
-    |listqualify|listreduce|listremoveduplicates|listrest|listsetat|listsome|listsort|listtoarray|listtrim
-    |listvaluecount|listvaluecountnocase|ljustify|location|log|log10|lscurrencyformat|lsdateformat|lsdatetimeformat
-    |lsdayofweek|lseurocurrencyformat|lsiscurrency|lsisdate|lsisnumeric|lsnumberformat|lsparsecurrency|lsparsedatetime
-    |lsparseeurocurrency|lsparsenumber|lstimeformat|lsweek|ltrim|max|metaphone|mid|millisecond|min|minute|month
-    |monthasstring|monthshortasstring|newline|now|nowserver|nullvalue|numberformat|objectequals|objectload|objectsave
-    |ormclearsession|ormcloseallsessions|ormclosesession|ormevictcollection|ormevictentity|ormevictqueries
-    |ormexecutequery|ormflush|ormgetsession|ormgetsessionfactory|ormreload|pagepoolclear|pagepoollist|paragraphformat
-    |parameterexists|parsedatetime|parsenumber|pi|precisionevaluate|preservesinglequotes|quarter|query|queryaddcolumn
-    |queryaddrow|querycolumnarray|querycolumncount|querycolumndata|querycolumnexists|querycolumnlist|queryconvertforgrid
-    |querycurrentrow|querydeletecolumn|querydeleterow|queryeach|queryevery|queryexecute|queryfilter|querygetcell
-    |querygetrow|querymap|querynew|queryrecordcount|queryreduce|queryrowdata|querysetcell|queryslice|querysome
-    |querysort|quotedvaluelist|rand|randomize|randrange|refind|refindnocase|releasecomobject|rematch|rematchnocase
-    |removechars|repeatstring|replace|replacelist|replacenocase|rereplace|rereplacenocase|restdeleteapplication
-    |restinitapplication|restsetresponse|reverse|right|rjustify|round|rtrim|second|sendgatewaymessage|serialize
-    |serializejson|sessioninvalidate|sessionrotate|sessionstarttime|setencoding|setlocale|setprofilestring|settimezone
-    |setvariable|sgn|sin|sizeof|sleep|soundex|spanexcluding|spanincluding|spreadsheetnew|spreadsheetsetcellvalue
-    |spreadsheetwrite|sqr|sslcertificateinstall|sslcertificatelist|storeaddacl|storegetacl|storesetacl|stringlen|stripcr
-    |structappend|structclear|structcopy|structcount|structdelete|structeach|structevery|structfilter|structfind
-    |structfindkey|structfindvalue|structget|structinsert|structisempty|structkeyarray|structkeyexists|structkeylist
-    |structkeytranslate|structmap|structnew|structreduce|structsome|structsort|structupdate|systemcacheclear|systemoutput
-    |tan|threadjoin|threadterminate|throw|timeformat|tobase64|tobinary|tonumeric|toscript|tostring|trace|transactioncommit
-    |transactionrollback|transactionsetsavepoint|trim|truefalseformat|ucase|ucfirst|unserializejava|urldecode|urlencode
-    |urlencodedformat|urlsessionformat|val|valuearray|valuelist|verifyclient|week|wrap|writedump|writelog|writeoutput
-    |xmlchildpos|xmlelemnew|xmlformat|xmlgetnodetype|xmlnew|xmlparse|xmlsearch|xmltransform|xmlvalidate|year|yesnoformat)
+    |encodeforldap|encodeforurl|encodeforxml|encodeforxmlattribute|encodeforxpath|encrypt
+    |encryptbinary|esapidecode|esapiencode|evaluate|exp|expandpath|extract|fileappend
+    |fileclose|filecopy|filedelete|fileexists|filegetmimetype|fileiseof|filemove|fileopen
+    |fileread|filereadbinary|filereadline|fileseek|filesetaccessmode|filesetattribute
+    |filesetlastmodified|fileskipbytes|fileupload|fileuploadall|filewrite|filewriteline
+    |find|findnocase|findoneof|firstdayofmonth|fix|floor|formatbasen|generatepbkdfkey
+    |generatesecretkey|hash|hash40|hmac|hour|htmlcodeformat|htmleditformat|htmlparse
+    |iif|incrementvalue|inputbasen|insert|int|invalidateoauthaccesstoken|invoke|javacast
+    |jsstringformat|lcase|left|len|ljustify|location|log|log10|lscurrencyformat|lsdateformat
+    |lsdatetimeformat|lsdayofweek|lseurocurrencyformat|lsiscurrency|lsisdate|lsisnumeric
+    |lsnumberformat|lsparsecurrency|lsparsedatetime|lsparseeurocurrency|lsparsenumber
+    |lstimeformat|lsweek|ltrim|max|metaphone|mid|millisecond|min|minute|month|monthasstring
+    |monthshortasstring|newline|now|nowserver|nullvalue|numberformat|onapplicationend
+    |onapplicationstart|onerror|onmissingmethod|onmissingtemplate|onrequest|onrequestend
+    |onrequeststart|onsessionend|onsessionstart|pagepoolclear|pagepoollist|paragraphformat
+    |parameterexists|parsedatetime|parsenumber|pi|precisionevaluate|preservesinglequotes
+    |quarter|query|quotedvaluelist|rand|randomize|randrange|reescape|refind|refindnocase
+    |releasecomobject|rematch|rematchnocase|removecachedquery|removechars|repeatstring
+    |replace|rereplace|rereplacenocase|restdeleteapplication|restinitapplication|restsetresponse
+    |reverse|right|rjustify|round|rtrim|second|sendgatewaymessage|serialize|serializejson
+    |serializexml|sessiongetmetadata|sessioninvalidate|sessionrotate|sessionstarttime
+    |setencoding|setlocale|setprofilestring|settimezone|setvariable|sgn|sin|sizeof|sleep
+    |soundex|spanexcluding|spanincluding|sqr|sslcertificateinstall|sslcertificatelist
+    |stringlen|stripcr|systemcacheclear|systemoutput|tan|threadjoin|threadterminate|throw
+    |timeformat|trace|trim|truefalseformat|ucase|ucfirst|unserializejava|val|valuearray
+    |valuelist|verifyclient|week|wrap|writebody|writedump|writelog|writeoutput|wsgetallchannels
+    |wsgetsubscribers|wspublish|wssendmessage|year|yesnoformat)
   )(\()</string>
 					<key>beginCaptures</key>
 					<dict>
@@ -2616,11 +5462,11 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>meta.support.function-call.arguments.cfml punctuation.definition.arguments.begin.cfml</string>
+							<string>meta.function-call.parameters.support.cfml punctuation.definition.group.begin.cfml</string>
 						</dict>
 					</dict>
 					<key>contentName</key>
-					<string>meta.support.function-call.arguments.cfml</string>
+					<string>meta.function-call.parameters.support.cfml</string>
 					<key>end</key>
 					<string>\)</string>
 					<key>endCaptures</key>
@@ -2628,23 +5474,67 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.support.function-call.arguments.cfml punctuation.definition.arguments.end.cfml</string>
+							<string>meta.function-call.parameters.support.cfml punctuation.definition.group.end.cfml</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.support.function-call.cfml</string>
+					<string>meta.function-call.support.cfml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>punctuation.separator.function-call.support.cfml</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-support-call-parameter</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-expressions</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>source-cfml-script-support-call-parameter</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\b([_$a-zA-Z][$\w\.]*)\s*(=)(?!=)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.other.function-parameter.cfml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.assignment.cfml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=[,\)])</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-expression</string>
+							<string>#source-cfml-script-expressions</string>
 						</dict>
 					</array>
 				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?x)
-(\.)
+			</array>
+		</dict>
+		<key>source-cfml-script-support-method-call</key>
+		<dict>
+			<key>begin</key>
+			<string>(?x)
 (?i:
   (add|addcolumn|addrow|append|avg|blur|cjustify|clear|clearrect|columnarray|columncount|columndata|columnexists
   |columnlist|compare|comparenocase|contains|containsnocase|copy|count|crop|currentrow|dateformat|day|dayofweek
@@ -2662,124 +5552,70 @@
   |setdrawingstroke|sharpen|slice|some|sort|spanexcluding|spanincluding|stripcr|sum|swap|tolist|tostruct|translate
   |trim|ucase|update|week|wrap|writebase64|year)
 )(\()</string>
-					<key>beginCaptures</key>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.member.cfml</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>meta.function-call.parameters.method.support.cfml punctuation.definition.group.begin.cfml</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function-call.parameters.method.support.cfml</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.function-call.parameters.method.support.cfml punctuation.definition.group.end.cfml</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.function-call.method.support.cfml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>,</string>
+					<key>name</key>
+					<string>punctuation.separator.function-call.method.support.cfml</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b([_$a-zA-Z][$\w\.]*)\s*(=)(?!=)</string>
+					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.accessor.cfml</string>
+							<string>entity.other.method-parameter.cfml</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>support.function.member.cfml</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>meta.support.function-call.member.arguments.cfml punctuation.definition.arguments.begin.cfml</string>
+							<string>keyword.operator.assignment.cfml</string>
 						</dict>
 					</dict>
-					<key>contentName</key>
-					<string>meta.support.function-call.member.arguments.cfml</string>
 					<key>end</key>
-					<string>\)</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>meta.support.function-call.member.arguments.cfml punctuation.definition.arguments.end.cfml</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.support.function-call.member.cfml</string>
+					<string>(?=[,\)])</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-expression</string>
+							<string>#source-cfml-script-expressions</string>
 						</dict>
 					</array>
 				</dict>
-			</array>
-		</dict>
-		<key>source-cfml-script-switch</key>
-		<dict>
-			<key>patterns</key>
-			<array>
 				<dict>
-					<key>begin</key>
-					<string>(?&lt;!\.)\b(switch)\b</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.switch.cfml</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>\}</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>meta.brace.curly.cfml</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.switch.cfml</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#source-cfml-script-round-brackets</string>
-						</dict>
-						<dict>
-							<key>begin</key>
-							<string>\{</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>meta.brace.curly.cfml</string>
-								</dict>
-							</dict>
-							<key>end</key>
-							<string>(?=})</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>begin</key>
-									<string>(?&lt;!\.)\b(case|default)\b</string>
-									<key>beginCaptures</key>
-									<dict>
-										<key>1</key>
-										<dict>
-											<key>name</key>
-											<string>keyword.control.switch.cfml</string>
-										</dict>
-									</dict>
-									<key>end</key>
-									<string>(?=:)</string>
-									<key>patterns</key>
-									<array>
-										<dict>
-											<key>include</key>
-											<string>#source-cfml-script-expression</string>
-										</dict>
-									</array>
-								</dict>
-								<dict>
-									<key>include</key>
-									<string>#source-cfml-script-core</string>
-								</dict>
-							</array>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#source-cfml-script-expressions</string>
 				</dict>
 			</array>
 		</dict>
@@ -2787,6 +5623,10 @@
 		<dict>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-comments</string>
+				</dict>
 				<dict>
 					<key>captures</key>
 					<dict>
@@ -2833,16 +5673,10 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>entity.other.attribute-name.cfml</string>
-						</dict>
-					</dict>
 					<key>match</key>
-					<string>\b([a-zA-Z0-9:-]+)\b</string>
+					<string>\b[a-zA-Z0-9:-]+\b</string>
+					<key>name</key>
+					<string>meta.tag.script.cfml entity.other.attribute-name.cfml</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -2856,12 +5690,14 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=[^\s=])|(?=[;{])</string>
+					<string>(?=\s*\b([a-zA-Z0-9:-]+)\s*=)|(?=[;\{])</string>
+					<key>name</key>
+					<string>meta.tag.script.cfml</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#source-cfml-script-expression</string>
+							<string>#source-cfml-script-expressions</string>
 						</dict>
 					</array>
 				</dict>
@@ -2873,7 +5709,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?i)(?&lt;!\.)\b(property)(?!\s+in\b)(\s+(any|array|binary|boolean|component|date|guid|numeric|query|string|struct|xml|uuid|[_$a-zA-Z][$\w]*))?\s+([_$a-zA-Z][$\w]*\b)(?!\s*=)</string>
+					<string>(?i)\b(property)(?!\s+in\b)(\s+(any|array|binary|boolean|component|date|guid|numeric|query|string|struct|xml|uuid|[_$a-zA-Z][$\w]*))?\s+([_$a-zA-Z][$\w]*\b)(?!\s*=)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2906,7 +5742,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?i)(?&lt;!\.)\b(property)(?!\s+in\b)(?=(\s+[a-zA-Z]|\s*$|\s*[{;]))</string>
+					<string>(?i)\b(property)(?!\s+in\b)(?=(\s+[a-zA-Z]|\s*$|\s*[{;]))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2922,6 +5758,68 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>entity.other.attribute-name.cfml</string>
+								</dict>
+								<key>10</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.string.end.cfml</string>
+								</dict>
+								<key>11</key>
+								<dict>
+									<key>name</key>
+									<string>string.unquoted.cfml meta.tag.property.name.cfml</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.separator.key-value.cfml</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.double.cfml</string>
+								</dict>
+								<key>4</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.string.begin.cfml</string>
+								</dict>
+								<key>5</key>
+								<dict>
+									<key>name</key>
+									<string>meta.tag.property.name.cfml</string>
+								</dict>
+								<key>6</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.string.end.cfml</string>
+								</dict>
+								<key>7</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.single.cfml</string>
+								</dict>
+								<key>8</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.string.begin.cfml</string>
+								</dict>
+								<key>9</key>
+								<dict>
+									<key>name</key>
+									<string>meta.tag.property.name.cfml</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>(?i)\b(name)\s*(=)\s*(?:((")([^&lt;&gt;"']*)("))|((')([^&lt;&gt;"']*)('))|([^&lt;&gt;"'\s]*))</string>
+						</dict>
+						<dict>
 							<key>include</key>
 							<string>#source-cfml-script-tag-generic-attribute</string>
 						</dict>
@@ -2929,7 +5827,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?i)(?&lt;!\.)\b(param)(?!\s+in\b)(?=\s+(name|default|max|maxLength|min|pattern|type)\s*=)</string>
+					<string>(?i)\b(param)(?!\s+in\b)(?=\s+(name|default|max|maxLength|min|pattern|type)\s*=)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2952,7 +5850,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?i)(?&lt;!\.)\b(param)(?!\s+in\b)\s+([_$a-zA-Z][$\w\.]*)(?=\s+(name|default|max|maxLength|min|pattern|type))</string>
+					<string>(?i)\b(param)(?!\s+in\b)\s+([_$a-zA-Z][$\w\.]*)(?=\s+(name|default|max|maxLength|min|pattern|type))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2980,7 +5878,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?i)(?&lt;!\.)\b(param)(?!\s+in\b)(\s+([_$a-zA-Z][$\w]*))?\s+([_$a-zA-Z][$\w\.]*\b)</string>
+					<string>(?i)\b(param)(?!\s+in\b)(\s+([_$a-zA-Z][$\w]*))?\s+([_$a-zA-Z][$\w\.]*\b)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -3013,7 +5911,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?i)(?&lt;!\.)\b(param)(?!\s+in\b)(?=(\s+[a-zA-Z]|\s*[{;]|\s*$))</string>
+					<string>(?i)\b(param)(?!\s+in\b)(?=(\s+[a-zA-Z]|\s*[{;]|\s*$))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -3036,59 +5934,57 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;!\.)(\b)(?i:(abort))(?!s+in\b)(?=(s+[a-zA-Z]|s*;|s*$))</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.tag.script.cfml</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?=[;{])</string>
-					<key>name</key>
-					<string>meta.tag.script.cfml</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#source-cfml-script-tag-generic-attribute-script</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?x)
-(?&lt;!\.)(\b)
+					<string>(?x)(\b)
 (?i:
-  (ajaximport|ajaxproxy|applet|application|argument|associate|authenticate|break|cache|chart|chartdata
-  |chartseries|col|collection|content|cookie|dbinfo|directory|div|document|documentitem
-  |documentsection|dump|error|execute|exit|feed|file|flush|form|forward|ftp|graph|graphdata
-  |header|htmlbody|htmlhead|http|httpparam|image|imap|import|include|index|input|insert|invoke|invokeargument
-  |layout|layoutarea|ldap|location|lock|log|login|loginuser|logout|loop|mail|mailparam|mailpart|map|mapitem|mediaplayer
-  |module|object|objectcache|output|pageencoding|pdf|pdfparam|pop|processingdirective|procparam|procresult
-  |query|queryparam|registry|rethrow|retry|savecontent|schedule|search|select|servlet|servletparam
-  |setting|silent|sleep|slider|stopwatch|storedproc|table|textinput|thread|throw|timer|trace|transaction
-  |update|video|videoplayer|videoplayerparam|wddx|window|xml|zip|zipparam)
-)(?!\s+in\b)(?=(\s+[a-zA-Z]|\s*[{]|\s*$))</string>
+  (ajaximport|ajaxproxy|applet|application|argument|associate|break|cache|calendar
+  |chart|chartdata|chartseries|client|clientsettings|col|collection|content|cookie|dbinfo
+  |directory|div|document|documentitem|documentsection|dump|error|exchangecalendar
+  |exchangeconnection|exchangecontact|exchangefilter|exchangemail|exchangetask
+  |execute|feed|file|fileupload|flush|form|formgroup|formitem|ftp|grid|gridcolumn
+  |gridrow|gridupdate|header|htmlhead|htmltopdf|htmltopdfitem|http|httpparam|image
+  |imap|imapfilter|import|include|index|input|insert|invoke|invokeargument|layout
+  |layoutarea|ldap|location|lock|log|login|loginuser|logout|loop|mail|mailparam|mailpart
+  |map|mapitem|mediaplayer|menu|menuitem|messagebox|module|ntauthenticate|oauth|object
+  |objectcache|output|param|pdf|pdfform|pdfformparam|pdfparam|pdfsubform|pod|pop
+  |presentation|presentationslide|presenter|print|processingdirective|procparam|procresult
+  |progressbar|property|query|queryparam|registry|report|reportparam|savecontent|schedule
+  |search|select|setting|sharepoint|silent|slider|spreadsheet|sprydataset|storedproc
+  |table|textarea|textinput|thread|throw|timer|tooltip|trace|transaction|tree|treeitem|try
+  |update|video|videoplayer|videoplayerparam|wddx|websocket|window|xml|zip|zipparam)
+)(?=\s+[a-zA-Z0-9:-]+\s*([=;{]|$)|\s*({|$))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.tag.script.cfml</string>
+							<string>meta.tag.script.cfml entity.name.tag.script.cfml</string>
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?=[;{])</string>
-					<key>name</key>
-					<string>meta.tag.script.cfml</string>
+					<string>(\})|(?=;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.block.cfml punctuation.definition.block.end.cfml</string>
+						</dict>
+					</dict>
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>match</key>
+							<string>\s+</string>
+							<key>name</key>
+							<string>meta.tag.script.cfml</string>
+						</dict>
+						<dict>
 							<key>include</key>
 							<string>#source-cfml-script-tag-generic-attribute-script</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#source-cfml-script-block-scope</string>
 						</dict>
 					</array>
 				</dict>
@@ -3100,7 +5996,24 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?i)(cf[\w]+)\(</string>
+					<string>(?x)(?i)
+  (cf
+  (?:ajaximport|ajaxproxy|applet|application|argument|associate|break|cache|calendar
+  |chart|chartdata|chartseries|client|clientsettings|col|collection|content|cookie|dbinfo
+  |directory|div|document|documentitem|documentsection|dump|error|exchangecalendar
+  |exchangeconnection|exchangecontact|exchangefilter|exchangemail|exchangetask
+  |execute|feed|file|fileupload|flush|form|formgroup|formitem|ftp|grid|gridcolumn
+  |gridrow|gridupdate|header|htmlhead|htmltopdf|htmltopdfitem|http|httpparam|image
+  |imap|imapfilter|import|include|index|input|insert|invoke|invokeargument|layout
+  |layoutarea|ldap|location|lock|log|login|loginuser|logout|loop|mail|mailparam|mailpart
+  |map|mapitem|mediaplayer|menu|menuitem|messagebox|module|ntauthenticate|oauth|object
+  |objectcache|output|param|pdf|pdfform|pdfformparam|pdfparam|pdfsubform|pod|pop
+  |presentation|presentationslide|presenter|print|processingdirective|procparam|procresult
+  |progressbar|property|query|queryparam|registry|report|reportparam|savecontent|schedule
+  |search|select|setting|sharepoint|silent|slider|spreadsheet|sprydataset|storedproc
+  |table|textarea|textinput|thread|throw|timer|tooltip|trace|transaction|tree|treeitem|try
+  |update|video|videoplayer|videoplayerparam|wddx|websocket|window|xml|zip|zipparam)
+)\(</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -3139,12 +6052,12 @@
 								</dict>
 							</dict>
 							<key>end</key>
-							<string>(?&lt;=[^\s=])|(?=\))</string>
+							<string>(?=\s*\b([a-zA-Z0-9:-]+)\s*=)|(?=\))</string>
 							<key>patterns</key>
 							<array>
 								<dict>
 									<key>include</key>
-									<string>#source-cfml-script-expression</string>
+									<string>#source-cfml-script-expressions</string>
 								</dict>
 							</array>
 						</dict>
@@ -3247,82 +6160,32 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>include</key>
+					<string>#source-cfml-script-cfml-scopes</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[_$a-zA-Z][$\w.]*(?=\s*::)</string>
+					<key>name</key>
+					<string>entity.name.class.cfml</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[_$a-zA-Z][$\w]*(?=\s*[\[\.])</string>
+					<key>name</key>
+					<string>variable.other.struct.cfml</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>\b[A-Z][_$\dA-Z]*\b</string>
 					<key>name</key>
 					<string>variable.other.constant.cfml</string>
 				</dict>
 				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.dollar.cfml</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>\b(\$)[$\w]+</string>
-					<key>name</key>
-					<string>variable.other.dollar.cfml</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.class.cfml</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.accessor.cfml</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.property.static.cfml</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>\b([A-Z][$\w]*)\s*(\.)([_$a-zA-Z][$\w]*)</string>
-					<key>name</key>
-					<string>meta.property.class.cfml</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.object.cfml</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>(?&lt;!\.)[_$a-zA-Z][$\w]*\s*(?=[\[\.])</string>
-					<key>name</key>
-					<string>variable.other.object.cfml</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.property.cfml</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>(?&lt;=\.)\s*[_$a-zA-Z][$\w]*</string>
-					<key>name</key>
-					<string>meta.property.object.cfml</string>
-				</dict>
-				<dict>
 					<key>match</key>
 					<string>[_$a-zA-Z][$\w]*</string>
 					<key>name</key>
-					<string>variable.other.cfml</string>
+					<string>variable.other.readwrite.cfml</string>
 				</dict>
 			</array>
 		</dict>
@@ -7671,31 +10534,44 @@
 					<string>\b([a-zA-Z0-9:-]+)\b</string>
 				</dict>
 				<dict>
-					<key>captures</key>
+					<key>begin</key>
+					<string>=</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.separator.key-value.cfml</string>
 						</dict>
-						<key>2</key>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=[^\s=])|(?=[&lt;/&gt;{;])</string>
+					<key>patterns</key>
+					<array>
 						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#string</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?=[^\s&lt;/&gt;{;\'"])</string>
+							<key>end</key>
+							<string>(?=[\s&lt;/&gt;{;])</string>
 							<key>name</key>
 							<string>string.unquoted.cfml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#hash-delimiters</string>
+								</dict>
+							</array>
 						</dict>
-					</dict>
-					<key>match</key>
-					<string>(=)\s*((?:[^\s&lt;&gt;/'"{;]|/(?!/&gt;))+)</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>=</string>
-					<key>name</key>
-					<string>punctuation.separator.key-value.cfml</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string</string>
+					</array>
 				</dict>
 			</array>
 		</dict>
