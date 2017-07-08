@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewbox="0 0 256 256">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewbox="0 0 256 256" width="256" height="256">
   <def>
     <path id="shadow" d="M145,287 l-72,-128 L84,102 L132,91 l15,20 L183,80.5 l72,128"></path>
     <circle id="inner" cx="128" cy="128" r="96"></circle>
