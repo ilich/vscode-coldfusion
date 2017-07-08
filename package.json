@@ -4,6 +4,7 @@
 	"version": "0.0.7",
 	"publisher": "ilich8086",
 	"homepage": "https://github.com/ilich/vscode-coldfusion",
+	"icon": "icon.svg",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ilich/vscode-coldfusion.git"
