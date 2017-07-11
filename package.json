@@ -2,7 +2,7 @@
 	"name": "coldfusion",
 	"displayName": "ColdFusion",
 	"description": "CFML (ColdFusion) Language Support",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"publisher": "ilich8086",
 	"homepage": "https://github.com/ilich/vscode-coldfusion",
 	"icon": "icon.png",

@@ -8,3 +8,4 @@ CFML (ColdFusion) language support based on https://github.com/SublimeText/ColdF
 * Andrew Myers (@am2605)
 * Cory Silva (@coryasilva)
 * Andrew Dixon
+* Stephen (https://github.com/Slulego)
