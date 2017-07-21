@@ -1,0 +1,21 @@
+{
+	"name":"spreadsheetSetRowHeight",
+	"type":"function",
+	"syntax":"spreadsheetSetRowHeight(spreadsheetObj, rowNumber, height)",
+	"returns":"void",
+	"related":[],
+	"description":" Sets the height of a row in a worksheet.",
+	"params": [
+		{"name":"spreadsheetObj","description":"The Excel spreadsheet object to which to set the column width.","required":true,"default":"","type":"Variablename","values":[]},
+		{"name":"rowNumber","description":"Specifies the row to set the height.","required":true,"default":"","type":"Numeric","values":[]},
+		{"name":"height","description":"Specifies the height in points.","required":true,"default":"","type":"Numeric","values":[]}
+
+	],
+	"engines": {
+		"coldfusion": {"minimum_version":"", "notes":"", "docs":"https://helpx.adobe.com/coldfusion/cfml-reference/coldfusion-functions/functions-s/spreadsheetsetrowheight.html"}
+	},
+	"links": [
+
+	]
+
+}

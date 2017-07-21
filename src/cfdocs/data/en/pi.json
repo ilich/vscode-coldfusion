@@ -1,0 +1,28 @@
+{
+	"name":"pi",
+	"type":"function",
+	"syntax":"pi()",
+	"returns":"Numeric",
+	"related":[],
+	"description":" Gets the mathematical constant p, accurate to 15 digits.\n The number 3.14159265358979.",
+	"params": [
+	],
+	"engines": {
+		"coldfusion": {"minimum_version":"", "notes":"", "docs":"https://helpx.adobe.com/coldfusion/cfml-reference/coldfusion-functions/functions-m-r/pi.html"},
+		"lucee": {"minimum_version":"", "notes":"", "docs":"http://docs.lucee.org/reference/functions/pi.html"},
+		"railo": {"minimum_version":"", "notes":"", "docs":"http://railodocs.org/index.cfm/function/pi"},
+		"openbd": {"minimum_version":"", "notes":"", "docs":"http://openbd.org/manual/?/function/pi"}
+	},
+	"links": [
+
+	],
+	"examples": [
+		{
+			"title":"pi to 11 digits, to display all 15 digits use numberFormat( pi() )",
+			"description":"",
+			"code":"pi()",
+			"result":"3.14159265359",
+			"runnable":true
+		}
+	]
+}

@@ -2,8 +2,9 @@
 	"name": "coldfusion",
 	"displayName": "ColdFusion",
 	"description": "CFML (ColdFusion) Language Support",
-	"version": "0.0.10",
+	"version": "0.0.11",
 	"publisher": "ilich8086",
+	"license": "MIT",
 	"homepage": "https://github.com/ilich/vscode-coldfusion",
 	"icon": "icon.png",
 	"repository": {
@@ -19,18 +20,68 @@
 	"categories": [
 		"Languages"
 	],
+	"activationEvents": [
+		"onLanguage:lang-cfml",
+		"onCommand:coldfusion.wrapCfmlCommentTags"
+	],
+	"main": "./out/src/extension",
 	"contributes": {
 		"languages": [
-			{ "id": "lang-cfml", "aliases": ["CFML"], "extensions": [".cfm",".cfml",".cfc"], "configuration": "./cfscript.configuration.json"}
+			{
+				"id": "lang-cfml",
+				"aliases": [
+					"CFML"
+				],
+				"extensions": [
+					".cfm",
+					".cfml",
+					".cfc"
+				],
+				"configuration": "./cfscript.configuration.json"
+			}
 		],
 		"grammars": [
-			{"language": "lang-cfml", "scopeName": "embedding.cfml", "path": "./syntaxes/cfml.tmLanguage" }
+			{
+				"language": "lang-cfml",
+				"scopeName": "embedding.cfml",
+				"path": "./syntaxes/cfml.tmLanguage"
+			}
 		],
 		"snippets": [
 			{
 				"language": "lang-cfml",
 				"path": "./snippets/snippets.json"
 			}
+		],
+		"commands": [
+			{
+				"command": "coldfusion.wrapCfmlCommentTags",
+				"title": "Wrap in or add CFML comment tags"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "coldfusion.wrapCfmlCommentTags",
+				"key": "ctrl+shift+alt+m",
+				"mac": "cmd+shift+alt+m",
+				"when": "editorTextFocus && !editorReadonly && editorLangId == lang-cfml"
+			}
 		]
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"compile": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"dependencies": {
+			"markdown-escape": "^1.0.2"
+	},
+	"devDependencies": {
+		"typescript": "^2.0.3",
+		"vscode": "^1.0.0",
+		"mocha": "^2.3.3",
+		"@types/node": "^6.0.40",
+		"@types/mocha": "^2.2.32"
 	}
 }
