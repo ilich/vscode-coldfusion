@@ -1,0 +1,16 @@
+{
+	"name": "getCanonicalPath",
+	"type": "function",
+	"syntax": "getCanonicalPath(path)",
+	"returns": "string",
+	"related": [],
+	"description": "Returns the canonical path of the input path. If a directory a trailing slash is always used.",
+	"params": [
+		{"name": "path", "description": "", "required": true, "default": "", "type": "string", "values": []}
+	],
+	"engines": {
+		"lucee": {"minimum_version": "", "notes": "", "docs": "http://docs.lucee.org/reference/functions/getcanonicalpath.html"}
+	},
+	"examples": [],
+	"links": []
+}

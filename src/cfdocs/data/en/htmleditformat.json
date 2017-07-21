@@ -1,0 +1,51 @@
+{
+  "name": "HTMLEditFormat",
+  "type": "function",
+  "returns": "string",
+  "syntax": "HTMLEditFormat( string [, version] )",
+  "description": "Replaces special characters in a string with their HTML-escaped equivalents.",
+  "params": [
+    {
+      "name": "string",
+      "required": true,
+      "default": "",
+      "description": "A string or a variable that contains one.",
+      "type": "string",
+      "values": []
+    },
+    {
+      "name": "version",
+      "required": false,
+      "default": "",
+      "description": "HTML version to use; currently ignored.",
+      "type": "numeric",
+      "values": [ -1, 2.0, 3.2 ]
+    }
+  ],
+
+  "engines": {
+    "coldfusion": { "docs": "https://helpx.adobe.com/coldfusion/cfml-reference/coldfusion-functions/functions-h-im/htmleditformat.html",
+      "minimum_version": "", "notes": "\nUse encodeForHTML, which can provide more protection from XSS.", "deprecated" : 11 },
+    "lucee":      { "docs": "http://docs.lucee.org/reference/functions/htmleditformat.html",
+      "minimum_version": "", "notes": "" },
+    "openbd":     { "docs": "http://openbd.org/manual/?/function/htmleditformat",
+      "minimum_version": "", "notes": "" },
+    "railo":      { "docs": "http://railodocs.org/index.cfm/function/htmleditformat",
+      "minimum_version": "", "notes": "" }
+  },
+
+  "examples": [
+    {
+      "title": "Escapes the HTML characters",
+      "description": "",
+      "code": "HTMLEditFormat( \"This is a test & this is another <This text is in angle brackets> Previous line was blank!!!\" )",
+      "result": "This is a test &amp; this is another &lt;This text is in angle brackets&gt; Previous line was blank!!!",
+      "runnable": true
+    }
+  ],
+
+  "links": [],
+  "related": [
+    "encodeForHTML"
+  ]
+}
