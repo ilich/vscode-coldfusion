@@ -2431,7 +2431,7 @@
 	},
 	"writedump": {
 		"prefix": "writedump",
-		"body": "writedump(${1:string})$0",
+		"body": "WriteDump(${1:string})$0",
 		"description": "writedump",
 		"scope": "embeddable.cfml"
 	},
