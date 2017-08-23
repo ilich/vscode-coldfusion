@@ -2429,6 +2429,12 @@
 		"description": "wrap",
 		"scope": "embeddable.cfml"
 	},
+	"writedump": {
+		"prefix": "writedump",
+		"body": "WriteDump(${1:string})$0",
+		"description": "writedump",
+		"scope": "embeddable.cfml"
+	},
 	"writeoutput": {
 		"prefix": "writeoutput",
 		"body": "WriteOutput(${1:string})$0",
