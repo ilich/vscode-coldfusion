@@ -19,6 +19,10 @@
 	"categories": [
 		"Languages"
 	],
+	"activationEvents": [
+			"onCommand:extension.cfml-comment-tags"
+	],
+	"main": "./extension",
 	"contributes": {
 		"languages": [
 			{ "id": "lang-cfml", "aliases": ["CFML"], "extensions": [".cfm",".cfml",".cfc"], "configuration": "./cfscript.configuration.json"}
@@ -30,6 +34,20 @@
 			{
 				"language": "lang-cfml",
 				"path": "./snippets/snippets.json"
+			}
+		],
+		"commands": [
+				{
+					"command": "extension.cfml-comment-tags",
+					"title": "Wrap in or add Coldfusion comment tags"
+				}
+			],
+		"keybindings": [
+			{
+				"command": "extension.cfml-comment-tags",
+				"key": "ctrl+/",
+				"mac": "cmd+/",
+				"when": "editorTextFocus && editorLangId == lang-cfml"
 			}
 		]
 	}
