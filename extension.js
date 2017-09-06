@@ -1,4 +1,80 @@
 const vscode = require('vscode');
+const { isTagComment } = require('./matchers');
+
+/**
+ * Get selection text for specified context
+ * for line comment, we want to consider text outside of the actual comment bounds
+ * for block comment, we do not want to consider text outside of the actual comment bounds
+ * @param {vscode.window.activeTextEditor} editor 
+ * @param {string} commentType line || block
+ */
+function getSelectionText(editor, commentType) {
+  if (commentType === 'line') {
+    return editor.document.getText(
+      new vscode.Range(
+        new vscode.Position(editor.selection.start.line, 0),
+        editor.document.lineAt(editor.selection.end).range.end
+      )
+    );
+  }
+  return editor.document.getText(
+    new vscode.Range(editor.selection.start, editor.selection.end)
+  );
+}
+
+/**
+ * set language configuration and run specified comment command
+ * @param {vscode.workspace.LanguageConfiguration} languageConfig
+ * @param {string} command commentLine | blockComment
+ */
+function configureAndComment(languageConfig, command) {
+  vscode.languages.setLanguageConfiguration('lang-cfml', languageConfig);
+  vscode.commands.executeCommand(`editor.action.${command}`);
+}
+
+/**
+ * Return a function that can be used to execute a line or block comment
+ * @param {string} commentType line | block
+ */
+function getCommentCommand(commentType) {
+  return function() {
+    var editor = vscode.window.activeTextEditor;
+
+    // define comment style
+    // https://code.visualstudio.com/docs/extensionAPI/vscode-api#LanguageConfiguration
+    let languageConfig = {
+      comments: {
+        lineComment: '//',
+        blockComment: ['/*', '*/']
+      }
+    };
+
+    if (editor != undefined) {
+      const selection = editor.selection;
+      const textBeforeSelection = editor.document.getText(
+        new vscode.Range(new vscode.Position(0, 0), selection.start)
+      );
+
+      const selectionText = getSelectionText(editor, commentType);
+
+      // if no <cf> tags, assume cfscript
+      // if text is within a <cfscript> tag, default to cfscript comments
+      // (If the last instance is cfscript, it means we are within a cfscript tag
+      // and should use cfscript comments.)
+      if (isTagComment(textBeforeSelection, selectionText)) {
+        languageConfig = Object.assign(languageConfig, {
+          comments: {
+            blockComment: ['<!---', '--->']
+          }
+        });
+      }
+      configureAndComment(
+        languageConfig,
+        commentType === 'line' ? 'commentLine' : 'blockComment'
+      );
+    }
+  };
+}
 
 /**
  * Determine code context on ColdFusion files to determine whether to use
@@ -8,75 +84,13 @@ const vscode = require('vscode');
  * whether the selection is within a cfscript tag.
  */
 function activate(context) {
-  let disposable = vscode.commands.registerCommand(
-    'extension.cfml-comment-tags',
-    function() {
-      var editor = vscode.window.activeTextEditor;
-
-      // define cfscript config
-      // taken from ./cfscript.configuration.json
-      let languageConfig = {
-        comments: {
-          lineComment: '//',
-          blockComment: ['/*', '*/']
-        },
-        brackets: [['{', '}'], ['[', ']'], ['(', ')']],
-        autoClosingPairs: [
-          { open: '{', close: '}' },
-          { open: '[', close: ']' },
-          { open: '(', close: ')' },
-          { open: '#', close: '#' },
-          { open: "'", close: "'", notIn: ['string', 'comment'] },
-          { open: '"', close: '"', notIn: ['string'] },
-          { open: '/**', close: ' */', notIn: ['string'] }
-        ],
-        surroundingPairs: [
-          ['{', '}'],
-          ['[', ']'],
-          ['(', ')'],
-          ["'", "'"],
-          ['#', '#'],
-          ['"', '"']
-        ]
-      };
-
-      if (editor != undefined) {
-        const selection = editor.selection;
-        const textBeforeSelection = editor.document.getText(
-          new vscode.Range(new vscode.Position(0, 0), selection.start)
-        );
-        const fullSelectionText = editor.document.getText(
-          new vscode.Range(
-            new vscode.Position(editor.selection.start.line, 0),
-            editor.document.lineAt(editor.selection.end).range.end
-          )
-        );
-
-        // if no <cf> tags, assume cfscript
-        // if text is within a <cfscript> tag, default to cfscript comments
-        if (
-          // <cf tag exists, and
-          textBeforeSelection.search(/\<cf/) !== -1 &&
-          // selection contains "<cfscript or </cfscript", or
-          (fullSelectionText.search(/<\/?cfscript/) !== -1 ||
-            // the last instance of <cf or </cf is not <cfscript.
-            // (If the last instance is cfscript, it means we are within a cfscript tag
-            // and should use cfscript comments.)
-            textBeforeSelection
-              .match(/\<\/?cf(?!.*\<\/?cf).{0,6}/g)
-              .reverse()[0] !== '<cfscript')
-        ) {
-          languageConfig = Object.assign(languageConfig, {
-            comments: {
-              blockComment: ['<!---', '--->']
-            }
-          });
-        }
-        // set language config, which should enable the right kind of comments
-        vscode.languages.setLanguageConfiguration('lang-cfml', languageConfig);
-        vscode.commands.executeCommand('editor.action.commentLine');
-      }
-    }
+  vscode.commands.registerCommand(
+    'extension.cfml-line-comment',
+    getCommentCommand('line')
+  );
+  vscode.commands.registerCommand(
+    'extension.cfml-block-comment',
+    getCommentCommand('block')
   );
 }
 exports.activate = activate;
