@@ -20,15 +20,31 @@
 		"Languages"
 	],
 	"activationEvents": [
-			"onCommand:extension.cfml-comment-tags"
+		"onCommand:extension.cfml-line-comment",
+		"onCommand:extension.cfml-block-comment"
 	],
 	"main": "./extension",
 	"contributes": {
 		"languages": [
-			{ "id": "lang-cfml", "aliases": ["CFML"], "extensions": [".cfm",".cfml",".cfc"], "configuration": "./cfscript.configuration.json"}
+			{
+				"id": "lang-cfml",
+				"aliases": [
+					"CFML"
+				],
+				"extensions": [
+					".cfm",
+					".cfml",
+					".cfc"
+				],
+				"configuration": "./cfscript.configuration.json"
+			}
 		],
 		"grammars": [
-			{"language": "lang-cfml", "scopeName": "embedding.cfml", "path": "./syntaxes/cfml.tmLanguage" }
+			{
+				"language": "lang-cfml",
+				"scopeName": "embedding.cfml",
+				"path": "./syntaxes/cfml.tmLanguage"
+			}
 		],
 		"snippets": [
 			{
@@ -37,18 +53,34 @@
 			}
 		],
 		"commands": [
-				{
-					"command": "extension.cfml-comment-tags",
-					"title": "Wrap in or add Coldfusion comment tags"
-				}
-			],
+			{
+				"command": "extension.cfml-line-comment",
+				"title": "ColdFusion line comment"
+			},
+			{
+				"command": "extension.cfml-block-comment",
+				"title": "ColdFusion block comment"
+			}
+		],
 		"keybindings": [
 			{
-				"command": "extension.cfml-comment-tags",
+				"command": "extension.cfml-line-comment",
 				"key": "ctrl+/",
 				"mac": "cmd+/",
-				"when": "editorTextFocus && editorLangId == lang-cfml"
+				"when": "editorTextFocus && !editorReadnly && editorLangId == lang-cfml"
+			},
+			{
+				"command": "extension.cfml-block-comment",
+				"key": "shift+alt+a",
+				"mac": "shift+alt+a",
+				"when": "editorTextFocus && !editorReadnly && editorLangId == lang-cfml"
 			}
 		]
+	},
+	"scripts": {
+		"test": "mocha"
+	},
+	"devDependencies": {
+		"mocha": "^3.5.0"
 	}
 }
