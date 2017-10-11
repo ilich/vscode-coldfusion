@@ -21,14 +21,14 @@
 	],
 	"contributes": {
 		"languages": [
-			{ "id": "lang-cfml", "aliases": ["CFML"], "extensions": [".cfm",".cfml",".cfc"], "configuration": "./cfscript.configuration.json"}
+			{ "id": "cfml", "aliases": ["CFML"], "extensions": [".cfm",".cfml",".cfc"], "configuration": "./cfscript.configuration.json"}
 		],
 		"grammars": [
-			{"language": "lang-cfml", "scopeName": "embedding.cfml", "path": "./syntaxes/cfml.tmLanguage" }
+			{"language": "cfml", "scopeName": "embedding.cfml", "path": "./syntaxes/cfml.tmLanguage" }
 		],
 		"snippets": [
 			{
-				"language": "lang-cfml",
+				"language": "cfml",
 				"path": "./snippets/snippets.json"
 			}
 		]
