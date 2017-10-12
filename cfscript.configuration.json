@@ -1,6 +1,9 @@
 {
 	"comments": {
+<<<<<<< HEAD
 		"lineComment": [ "<!---", "--->" ],
+=======
+>>>>>>> master
 		"blockComment": [ "<!---", "--->" ]
 	},
 	"brackets": [

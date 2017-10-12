@@ -2,7 +2,11 @@
 	"name": "coldfusion",
 	"displayName": "ColdFusion",
 	"description": "CFML (ColdFusion) Language Support",
+<<<<<<< HEAD
 	"version": "0.0.11",
+=======
+	"version": "0.0.7",
+>>>>>>> master
 	"publisher": "ilich8086",
 	"homepage": "https://github.com/ilich/vscode-coldfusion",
 	"icon": "icon.png",
@@ -21,14 +25,14 @@
 	],
 	"contributes": {
 		"languages": [
-			{ "id": "lang-cfml", "aliases": ["CFML"], "extensions": [".cfm",".cfml",".cfc"], "configuration": "./cfscript.configuration.json"}
+			{ "id": "cfml", "aliases": ["CFML"], "extensions": [".cfm",".cfml",".cfc"], "configuration": "./cfscript.configuration.json"}
 		],
 		"grammars": [
-			{"language": "lang-cfml", "scopeName": "embedding.cfml", "path": "./syntaxes/cfml.tmLanguage" }
+			{"language": "cfml", "scopeName": "embedding.cfml", "path": "./syntaxes/cfml.tmLanguage" }
 		],
 		"snippets": [
 			{
-				"language": "lang-cfml",
+				"language": "cfml",
 				"path": "./snippets/snippets.json"
 			}
 		]
