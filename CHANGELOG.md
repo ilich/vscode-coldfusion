@@ -1,14 +1,7 @@
-## Master
-- Added hash marks to autoClosingPairs and surroundingPairs
+# Change Log
+All notable changes to the "coldfusion" extension will be documented in this file.
 
-## v0.0.4
-- Added configuration for autoClosingPairs and surroundingPairs
+Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## v0.0.3
-- Syntax highlighting and refactoring
-
-## v0.0.2
-- Syntax highlighting and refactoring
-
-## v0.0.1
-- Initial Release
+## [Unreleased]
+- Initial release

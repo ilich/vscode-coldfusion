@@ -1,36 +1,68 @@
 {
-	"name": "coldfusion",
-	"displayName": "ColdFusion",
-	"description": "CFML (ColdFusion) Language Support",
-	"version": "0.0.11",
-	"publisher": "ilich8086",
-	"homepage": "https://github.com/ilich/vscode-coldfusion",
-	"icon": "icon.png",
-	"repository": {
+    "name": "coldfusion",
+    "displayName": "coldfusion",
+    "description": "CFML Language Support for Visual Studio Code",
+    "version": "1.0.0",
+    "publisher": "ilich8086",
+    "homepage": "https://github.com/ilich/vscode-coldfusion",
+    "icon": "icon.png",
+    "repository": {
 		"type": "git",
 		"url": "https://github.com/ilich/vscode-coldfusion.git"
 	},
 	"bugs": {
 		"url": "https://github.com/ilich/vscode-coldfusion/issues"
 	},
-	"engines": {
-		"vscode": "^0.10.1"
-	},
-	"categories": [
-		"Languages"
-	],
-	"contributes": {
-		"languages": [
-			{ "id": "lang-cfml", "aliases": ["CFML"], "extensions": [".cfm",".cfml",".cfc"], "configuration": "./cfscript.configuration.json"}
+    "engines": {
+        "vscode": "^1.18.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "activationEvents": [
+        "onCommand:extension.sayHello"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.sayHello",
+                "title": "Hello World"
+            }
+        ],
+        "languages": [
+			{ 
+                "id": "cfml", 
+                "aliases": ["CFML", "cfml"], 
+                "extensions": [".cfm",".cfml",".cfc"], 
+                "configuration": "./cfml.configuration.json"
+            }
 		],
 		"grammars": [
-			{"language": "lang-cfml", "scopeName": "embedding.cfml", "path": "./syntaxes/cfml.tmLanguage" }
+			{
+                "language": "cfml", 
+                "scopeName": "embedding.cfml", 
+                "path": "./syntaxes/cfml.tmLanguage" 
+            }
 		],
 		"snippets": [
 			{
-				"language": "lang-cfml",
+				"language": "cfml",
 				"path": "./snippets/snippets.json"
 			}
 		]
-	}
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.5.3",
+        "vscode": "^1.1.5",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
 }
