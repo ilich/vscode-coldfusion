@@ -41,7 +41,7 @@
 		"grammars": [
 			{
                 "language": "cfml", 
-                "scopeName": "embedding.cfml", 
+                "scopeName": "text.html.cfm", 
                 "path": "./syntaxes/cfml.tmLanguage" 
             }
 		],
