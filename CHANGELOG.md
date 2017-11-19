@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Updated syntax highlighting based on the latest TextMate ColdFusion bundle.
 
+## v0.0.11 - 2017-08-25
+### Added
+- `WriteDump` snippet.
+### Changed
+- Use CFML comments by default instead of CFScript comments.
+
+## v0.0.10 - 2017-07-18
+### Changed
+- Use `lang-cfml` as the language identifier for the extension due some other extension compatibility issues.
+
+## v0.0.9 - 2017-07-17
+### Changed
+- Use `cfml` instead of `lang-cfml` as the language identifier for the extension.
+
 ## v0.0.8 - 2017-07-16
 ### Added
 - Extension logo.
