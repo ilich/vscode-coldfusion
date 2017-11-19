@@ -1,7 +1,37 @@
-# Change Log
-All notable changes to the "coldfusion" extension will be documented in this file.
+# Changelog
+All notable changes to this project will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-- Initial release
+## [1.0.0] - 2017-XX-XX
+### Changed
+- Updated syntax highlighting based on the latest TextMate ColdFusion bundle.
+
+## v0.0.8 - 2017-07-16
+### Added
+- Extension logo.
+
+## v0.0.7 - 2017-07-16
+### Changed
+- Updated syntax highlighting based on SublimeText bundle.
+
+## v0.0.6 - skipped
+
+## v0.0.5 - skipped
+
+## v0.0.4 - 2016-11-23
+### Added
+- Language configuration: comments support.
+
+## v0.0.3 - 2016-02-16
+### Changed
+- Updated syntax highlighting and added snippets TextMate ColdFusion bundle.
+
+## v0.0.2 - 2016-02-14
+### Changed
+- Syntax highlighting and refactoring.
+
+## v0.0.1 - 2015-11-29
+### Added
+- Initial Release.
