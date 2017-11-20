@@ -17,17 +17,46 @@
         "vscode": "^1.18.0"
     },
     "categories": [
-        "Languages"
+        "Languages",
+        "Snippets"
+    ],
+    "keywords": [
+        "CFML",
+        "ColdFusion",
+        "Lucee"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onLanguage:cfml",
+        "workspaceContains:**/*.cfm",
+        "workspaceContains:**/*.cfml",
+        "workspaceContains:**/*.cfc"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "command": "cfml.toggleBlockComment",
+                "category": "CFML",
+                "title": "Toggle Block Comment"
+            },
+            {
+                "command": "cfml.toggleLineComment",
+                "category": "CFML",
+                "title": "Toggle Line Comment"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "cfml.toggleLineComment",
+                "key": "ctrl+/",
+                "mac": "cmd+/",
+                "when": "editorTextFocus && !editorReadonly && editorLangId == cfml"
+            },
+            {
+                "command": "cfml.toggleBlockComment",
+                "key": "shift+alt+a",
+                "mac": "shift+alt+a",
+                "when": "editorTextFocus && !editorReadonly && editorLangId == cfml"
             }
         ],
         "languages": [
