@@ -180,7 +180,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.script.html</string>
+					<string>entity.name.tag.cfml</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -266,13 +266,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.script.html</string>
+					<string>entity.name.tag.cfml</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>(?&lt;=&lt;/(cfscript|CFSCRIPT))&gt;(?:\s*\n)?</string>
 			<key>name</key>
-			<string>source.js.embedded.html</string>
+			<string>entity.name.tag.cfml</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -369,6 +369,29 @@
 			<string>&gt;</string>
 			<key>name</key>
 			<string>meta.tag.inline.any.html</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#tag-stuff</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>&lt;/?((?i:cfabort|cfadmin|cfajaximport|cfajaxproxy|cfapplet|cfapplication|cfargument|cfassociate|cfbreak|cfcache|cfcalendar|cfcase|cfcatch|cfchart|cfchartdata|cfchartseries|cfclient|cfclientsettings|cfcol|cfcollection|cfcomponent|cfcontent|cfcontinue|cfcookie|cfdbinfo|cfdefaultcase|cfdirectory|cfdiv|cfdocument|cfdocumentitem|cfdocumentsection|cfdump|cfelse|cfelseif|cferror|cfexchangecalendar|cfexchangeconnection|cfexchangecontact|cfexchangefilter|cfexchangemail|cfexchangetask|cfexecute|cfexit|cffeed|cffile|cffileupload|cffinally|cfflush|cfform|cfformgroup|cfformitem|cfftp|cffunction|cfgrid|cfgridcolumn|cfgridrow|cfgridupdate|cfheader|cfhtmlhead|cfhtmltopdf|cfhtmltopdfitem|cfhttp|cfhttpparam|cfif|cfimage|cfimap|cfimapfilter|cfimport|cfinclude|cfindex|cfinput|cfinsert|cfinterface|cfinvoke|cfinvokeargument|cflayout|cflayoutarea|cfldap|cflocation|cflock|cflog|cflogin|cfloginuser|cflogout|cfloop|cfmail|cfmailparam|cfmailpart|cfmap|cfmapitem|cfmediaplayer|cfmenu|cfmenuitem|cfmessagebox|cfmodule|cfntauthenticate|cfoauth|cfobject|cfobjectcache|cfoutput|cfparam|cfpdf|cfpdfform|cfpdfformparam|cfpdfparam|cfpdfsubform|cfpod|cfpop|cfpresentation|cfpresentationslide|cfpresenter|cfprint|cfprocessingdirective|cfprocparam|cfprocresult|cfprogressbar|cfproperty|cfquery|cfqueryparam|cfregistry|cfreport|cfreportparam|cfrethrow|cfretry|cfreturn|cfsavecontent|cfschedule|cfscript|cfsearch|cfselect|cfservlet|cfservletparam|cfset|cfsetting|cfsharepoint|cfsilent|cfsleep|cfslider|cfspreadsheet|cfsprydataset|cfstoredproc|cfswitch|cftable|cftextarea|cftextinput|cfthread|cfthrow|cftimer|cftooltip|cftrace|cftransaction|cftree|cftreeitem|cftry|cfupdate|cfwddx|cfwebsocket|cfwhile|cfwindow|cfxml|cfzip|cfzipparam|cf_socialplugin)\b)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.cfml</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>&gt;</string>
+			<key>name</key>
+			<string>meta.tag.other.cfml</string>
 			<key>patterns</key>
 			<array>
 				<dict>

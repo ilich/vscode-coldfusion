@@ -16,3 +16,6 @@ There were many contributors to the project. Thank you all for your help! You ca
 
 * **Syntax highlighting**
 
+* **`CFML Light` theme with CFML tags coloring support**.
+The theme is based on VS Code `Light+ (default light)` theme. The theme adds special color for standard CFML tags to improve code readability.
+

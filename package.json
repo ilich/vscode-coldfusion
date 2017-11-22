@@ -7,18 +7,19 @@
     "homepage": "https://github.com/ilich/vscode-coldfusion",
     "icon": "icon.png",
     "repository": {
-		"type": "git",
-		"url": "https://github.com/ilich/vscode-coldfusion.git"
-	},
-	"bugs": {
-		"url": "https://github.com/ilich/vscode-coldfusion/issues"
-	},
+        "type": "git",
+        "url": "https://github.com/ilich/vscode-coldfusion.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ilich/vscode-coldfusion/issues"
+    },
     "engines": {
         "vscode": "^1.18.0"
     },
     "categories": [
         "Languages",
-        "Snippets"
+        "Snippets",
+        "Themes"
     ],
     "keywords": [
         "CFML",
@@ -60,38 +61,54 @@
             }
         ],
         "languages": [
-			{ 
-                "id": "cfml", 
-                "aliases": ["CFML", "cfml"], 
-                "extensions": [".cfm",".cfml",".cfc"], 
+            {
+                "id": "cfml",
+                "aliases": [
+                    "CFML",
+                    "cfml"
+                ],
+                "extensions": [
+                    ".cfm",
+                    ".cfml",
+                    ".cfc"
+                ],
                 "configuration": "./cfml.configuration.json"
             }
-		],
-		"grammars": [
-			{
-                "language": "cfml", 
-                "scopeName": "text.html.cfm", 
-                "path": "./syntaxes/cfml.tmLanguage" 
+        ],
+        "grammars": [
+            {
+                "language": "cfml",
+                "scopeName": "text.html.cfm",
+                "path": "./syntaxes/cfml.tmLanguage"
             }
-		],
-		"snippets": [
-			{
-				"language": "cfml",
-				"path": "./snippets/snippets.json"
-			}
-		]
+        ],
+        "snippets": [
+            {
+                "language": "cfml",
+                "path": "./snippets/snippets.json"
+            }
+        ],
+        "themes": [
+            {
+                "label": "CFML Light",
+                "uiTheme": "vs",
+                "path": "./themes/cfml_light.json"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+        "test": "npm run compile && node ./node_modules/vscode/bin/test",
+        "snippets": "grunt"
     },
     "devDependencies": {
-        "typescript": "^2.5.3",
-        "vscode": "^1.1.5",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "grunt": "^1.0.1",
+        "typescript": "^2.5.3",
+        "vscode": "^1.1.5"
     }
 }
