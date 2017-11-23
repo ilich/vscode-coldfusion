@@ -395,6 +395,41 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.cfml.operator</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b((?i:eq|neq|lt|lte|gt|gte|not|is|imp|eqv|contains|mod|and|or))\b</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag-stuff</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>&lt;/?((?i:cf_[a-zA-Z0-9]+)\b)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.cfml.customtag</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>&gt;</string>
+			<key>name</key>
+			<string>meta.tag.other.cfml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
 					<key>include</key>
 					<string>#tag-stuff</string>
 				</dict>

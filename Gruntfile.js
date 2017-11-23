@@ -66,6 +66,8 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('get-tags', function() {
+        // create regular expression to parse CFML tags
+
         grunt.task.requires('parse-cfdocs');
         let regexp = cfdocs.tags.map(function (doc) {
             return doc.name;
@@ -75,6 +77,17 @@ module.exports = function(grunt) {
 
         console.log(regexp);
         fs.writeFileSync('./get-tags.tmp', regexp, 'utf8');
+    });
+
+    grunt.registerTask('get-ops', function () {
+        // create regular expression to parse CFML operators
+
+        let ops = ['eq', 'neq', 'lt', 'lte', 'gt', 'gte', 'not', 'is', 'imp', 'eqv', 'contains', 'mod', 'and', 'or'];
+        let result = ops.join('|');;
+        result = `\\b((?i:${result})\\b`;
+
+        console.log(result);
+        fs.writeFileSync('./get-ops.tmp', result, 'utf8');
     });
 
     grunt.registerTask('default', ['parse-cfdocs', 'get-tags']);

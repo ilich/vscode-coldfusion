@@ -85,6 +85,20 @@
 			}
 		},
 		{
+			"name": "cfml custom tags",
+			"scope": "entity.name.tag.cfml.customtag",
+			"settings": {
+				"foreground": "#3300CC"
+			}
+		},
+		{
+			"name": "cfml operators",
+			"scope": "entity.name.tag.cfml.operator",
+			"settings": {
+				"foreground": "#0066CC"
+			}
+		},
+		{
 			"scope": "entity.name.selector",
 			"settings": {
 				"foreground": "#800000"
