@@ -5,8 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [1.0.0] - 2017-XX-XX
+### Added
+- `CFML Light` theme with CFML tags support.
 ### Changed
-- Updated syntax highlighting based on the latest TextMate ColdFusion bundle.
+- Changed language ID to be `cfml`.
+- Updated syntax highlighting based on the latest TextMate ColdFusion bundle. New syntax file understands built-in CFML tags.
+- Line comments (`CTRL+/`) and block comments (`SHIFT+ALT+A`) take current context into account.
 
 ## v0.0.11 - 2017-08-25
 ### Added

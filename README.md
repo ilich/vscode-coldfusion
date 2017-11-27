@@ -19,3 +19,8 @@ There were many contributors to the project. Thank you all for your help! You ca
 * **`CFML Light` theme with CFML tags coloring support**.
 The theme is based on VS Code `Light+ (default light)` theme. The theme adds special color for standard CFML tags to improve code readability.
 
+## Commands
+Used in Command Palette (Win/Linux: `CTRL+SHIFT+P`; Mac: `CMD+SHIFT+P`). Can also be bound to Keyboard Shortcuts (Win/Linux: `CTRL+K CTRL+S`; Mac: `CMD+K CMD+S`).
+
+- CFML: Toggle Line Comment (`CTRL+/`)
+- CFML: Toggle Block Comment (`SHIFT+ALT+A`)
