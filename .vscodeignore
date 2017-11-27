@@ -7,4 +7,5 @@ src/**
 tsconfig.json
 vsc-extension-quickstart.md
 Gruntfile
+resources/**
 *.tmp

@@ -3,6 +3,8 @@ import * as vscode from 'vscode';
 import { LineCommentCommand } from './editor/commands/LineCommentCommand';
 import { BlockCommentCommand } from './editor/commands/BlockCommentCommand';
 
+export const LANGUAGE_ID = 'cfml';
+
 function activateCommentsSupport(context: vscode.ExtensionContext) {
     let lineComment = new LineCommentCommand();
     let toggleLineCommentCommand = vscode.commands.registerCommand(

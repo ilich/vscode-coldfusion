@@ -32,7 +32,7 @@
         "workspaceContains:**/*.cfml",
         "workspaceContains:**/*.cfc"
     ],
-    "main": "./out/extension",
+    "main": "./out/cfmlMain",
     "contributes": {
         "commands": [
             {
