@@ -93,6 +93,11 @@
                 "label": "CFML Light",
                 "uiTheme": "vs",
                 "path": "./themes/cfml_light.json"
+            },
+            {
+                "label": "CFML Dark",
+                "uiTheme": "vs-dark",
+                "path": "./themes/cfml_dark.json"
             }
         ]
     },

@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.0.0] - 2017-XX-XX
 ### Added
-- `CFML Light` theme with CFML tags support.
+- `CFML Light` and `CFML Dark` themes with CFML tags support.
 ### Changed
 - Changed language ID to be `cfml`.
 - Updated syntax highlighting based on the latest TextMate ColdFusion bundle. New syntax file understands built-in CFML tags.
