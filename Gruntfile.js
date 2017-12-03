@@ -28,7 +28,7 @@ module.exports = function(grunt) {
                     if (doc.type === 'tag') {
                         result.tags.push(doc);
                     }
-                    else {
+                    else if (doc.type === 'function') {
                         result.functions.push(doc);
                     }
                 }
@@ -58,11 +58,85 @@ module.exports = function(grunt) {
             .catch(function (error) {
                 grunt.fatal(error);
             });
-    })
+    });
 
     grunt.registerTask('build-snippets', function() {
+        function createFunctionSnippet(item) {
+            let snippet = {
+                prefix: item.name
+            };
+
+            let code = `${item.name}(`;
+            let doc = `${item.description}\n\nUSAGE:\n${item.returns} ${item.name}(`;
+            let docParams = [];
+            let codeCounter = 1;
+
+            for (let i = 0; item.params && i < item.params.length; i++) {
+                let param = item.params[i];
+                
+                if (param.required) {
+                    if (i > 0) {
+                        doc += ', ';
+                        code += ', ';
+                    }
+
+                    doc += param.name;
+                    
+                    if (param.values && param.values.length > 0) {
+                        let values = param.values.join(',');
+                        code += `\${${codeCounter}|${values}|}`;
+                    }
+                    else {
+                        code += `\${${codeCounter}:${param.name}}`;
+                    }
+                    
+                    codeCounter++;
+                }
+                else {
+                    doc += ' [';
+                    if (i > 0) {
+                        doc += ', ';
+                    }
+                    
+                    doc += `${param.name}]`;
+                }
+
+                let paramHelp = `${param.name} (${param.type})`;
+                if (param.description && param.description.length > 0) {
+                    paramHelp += ` - ${param.description}`;
+                }
+
+                if (param.default) {
+                    paramHelp += `. Default: ${param.default}.`;
+                }
+
+                if (param.values && param.values.length > 0) {
+                    paramHelp += ' Values: ' + param.values.join(', ') + '.';
+                }
+
+                docParams.push(paramHelp + '\n');
+            }
+
+            code += ')';
+            doc += ')';
+            doc += '\n\nPARAMETERS:\n\n';
+            doc += docParams.join('\n');
+
+            snippet.body = code;
+            snippet.description = doc;
+            snippet.scope = 'text.html.cfm';
+            return snippet;
+        }
+
         grunt.task.requires('parse-cfdocs');
-        grunt.log.write('TODO...');
+        let snippets = [];
+        for (let func of cfdocs.functions) {
+            let snippet = createFunctionSnippet(func);
+            snippets.push(snippet);
+        }
+
+        fs.writeFileSync('./build-snippets.tmp', JSON.stringify(snippets), 'utf8');
+        console.log(snippets);
     });
 
     grunt.registerTask('get-tags', function() {
@@ -90,6 +164,6 @@ module.exports = function(grunt) {
         fs.writeFileSync('./get-ops.tmp', result, 'utf8');
     });
 
-    grunt.registerTask('default', ['parse-cfdocs', 'get-tags']);
+    grunt.registerTask('default', ['parse-cfdocs', 'build-snippets']);
 
 };
