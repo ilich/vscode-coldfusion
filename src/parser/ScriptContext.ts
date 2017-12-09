@@ -1,14 +1,14 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
 export class ScriptContext {
     private document: vscode.TextDocument;
-    private cfqueryBegin = new RegExp('<cfquery', 'ig');
-    private cfqueryEnd = new RegExp('<\/cfquery', 'ig');
-    private cfscriptBegin = new RegExp('<cfscript', 'ig');
-    private cfscriptEnd = new RegExp('<\/cfscript', 'ig');
-    private scriptBegin = new RegExp('<script', 'ig');
-    private scriptEnd = new RegExp('<\/script', 'ig');
-    private anyCfml = new RegExp('<cf', 'ig');
+    private cfqueryBegin = new RegExp("<cfquery", "ig");
+    private cfqueryEnd = new RegExp("<\/cfquery", "ig");
+    private cfscriptBegin = new RegExp("<cfscript", "ig");
+    private cfscriptEnd = new RegExp("<\/cfscript", "ig");
+    private scriptBegin = new RegExp("<script", "ig");
+    private scriptEnd = new RegExp("<\/script", "ig");
+    private anyCfml = new RegExp("<cf", "ig");
 
     constructor(document: vscode.TextDocument) {
         this.document = document;
@@ -20,7 +20,7 @@ export class ScriptContext {
             return true;
         }
 
-        let range = new vscode.Range(new vscode.Position(0, 0), position);
+        const range = new vscode.Range(new vscode.Position(0, 0), position);
         text = this.document.getText(range);
         let result = this.isBetweenTags(text, this.cfscriptBegin, this.cfscriptEnd);
         if (!result) {
@@ -32,9 +32,9 @@ export class ScriptContext {
     }
 
     public isCFQuery(position: vscode.Position) {
-        let range = new vscode.Range(new vscode.Position(0, 0), position);
-        let text = this.document.getText(range);
-        let result = this.isBetweenTags(text, this.cfqueryBegin, this.cfqueryEnd);
+        const range = new vscode.Range(new vscode.Position(0, 0), position);
+        const text = this.document.getText(range);
+        const result = this.isBetweenTags(text, this.cfqueryBegin, this.cfqueryEnd);
         return result;
     }
 
@@ -43,12 +43,16 @@ export class ScriptContext {
         let lastEnd = -1;
         let match: RegExpExecArray;
 
-        while((match = start.exec(text)) !== null) {
+        match = start.exec(text);
+        while (match !== null) {
             lastBegin = match.index;
+            match = start.exec(text);
         }
 
-        while((match = end.exec(text)) !== null) {
+        match = end.exec(text);
+        while (match !== null) {
             lastEnd = match.index;
+            match = end.exec(text);
         }
 
         return lastBegin > lastEnd;

@@ -1,20 +1,20 @@
-'use strict';
-import * as vscode from 'vscode';
-import { LineCommentCommand } from './editor/commands/LineCommentCommand';
-import { BlockCommentCommand } from './editor/commands/BlockCommentCommand';
+"use strict";
+import * as vscode from "vscode";
+import { BlockCommentCommand } from "./editor/commands/BlockCommentCommand";
+import { LineCommentCommand } from "./editor/commands/LineCommentCommand";
 
-export const LANGUAGE_ID = 'cfml';
+export const LANGUAGE_ID = "cfml";
 
 function activateCommentsSupport(context: vscode.ExtensionContext) {
-    let lineComment = new LineCommentCommand();
-    let toggleLineCommentCommand = vscode.commands.registerCommand(
-        'cfml.toggleLineComment', 
+    const lineComment = new LineCommentCommand();
+    const toggleLineCommentCommand = vscode.commands.registerCommand(
+        "cfml.toggleLineComment",
         lineComment.execute);
     context.subscriptions.push(toggleLineCommentCommand);
 
-    let blockComment = new BlockCommentCommand();
-    let toggleBlockCommentCommand = vscode.commands.registerCommand(
-        'cfml.toggleBlockComment',
+    const blockComment = new BlockCommentCommand();
+    const toggleBlockCommentCommand = vscode.commands.registerCommand(
+        "cfml.toggleBlockComment",
         blockComment.execute);
     context.subscriptions.push(toggleBlockCommentCommand);
 }
@@ -24,4 +24,5 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {
+    // TBD. It is not used anymore.
 }

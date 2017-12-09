@@ -1,14 +1,14 @@
 "use strict";
 import * as vscode from "vscode";
 import { LANGUAGE_ID } from "../../cfmlMain";
-import { ICommand } from "./ICommand";
 import { ScriptContext } from "../../parser/ScriptContext";
+import { ICommand } from "./ICommand";
 
 export class LineCommentCommand implements ICommand {
-    execute() {
-        let editor = vscode.window.activeTextEditor;
-        let context = new ScriptContext(editor.document);
-        let line = editor.document.lineAt(editor.selection.start.line);
+    public execute() {
+        const editor = vscode.window.activeTextEditor;
+        const context = new ScriptContext(editor.document);
+        const line = editor.document.lineAt(editor.selection.start.line);
         let position = line.range.end;
 
         // first we should check if current selection starts with </cfscript> or </script>.
@@ -20,28 +20,27 @@ export class LineCommentCommand implements ICommand {
             position = line.range.start;
         }
 
-
         let executeCommand = true;
-        let command = "editor.action.commentLine";
+        const command = "editor.action.commentLine";
         let config: vscode.LanguageConfiguration = {
             comments: {
-                lineComment: "//"
-            }
+                lineComment: "//",
+            },
         };
 
         if (context.isCFQuery(position)) {
             // this is cfquery
             config = {
                 comments: {
-                    lineComment: "--"
-                }
+                    lineComment: "--",
+                },
             };
         } else if (!context.isScript(position)) {
             // it is not a cfquery or cfscript or script tag
             // apply cfml comment manually
             executeCommand = false;
             editor.edit((builder: vscode.TextEditorEdit) => {
-                let range = line.range;
+                const range = line.range;
                 builder.insert(range.start, "<!--- ");
                 builder.insert(range.end, " --->");
             });
