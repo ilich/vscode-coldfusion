@@ -130,15 +130,19 @@ module.exports = function(grunt) {
         const closedTags = [
             'cfoutput', 
             'cfquery', 
-            'cfloop', 
             'cfif', 
-            'cfswitch', 
             'cfscript',
-            'cftry',
             'cffunction',
             'cfcomponent',
             'cfmail',
             'cfsavecontent'
+        ];
+
+        const excludedTags = [
+            'cfswitch',
+            'cfloop',
+            'cftry',
+            'cfset'
         ];
 
         function createTagSnippet(item) {
@@ -191,7 +195,7 @@ module.exports = function(grunt) {
             }
 
             if (closedTags.indexOf(item.name) > -1) {
-                code += `></${item.name}>`;
+                code += `>\n</${item.name}>`;
                 doc += `></${item.name}>*`;
             } else {
                 code += '>';
@@ -222,6 +226,10 @@ module.exports = function(grunt) {
 
         snippets = [];
         for (let tag of cfdocs.tags) {
+            if (excludedTags.indexOf(tag.name) > -1) {
+                continue;
+            }
+            
             let snippet = createTagSnippet(tag);
             snippets.push(snippet);
         }
