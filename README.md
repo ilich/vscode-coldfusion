@@ -23,7 +23,14 @@ The theme is based on VS Code `Light+ (default light)` theme. The theme adds spe
 The theme is based on VS Code `Dark+ (default dark)` theme. The theme adds special color for standard CFML tags to improve code readability.
 
 ## Commands
+
 Used in Command Palette (Win/Linux: `CTRL+SHIFT+P`; Mac: `CMD+SHIFT+P`). Can also be bound to Keyboard Shortcuts (Win/Linux: `CTRL+K CTRL+S`; Mac: `CMD+K CMD+S`).
 
 - CFML: Toggle Line Comment (`CTRL+/`)
 - CFML: Toggle Block Comment (`SHIFT+ALT+A`)
+
+## Settings
+
+The following are the configurable Settings (Win/Linux: `CTRL+,`; Mac: `CMD+,`) that this extension contributes to VS Code:
+
+- `cfml.snippets.enabled`: Enable built-in CFML tags and functions snippets. [*Default*: `true`]

@@ -67,7 +67,7 @@ module.exports = function(grunt) {
             };
 
             let code = `${item.name}(`;
-            let doc = `${item.description}\n\nUSAGE:\n${item.returns} ${item.name}(`;
+            let doc = `${item.description}\n\n**USAGE:**\n*${item.returns} ${item.name}(`;
             let docParams = [];
             let codeCounter = 1;
 
@@ -101,42 +101,132 @@ module.exports = function(grunt) {
                     doc += `${param.name}]`;
                 }
 
-                let paramHelp = `${param.name} (${param.type})`;
+                let paramHelp = `*${param.name} (${param.type})*`;
                 if (param.description && param.description.length > 0) {
                     paramHelp += ` - ${param.description}`;
                 }
 
                 if (param.default) {
-                    paramHelp += `. Default: ${param.default}.`;
+                    paramHelp += `. **Default:** *${param.default}*.`;
                 }
 
                 if (param.values && param.values.length > 0) {
-                    paramHelp += ' Values: ' + param.values.join(', ') + '.';
+                    paramHelp += ' **Values:** *' + param.values.join(', ') + '*.';
                 }
 
                 docParams.push(paramHelp + '\n');
             }
 
             code += ')';
-            doc += ')';
-            doc += '\n\nPARAMETERS:\n\n';
+            doc += ')*';
+            doc += '\n\n**PARAMETERS:**\n\n';
             doc += docParams.join('\n');
 
             snippet.body = code;
-            snippet.description = doc;
-            snippet.scope = 'text.html.cfm';
+            snippet.documentation = doc;
+            return snippet;
+        }
+
+        const closedTags = [
+            'cfoutput', 
+            'cfquery', 
+            'cfloop', 
+            'cfif', 
+            'cfswitch', 
+            'cfscript',
+            'cftry',
+            'cffunction',
+            'cfcomponent',
+            'cfmail',
+            'cfsavecontent'
+        ];
+
+        function createTagSnippet(item) {
+            let snippet = {
+                prefix: item.name
+            };
+
+            let code = `<${item.name}`;
+            let doc = `${item.description}\n\n**USAGE:**\n*<${item.name}`;
+            let docParams = [];
+            let codeCounter = 1;
+
+            for (let i = 0; item.params && i < item.params.length; i++) {
+                let param = item.params[i];
+                
+                if (param.required) {
+                    doc += ' ';
+                    code += ' ';
+
+                    doc += param.name + '=""';
+                    
+                    if (param.values && param.values.length > 0) {
+                        let values = param.values.join(',');
+                        code += ` ${param.name}="\${${codeCounter}|${values}|}"`;
+                    }
+                    else {
+                        code += ` ${param.name}="\${${codeCounter}:${param.name}}"`;
+                    }
+                    
+                    codeCounter++;
+                }
+                else {
+                    doc += ` [${param.name}=""]`;
+                }
+
+                let paramHelp = `*${param.name} (${param.type})*`;
+                if (param.description && param.description.length > 0) {
+                    paramHelp += ` - ${param.description}`;
+                }
+
+                if (param.default) {
+                    paramHelp += `. **Default:** *${param.default}*.`;
+                }
+
+                if (param.values && param.values.length > 0) {
+                    paramHelp += ' **Values:** *' + param.values.join(', ') + '*.';
+                }
+
+                docParams.push(paramHelp + '\n');
+            }
+
+            if (closedTags.indexOf(item.name) > -1) {
+                code += `></${item.name}>`;
+                doc += `></${item.name}>*`;
+            } else {
+                code += '>';
+                doc += '>*';
+            }
+            
+            doc += '\n\n**PARAMETERS:**\n\n';
+            doc += docParams.join('\n');
+
+            snippet.body = code;
+            snippet.documentation = doc;
             return snippet;
         }
 
         grunt.task.requires('parse-cfdocs');
+
+        // prepare function snippets
+
         let snippets = [];
         for (let func of cfdocs.functions) {
             let snippet = createFunctionSnippet(func);
             snippets.push(snippet);
         }
 
-        fs.writeFileSync('./build-snippets.tmp', JSON.stringify(snippets), 'utf8');
-        console.log(snippets);
+        fs.writeFileSync('./build-snippets-functions.tmp', JSON.stringify(snippets), 'utf8');
+
+        // prepare tag snippets
+
+        snippets = [];
+        for (let tag of cfdocs.tags) {
+            let snippet = createTagSnippet(tag);
+            snippets.push(snippet);
+        }
+
+        fs.writeFileSync('./build-snippets-tags.tmp', JSON.stringify(snippets), 'utf8');
     });
 
     grunt.registerTask('get-tags', function() {
