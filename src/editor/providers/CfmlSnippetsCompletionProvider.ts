@@ -42,8 +42,27 @@ export class CfmlSnippetsCompletionProvider implements vscode.CompletionItemProv
                                    position?: vscode.Position) {
         const prefix = snippet.prefix;
         const item = new vscode.CompletionItem(prefix, vscode.CompletionItemKind.Snippet);
-        item.insertText = new vscode.SnippetString(snippet.body);
         item.documentation = new vscode.MarkdownString(snippet.documentation);
+
+        // https://github.com/ilich/vscode-coldfusion/issues/32
+        let isSnippetSet = false;
+        if (isTag) {
+            const currentWord = document.getWordRangeAtPosition(position);
+            if (currentWord.start.character > 0) {
+                const chBeforeRange = new vscode.Range(currentWord.start.line, currentWord.start.character - 1,
+                    currentWord.start.line, currentWord.start.character);
+                const chBefore = document.getText(chBeforeRange);
+                if (chBefore === "<") {
+                    item.insertText = new vscode.SnippetString(snippet.body.substr(1));
+                    isSnippetSet = true;
+                }
+            }
+        }
+
+        if (!isSnippetSet) {
+            item.insertText = new vscode.SnippetString(snippet.body);
+        }
+
         return item;
     }
 }

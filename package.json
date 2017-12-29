@@ -82,12 +82,6 @@
                 "path": "./syntaxes/cfml.tmLanguage"
             }
         ],
-        "snippets": [
-            {
-                "language": "cfml",
-                "path": "./snippets/snippets.json"
-            }
-        ],
         "themes": [
             {
                 "label": "CFML Light",
