@@ -1,3 +1,4 @@
+.vs/**
 .vscode/**
 .vscode-test/**
 out/test/**
@@ -5,7 +6,9 @@ out/**/*.map
 src/**
 .gitignore
 tsconfig.json
+tslint.json
 vsc-extension-quickstart.md
-Gruntfile
+Gruntfile.js
+package-lock.json
 resources/test/**
 *.tmp
