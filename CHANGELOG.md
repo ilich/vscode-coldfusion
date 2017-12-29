@@ -4,13 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2017-XX-XX
+## v1.0.0 - 2017-12-29
 ### Added
 - `CFML Light` and `CFML Dark` themes with CFML tags support.
+- `cfml.snippets.enabled` setting.
 ### Changed
 - Changed language ID to be `cfml`.
 - Updated syntax highlighting based on the latest TextMate ColdFusion bundle. New syntax file understands built-in CFML tags.
+- Updated CFML snippets using https://cfdocs.org/ content.
 - Line comments (`CTRL+/`) and block comments (`SHIFT+ALT+A`) take current context into account.
+- Fixed https://github.com/ilich/vscode-coldfusion/issues/32.
+- Fixed https://github.com/ilich/vscode-coldfusion/issues/27.
 
 ## v0.0.11 - 2017-08-25
 ### Added
