@@ -525,8 +525,8 @@
         {
 			"scope": [
                 "entity.name.tag.cfml",
-                "entity.name.tag.cfml.customtag",
-                "entity.name.tag.cfml.operator"
+                "entity.name.tag.custom.cfml",
+                "keyword.operator.decision.cfml"
             ],
 			"settings": {
 				"foreground": "#d7ba7d"
