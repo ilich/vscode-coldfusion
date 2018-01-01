@@ -22,6 +22,8 @@ The theme is based on VS Code `Light+ (default light)` theme. The theme adds spe
 * **`CFML Dark` theme with CFML tags coloring support**.
 The theme is based on VS Code `Dark+ (default dark)` theme. The theme adds special color for standard CFML tags to improve code readability.
 
+* **Build-in CFML tags and functions snippets**.
+
 ## Commands
 
 Used in Command Palette (Win/Linux: `CTRL+SHIFT+P`; Mac: `CMD+SHIFT+P`). Can also be bound to Keyboard Shortcuts (Win/Linux: `CTRL+K CTRL+S`; Mac: `CMD+K CMD+S`).
