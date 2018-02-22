@@ -20,8 +20,6 @@ export class LineCommentCommand implements ICommand {
             position = line.range.start;
         }
 
-        let executeCommand = true;
-        const command = "editor.action.commentLine";
         let config: vscode.LanguageConfiguration = {
             comments: {
                 lineComment: "//",
@@ -37,18 +35,14 @@ export class LineCommentCommand implements ICommand {
             };
         } else if (!context.isScript(position)) {
             // it is not a cfquery or cfscript or script tag
-            // apply cfml comment manually
-            executeCommand = false;
-            editor.edit((builder: vscode.TextEditorEdit) => {
-                const range = line.range;
-                builder.insert(range.start, "<!--- ");
-                builder.insert(range.end, " --->");
-            });
+            config = {
+                comments: {
+                    blockComment: ["<!---", "--->"],
+                },
+            };
         }
 
-        if (executeCommand) {
-            vscode.languages.setLanguageConfiguration(LANGUAGE_ID, config);
-            vscode.commands.executeCommand(command);
-        }
+        vscode.languages.setLanguageConfiguration(LANGUAGE_ID, config);
+        vscode.commands.executeCommand("editor.action.commentLine");
     }
 }
