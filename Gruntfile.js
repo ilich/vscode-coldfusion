@@ -166,10 +166,10 @@ module.exports = function(grunt) {
                     
                     if (param.values && param.values.length > 0) {
                         let values = param.values.join(',');
-                        code += ` ${param.name}="\${${codeCounter}|${values}|}"`;
+                        code += `${param.name}="\${${codeCounter}|${values}|}"`;
                     }
                     else {
-                        code += ` ${param.name}="\${${codeCounter}:${param.name}}"`;
+                        code += `${param.name}="\${${codeCounter}:${param.name}}"`;
                     }
                     
                     codeCounter++;
