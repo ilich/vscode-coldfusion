@@ -205,6 +205,10 @@ module.exports = function(grunt) {
             
             doc += '\n\n**PARAMETERS:**\n\n';
             doc += docParams.join('\n');
+            // add syntax-highlighted code to snippet documentation
+            // TODO: strip any of these thingys from `code`
+            // ${codeCounter}|${values}
+            doc = '```cfml\n' + code.replace(/\$\{.*\}/g, '') + '\n```\n' + doc;
 
             snippet.body = code;
             snippet.documentation = doc;
