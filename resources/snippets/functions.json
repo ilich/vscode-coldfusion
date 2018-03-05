@@ -582,7 +582,7 @@
     {
         "prefix": "createODBCDateTime",
         "body": "createODBCDateTime(${1:date})",
-        "documentation": " Creates an ODBC date-time object.\n\n**USAGE:**\n*date createODBCDateTime(date)*\n\n**PARAMETERS:**\n\n*date (date)* - Date or date/time object.\n"
+        "documentation": " Creates an ODBC date-time object.\n\n**USAGE:**\n*date createODBCDateTime(date)*\n\n**PARAMETERS:**\n\n*date (any)* - Date or date/time object or string.\n"
     },
     {
         "prefix": "createODBCTime",
@@ -751,8 +751,8 @@
     },
     {
         "prefix": "deserializeJSON",
-        "body": "deserializeJSON(${1:jsonvar}, ${2:useCustomSerializer})",
-        "documentation": " Converts a JSON (JavaScript Object Notation) string data representation into CFML data, such as a CFML structure or array.\n\n**USAGE:**\n*any deserializeJSON(jsonvar [, strictMapping], useCustomSerializer)*\n\n**PARAMETERS:**\n\n*jsonvar (string)* - A string that contains a valid JSON construct, or variable that represents one.\n\n*strictMapping (boolean)* - A Boolean value that specifies whether to convert the JSON strictly. If true everything becomes structures.. **Default:** *true*.\n\n*useCustomSerializer (boolean)* - CF11+ Use custom serializer if defined. See: https://helpx.adobe.com/coldfusion/developing-applications/changes-in-coldfusion/restful-web-services-in-coldfusion.html. **Default:** *true*.\n"
+        "body": "deserializeJSON(${1:jsonvar})",
+        "documentation": " Converts a JSON (JavaScript Object Notation) string data representation into CFML data, such as a CFML structure or array.\n\n**USAGE:**\n*any deserializeJSON(jsonvar [, strictMapping] [, useCustomSerializer])*\n\n**PARAMETERS:**\n\n*jsonvar (string)* - A string that contains a valid JSON construct, or variable that represents one.\n\n*strictMapping (boolean)* - A Boolean value that specifies whether to convert the JSON strictly. If true everything becomes structures.. **Default:** *true*.\n\n*useCustomSerializer (boolean)* - CF11+ Use custom serializer if defined. See: https://helpx.adobe.com/coldfusion/developing-applications/changes-in-coldfusion/restful-web-services-in-coldfusion.html. **Default:** *true*.\n"
     },
     {
         "prefix": "deserializeXML",
@@ -1841,8 +1841,8 @@
     },
     {
         "prefix": "invoke",
-        "body": "invoke(${1:cfcinstance}, ${2:methodname})",
-        "documentation": "Invokes a component method and returns the result of the invoked method.\n\n**USAGE:**\n*any invoke(cfcinstance, methodname [, arguments])*\n\n**PARAMETERS:**\n\n*cfcinstance (string)* - Name or instance of a CFC.\n\n*methodname (string)* - The name of the method to invoke.\n\n*arguments (struct)* - A struct of arguments to pass into the method.\n"
+        "body": "invoke(${1:instance}, ${2:methodname})",
+        "documentation": "Invokes an object method and returns the result of the invoked method.\n\n**USAGE:**\n*any invoke(instance, methodname [, arguments])*\n\n**PARAMETERS:**\n\n*instance (string)* - Name or instance of a CFC or an instance of a Java, .NET, COM or CORBA object\n\n*methodname (string)* - The name of the method to invoke.\n\n*arguments (any)* - An array of positional arguments or a struct of named arguments to pass into the method.\n"
     },
     {
         "prefix": "isArray",
@@ -2722,7 +2722,7 @@
     {
         "prefix": "queryFilter",
         "body": "queryFilter(${1:query}, ${2:filter})",
-        "documentation": "Filters query rows specified in filter criteria\n\n**USAGE:**\n*query queryFilter(query, filter [, parallel] [, maxThreads])*\n\n**PARAMETERS:**\n\n*query (query)*\n\n*filter (function)*\n\n*parallel (boolean)* - Lucee-only\n\n*maxThreads (numeric)* - Lucee-only. **Default:** *20*.\n"
+        "documentation": "Filters query rows specified in filter criteria\n\n**USAGE:**\n*query queryFilter(query, filter [, parallel] [, maxThreads])*\n\n**PARAMETERS:**\n\n*query (query)*\n\n*filter (function)*\n\n*parallel (boolean)* - Lucee4.5+\n\n*maxThreads (numeric)* - Lucee4.5+. **Default:** *20*.\n"
     },
     {
         "prefix": "queryGetCell",
@@ -2947,7 +2947,7 @@
     {
         "prefix": "serializeJSON",
         "body": "serializeJSON(${1:var})",
-        "documentation": "Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.\n\n**USAGE:**\n*string serializeJSON(var [, serializeQueryByColumns] [, useCustomSerializer])*\n\n**PARAMETERS:**\n\n*var (variableName)* - A ColdFusion variable.\n\n*serializeQueryByColumns (boolean)* - A Boolean value that specifies how to serialize ColdFusion queries.. **Default:** *false*.\n\n*useCustomSerializer (boolean)* - CF11+ Use custom serializer if defined. See: https://helpx.adobe.com/coldfusion/developing-applications/changes-in-coldfusion/restful-web-services-in-coldfusion.html. **Default:** *true*.\n"
+        "documentation": "Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.\n\n**USAGE:**\n*string serializeJSON(var [, serializeQueryByColumns] [, useSecureJSONPrefix] [, useCustomSerializer])*\n\n**PARAMETERS:**\n\n*var (variableName)* - A ColdFusion variable.\n\n*serializeQueryByColumns (boolean)* - A Boolean value that specifies how to serialize ColdFusion queries.. **Default:** *false*.\n\n*useSecureJSONPrefix (boolean)* - CF11+ When Prefix Serialized JSON is enabled in the ColdFusion Administrator, then by default this function inserts the secure json prefix at the beginning of the json.. **Default:** *false*.\n\n*useCustomSerializer (boolean)* - CF11+ Use custom serializer if defined. See: https://helpx.adobe.com/coldfusion/developing-applications/changes-in-coldfusion/restful-web-services-in-coldfusion.html. **Default:** *true*.\n"
     },
     {
         "prefix": "serializeXML",
@@ -3472,7 +3472,7 @@
     {
         "prefix": "toString",
         "body": "toString(${1:any_value})",
-        "documentation": " Converts a value to a string.\nLucee parses numbers with one decimal place.\ncomplex object types can only be used in combination with the member syntax.\n\n**USAGE:**\n*string toString(any_value [, encoding])*\n\n**PARAMETERS:**\n\n*any_value (any)* - Value to convert to a string\n\n*encoding (string)* - The character encoding (character set) of the string.. **Default:** *The default value is the encoding of the page on which the function is called.*. **Values:** *utf-8, iso-8859-1, windows-1252, us-ascii, shift_jis, iso-2022-jp, euc-jp, euc-kr, big5, euc-cn, utf-16*.\n"
+        "documentation": " Converts a value to a string.\nLucee parses numbers with one decimal place.\ncomplex object types can only be used in combination with the member syntax.\n\n**USAGE:**\n*string toString(any_value [, encoding])*\n\n**PARAMETERS:**\n\n*any_value (any)* - Value to convert to a string\n\n*encoding (string)* - The character encoding (character set) of the string.\n\nThe default value is the encoding of the page on which the function is called. **Values:** *utf-8, iso-8859-1, windows-1252, us-ascii, shift_jis, iso-2022-jp, euc-jp, euc-kr, big5, euc-cn, utf-16*.\n"
     },
     {
         "prefix": "trace",
