@@ -44,6 +44,7 @@ export class CfmlSnippetsCompletionProvider implements vscode.CompletionItemProv
         const item = new vscode.CompletionItem(prefix, vscode.CompletionItemKind.Snippet);
         item.documentation = new vscode.MarkdownString(snippet.documentation);
         item.filterText = prefix.replace(/^cf/, '');
+        item.detail = prefix;
 
         // https://github.com/ilich/vscode-coldfusion/issues/32
         let isSnippetSet = false;
