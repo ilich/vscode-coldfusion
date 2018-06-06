@@ -1,6 +1,6 @@
-# CFML Language Support for Visual Studio Code
+# Project discontinued
 
-CFML (ColdFusion) language support based on https://github.com/jcberquist/sublimetext-cfml Sublime Text package.
+Unfortunately, I won't be able to continue development on ColdFusion extension, due to lack of time. I suggest you give https://github.com/KamasamaK/vscode-cfml a try instead.
 
 ## Acknowledgements
 
