@@ -1,6 +1,5 @@
 let fs = require('fs');
 let path = require('path');
-let jsonFormat = require('json-format');
 
 module.exports = function(grunt) {
 
@@ -221,20 +220,13 @@ module.exports = function(grunt) {
 
         // prepare function snippets
 
-        let jsonFormatOptions = {
-            type: 'space',
-            space: {
-                size: 4
-            }
-        };
-
         let snippets = [];
         for (let func of cfdocs.functions) {
             let snippet = createFunctionSnippet(func);
             snippets.push(snippet);
         }
 
-        fs.writeFileSync('./resources/snippets/functions.json', jsonFormat(snippets, jsonFormatOptions), 'utf8');
+        fs.writeFileSync('./resources/snippets/functions.json', JSON.stringify(snippets, null, 4), 'utf8');
 
         // prepare tag snippets
 
@@ -248,7 +240,7 @@ module.exports = function(grunt) {
             snippets.push(snippet);
         }
 
-        fs.writeFileSync('./resources/snippets/tags.json', jsonFormat(snippets, jsonFormatOptions), 'utf8');
+        fs.writeFileSync('./resources/snippets/tags.json', JSON.stringify(snippets, null, 4), 'utf8');
     });
 
     grunt.registerTask('get-tags', function() {
