@@ -48,7 +48,7 @@ export class CfmlSnippetsCompletionProvider implements vscode.CompletionItemProv
         let isSnippetSet = false;
         if (isTag) {
             const currentWord = document.getWordRangeAtPosition(position);
-            if (currentWord.start.character > 0) {
+            if (currentWord && currentWord.start.character > 0) {
                 const chBeforeRange = new vscode.Range(currentWord.start.line, currentWord.start.character - 1,
                     currentWord.start.line, currentWord.start.character);
                 const chBefore = document.getText(chBeforeRange);
